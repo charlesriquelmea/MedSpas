@@ -4,6 +4,7 @@ export const landingContent = {
   // -------------------------------------------------------------------------------------
   en: {
     nav: { architecture: "Architecture", pricing: "Pricing" },
+    operation: {title: "Tu operación completa, visible en tiempo real"},
     hero: {
       eyebrow: "AI Sales Concierge",
       h1: "Stop Chasing Leads. Book Qualified Meetings 24/7.",
@@ -21,9 +22,9 @@ export const landingContent = {
     },
     provenResults: {
       header: {
-        badge: "LIVE DEMO — CLIENTE REAL",
-        title: "Mira Autonoma trabajando en producción",
-        subtitle: "Este es el sitio real de Victor Mane Tattoo Studio. El AI califica leads, agenda consultas y actualiza el CRM — sin intervención humana.",
+        badge: "LIVE DEMO — REAL CLIENT",
+        title: "Watch Autonoma working in production",
+        subtitle: "This is the real Victor Mane Tattoo Studio website. The AI ​​qualifies leads, schedules appointments, and updates the CRM — without human intervention.",
         cta: "Schedule Free Demo"
       },
       calificacionAutomatica: {
@@ -31,8 +32,8 @@ export const landingContent = {
         subtitle: "The system filters and qualifies leads in real-time without human intervention.",
         badge: "24/7 Efficiency",
         footer: {
-            badge: "Qualification in less than 5 seconds",
-            text: "Your team focuses only on high-priority leads"
+          badge: "Qualification in less than 5 seconds",
+          text: "Your team focuses only on high-priority leads"
         },
         flow: {
           newLead: {
@@ -70,12 +71,12 @@ export const landingContent = {
             features: ["Custom qualification questions", "Real-time response analysis", "Buying intent detection"]
           },
           {
-            title: "Asignación automática en CRM / Pipeline de ventas",
-            desc: "Según reglas de negocio (scoring, tags y geografía) el lead se asigna automáticamente a una etapa del Pipeline de ventas y a un owner. Si está habilitada la integración API, se envía un webhook al CRM del cliente; si no, queda en el CRM nativo con el estado correcto.",
+            title: "Automatic Assignment in CRM / Sales Pipeline",
+            desc: "Based on business rules (scoring, tags, and geography), the lead is automatically assigned to a stage in the sales pipeline and to an owner. If API integration is enabled, a webhook is sent to the client's CRM; otherwise, it remains in the native CRM with the correct status.",
             features: [
-              "Objetivo scoring configurable en admin (scoreRules)",
-              "Webhook POST /integrations/crm/lead con payload estándar",
-              "Fallback: si webhook falla 3 veces → marcar integration_error",
+              "Configurable scoring target in admin (scoreRules)",
+              "Webhook POST /integrations/crm/lead with standard payload",
+              "Fallback: If the webhook fails 3 times → mark integration_error",
               "Timeline: Auto-assigned to [Stage] by ruleset [name]"
             ]
           }
@@ -131,36 +132,48 @@ export const landingContent = {
       title: "What is delivered",
       subtitle: "Everything included for friction-free operation.",
       cards: [
-        { 
-          title: "High-Performance Sites (Next.js)", 
-          desc: "Landing Pages/Sites ultra-fast, secure, and conversion-optimized infrastructure built to eliminate bounce rates and maximize organic reach.", 
+        {
+          title: "High-Performance Sites (Next.js)",
+          desc: "Landing Pages/Sites ultra-fast, secure, and conversion-optimized infrastructure built to eliminate bounce rates and maximize organic reach.",
           features: [
-            "Native SEO & Core Web Vitals: Unlike WordPress or Wix, our Next.js architecture delivers sub-second load times and perfect lighthouse scores for superior Google ranking.", 
-            "Bulletproof Security: Serverless deployment eliminates database vulnerabilities and legacy plugin bloat, ensuring 99.9% uptime even under heavy traffic spikes.", 
+            "Native SEO & Core Web Vitals: Unlike WordPress or Wix, our Next.js architecture delivers sub-second load times and perfect lighthouse scores for superior Google ranking.",
+            "Bulletproof Security: Serverless deployment eliminates database vulnerabilities and legacy plugin bloat, ensuring 99.9% uptime even under heavy traffic spikes.",
             "Premium UX with Framer Motion: Apple-grade fluid animations that guide user attention and build instant brand authority that no-code builders cannot replicate."
-          ] 
+          ]
         },
-        { 
-          title: "Sales Concierge (EN/ES)", 
-          desc: "Sales Concierge with qualification script and objection handling.", 
-          features: ["Qualification script included", "Objection handling", "Bilingual (EN/ES)"] 
+        {
+          title: "Sales Concierge (EN/ES)",
+          desc: "Sales Concierge with qualification script and objection handling.",
+          features: ["Qualification script included", "Objection handling", "Bilingual (EN/ES)"]
         },
-        { 
-          title: "Knowledge Base", 
-          desc: "Knowledge base built with your documents (prices, FAQs, services) so the AI knows your business.", 
-          features: ["Trained on your Prices", "Trained on your FAQs", "Trained on your Services"] 
+        {
+          title: "Knowledge Base",
+          desc: "Knowledge base built with your documents (prices, FAQs, services) so the AI knows your business.",
+          features: ["Trained on your Prices", "Trained on your FAQs", "Trained on your Services"]
         },
-        { 
-          title: "Automations & Mini-CRM", 
-          desc: "Calendar + CRM integration (HubSpot, GoHighLevel, Salesforce, Airtable). Note: If you don't use a CRM, a 'mini-CRM' in Budibase/Twenty is delivered ready to operate.", 
-          features: ["HubSpot / GHL / Salesforce", "Budibase/Twenty Mini-CRM", "Calendar Integration", "Emaling integration"] 
+        {
+          title: "Automations & Mini-CRM",
+          desc: "Calendar + CRM integration (HubSpot, GoHighLevel, Salesforce, Airtable). Note: If you don't use a CRM, a 'mini-CRM' in Budibase/Twenty is delivered ready to operate.",
+          features: ["HubSpot / GHL / Salesforce", "Budibase/Twenty Mini-CRM", "Calendar Integration", "Emaling integration"]
         },
-        { 
-          title: "Automations & Alerts", 
-          desc: "Automations (n8n) for emails, pipeline, and tasks. Plus team alerts (Slack alternative).", 
-          features: ["n8n Automations (Email/Pipeline)", "Team Alerts (Slack alternative)", "Instant Notification"] 
+        {
+          title: "Automations & Alerts",
+          desc: "Automations (n8n) for emails, pipeline, and tasks. Plus team alerts (Slack alternative).",
+          features: ["n8n Automations (Email/Pipeline)", "Team Alerts (Slack alternative)", "Instant Notification"]
         }
-      ]
+      ],
+      crmCard: {
+        badge: "Full Sync",
+        title: "CRM · Sales Pipeline",
+        description: "Lead management, contract signing, and sales pipeline in one place. Connect your CRM or use ours.",
+        features: [
+          { bold: "CRM", text: "Lead logging, conversation history, notes, and tags." },
+          /* { bold: "Sign-up CRM", text: "Signup + e-signature flow tied to CRM to automate deals." }, */
+          { bold: "Sales Pipeline", text: "Visual sales pipeline (custom stages): New → Contacted → Demo → Proposal → Close." },
+          { bold: "Integration", text: "API integrations with external CRMs (depending on plan) or use our native CRM & pipeline." },
+        ],
+        button: "Use internal CRM"
+      }
     },
     tech: {
       title: "Powered by",
@@ -190,7 +203,7 @@ export const landingContent = {
         { title: "Capture", desc: "The prospect initiates a chat from your web or landing page." },
         { title: "Qualify", desc: "Autonoma asks 5–8 key questions (your checklist: budget, urgency, location, service type)." },
         { title: "Schedule", desc: "If qualified, books on your calendar and sends confirmation. La reserva se registra automáticamente en el CRM / Pipeline de ventas con score y tags del lead." },
-        { title: "Sync (via CRM)", desc: "Crea y actualiza el contacto y deal en tu CRM / Pipeline de ventas con datos estructurados. Si está habilitada la integración API, sincroniza con tu CRM externo; si no, queda en el CRM nativo." },
+        { title: "Sync (via CRM)", desc: "Create and update contacts and deals in your CRM/sales pipeline using structured data. If API integration is enabled, it will sync with your external CRM; otherwise, it will remain in the native CRM." },
         { title: "Alert", desc: "You get a message with: name, reason, score, calendar link, and CRM." }
       ]
     },
@@ -417,48 +430,48 @@ export const landingContent = {
       description: "Everything you need to keep your AI sales system running at peak performance. Transparent pricing, no hidden fees.",
       slaLinkText: "See more SLA support...",
       categories: [
-        { 
-          title: "Landing Page Infrastructure", 
-          total: "$179", 
+        {
+          title: "Landing Page Infrastructure",
+          total: "$179",
           items: [
-            { name: "Serverless Hosting", price: "$99/mo", description: "Unlimited bandwidth, 200+ edge locations, 99.99% uptime" }, 
+            { name: "Serverless Hosting", price: "$99/mo", description: "Unlimited bandwidth, 200+ edge locations, 99.99% uptime" },
             { name: "Domain & DNS Management", price: "$30/mo", description: "SSL certificates, CDN configuration" }
-          ] 
+          ]
         },
-        { 
-          title: "AI Sales Concierge", 
-          total: "$349", 
+        {
+          title: "AI Sales Concierge",
+          total: "$349",
           items: [
-            { 
-              name: "OpenAI API (GPT-4.1 Nano) Or Google (Gemini 2.5 Flash-Lite)", 
-              price: "$199/mo", 
-              description: "Up to 10k Interactions/Request per month. Note: An interaction is the complete 'question and answer' cycle." 
-            }, 
-            { name: "Vector Database (RAG + Embeddings)", price: "$95/mo", description: "50k vectors" }, 
+            {
+              name: "OpenAI API (GPT-4.1 Nano) Or Google (Gemini 2.5 Flash-Lite)",
+              price: "$199/mo",
+              description: "Up to 10k Interactions/Request per month. Note: An interaction is the complete 'question and answer' cycle."
+            },
+            { name: "Vector Database (RAG + Embeddings)", price: "$95/mo", description: "50k vectors" },
             { name: "Chatbot Widget Hosting", price: "$55/mo", description: "Pusher Channels, 1000k messages/month" }
-          ] 
+          ]
         },
-        { 
-          title: "Workflow Automation", 
-          total: "$169", 
+        {
+          title: "Workflow Automation",
+          total: "$169",
           items: [
-            { name: "Cloud Hosting (n8n)", price: "$89/mo", description: "5k workflow runs/month" }, 
-            { name: "CRM API Maintenance", price: "$50/mo", description: "HubSpot/Salesforce/GoHighLevel sync. Please note that accessing the API for CRM integration may incur additional costs depending on your provider." }, 
+            { name: "Cloud Hosting (n8n)", price: "$89/mo", description: "5k workflow runs/month" },
+            { name: "CRM API Maintenance", price: "$50/mo", description: "HubSpot/Salesforce/GoHighLevel sync. Please note that accessing the API for CRM integration may incur additional costs depending on your provider." },
             { name: "Email Automation", price: "$30/mo", description: "3k emails/month, DKIM/SPF/DMARC" }
-          ] 
+          ]
         },
-        { 
-          title: "Support & Updates", 
-          total: "Included", 
+        {
+          title: "Support & Updates",
+          total: "Included",
           items: [
-            { 
-              name: "Priority Technical Support", 
-              price: "Included", 
+            {
+              name: "Priority Technical Support",
+              price: "Included",
               description: "Guaranteed response times based on priority.",
-              hasSLA: true 
-            }, 
+              hasSLA: true
+            },
             { name: "AI Model Updates & Retraining", price: "Included", description: "1 update/month (RAG/Embedding) Max 50 Pages (Base Knowledge)" }
-          ] 
+          ]
         }
       ],
       sla: {
@@ -666,8 +679,17 @@ export const landingContent = {
         visitor: { label: "Web Visit", sublabel: "Prospect arrives" },
         ai: { label: "AI Assistant", sublabel: "Qualifies + Books" },
         workflow: { label: "AI Workflow", sublabel: "n8n triggered" },
-        crm: { label: "CRM + Email", sublabel: "Full sync" },
+        crm: { label: "CRM / Sales Pipeline", sublabel: "ACTIVE" },
         alert: { label: "Owner Alert", sublabel: "Meeting booked!" }
+      },
+      popover: {
+        title: "Sales Pipeline",
+        leadsActive: "Active leads",
+        inNegotiation: "In negotiation",
+        wonThisMonth: "Won this month",
+        lastActivity: "Last activity",
+        lastActivityTime: "3 min ago",
+        openCRM: "Open CRM →"
       },
       cards: {
         meeting: "Meeting Thu 2pm ✓",
@@ -676,8 +698,173 @@ export const landingContent = {
         synced: "✓ Synced to HubSpot + Email sent",
         alertMsg: "'Meeting booked: John - Thu 2pm'"
       },
+      metadata: {
+        user: "John from Acme Corp"
+      },
       active: "ACTIVE"
     },
+    liveDemo: {
+      productionLabel: "PRODUCTION — victormanetattoo.com",
+      realClientNote: "Real client · Live system · Not a fabricated demo",
+      panelTitle: "CRM / Sales Pipeline",
+      panelBadge: "LIVE",
+      leadCard: {
+        newVisitor: "New Visitor",
+        source: "victormanetattoo.com · Chat widget",
+        stageLabel: "Stage",
+        scoreLabel: "AI Score",
+        chatStatus: "Chatting",
+        scorePlaceholder: "—",
+      },
+      capturedData: "Captured data:",
+      waitingResponses: "Waiting for responses...",
+      conversationTitle: "Conversation",
+      cta: {
+        start: "Watch demo in real time",
+        running: "AI qualifying lead...",
+        completed: "Lead converted · Consultation booked",
+        retry: "Watch again"
+      },
+      footerStats: [
+        { value: "< 10 min", label: "AI setup on your site" },
+        { value: "100%", label: "Trained on Victor's real services" },
+        { value: "24/7", label: "Qualifying while you sleep" },
+      ],
+      chatSteps: [
+        { id: 1, type: "bot", message: "Hey! I'm Mane's AI assistant. Are you thinking about your first tattoo or adding to your collection?", delay: 0 },
+        { id: 2, type: "user", message: "First tattoo. I want a portrait of my dog.", delay: 1800 },
+        { id: 3, type: "bot", message: "Love that! Portrait realism is Victor's specialty. What size are you thinking — and do you have a photo of your dog?", delay: 3200 },
+        { id: 4, type: "user", message: "Maybe forearm size. Yes I have photos.", delay: 5000 },
+        { id: 5, type: "bot", message: "Perfect. Forearm portraits typically run $400–$650 depending on detail. Victor has availability next week. Want me to book a free 30-min consultation?", delay: 6800 },
+        { id: 6, type: "user", message: "Yes, Thursday works!", delay: 8400 },
+        { id: 7, type: "bot", message: "Done! ✓ Consultation booked for Thursday. You'll receive a confirmation + design brief to fill out. Victor will review your photo before the session.", delay: 9800, isBooking: true },
+      ],
+      crmStates: [
+        {
+          triggerAtStep: 1,
+          stage: "New Lead",
+          stageColor: "#3B82F6",
+          score: 0,
+          scoreLabel: "Qualifying...",
+          scoreColor: "#A1A1AA",
+          status: "Chatting",
+          statusColor: "#F59E0B",
+          actions: [],
+        },
+        {
+          triggerAtStep: 2,
+          stage: "New Lead",
+          stageColor: "#3B82F6",
+          score: 42,
+          scoreLabel: "Building...",
+          scoreColor: "#F59E0B",
+          status: "Engaged",
+          statusColor: "#3B82F6",
+          actions: ["Service: Portrait Realism"],
+        },
+        {
+          triggerAtStep: 4,
+          stage: "Interested",
+          stageColor: "#F59E0B",
+          score: 71,
+          scoreLabel: "High intent",
+          scoreColor: "#F59E0B",
+          status: "Qualified",
+          statusColor: "#00D084",
+          actions: ["Service: Portrait Realism", "Size: Forearm", "Has reference photo ✓"],
+        },
+        {
+          triggerAtStep: 6,
+          stage: "Booking",
+          stageColor: "#8B5CF6",
+          score: 94,
+          scoreLabel: "Hot lead",
+          scoreColor: "#00D084",
+          status: "Booking",
+          statusColor: "#8B5CF6",
+          actions: ["Service: Portrait Realism", "Size: Forearm", "Has reference photo ✓", "Budget: $400–$650 ✓"],
+        },
+        {
+          triggerAtStep: 7,
+          stage: "Won ✓",
+          stageColor: "#00D084",
+          score: 98,
+          scoreLabel: "Converted",
+          scoreColor: "#00D084",
+          status: "Booked",
+          statusColor: "#00D084",
+          actions: ["Service: Portrait Realism", "Size: Forearm", "Has reference photo ✓", "Budget: $400–$650 ✓", "Thursday consultation booked"],
+        },
+      ],
+    },
+    dashboardPreview: {
+      tabs: [
+        { id: "resumen", label: "Summary" },
+        { id: "bandeja", label: "Inbox" },
+        { id: "pipeline", label: "Pipeline" },
+        { id: "pedidos", label: "Orders" },
+        { id: "perdidos", label: "Lost" },
+        { id: "catalogo", label: "Catalog" },
+      ],
+      kpis: {
+        leadsToday: "Leads today",
+        inPipeline: "In pipeline",
+        closeRate: "Close rate",
+        monthlyRevenue: "Monthly revenue",
+        goalLabel: "goal",
+        improvedOverYesterday: "+3 vs yesterday",
+      },
+      topDeals: {
+        title: "Top active deals"
+      },
+      lostReasonsTitle: "Reasons for lost deals",
+      insightsTitle: "AI Insights",
+      lostDealsTitle: "Latest lost deals",
+      lostDeals: {
+        reactivateButton: "Reactivate"
+      },
+      tasks: {
+        title: "AI pending actions",
+        placeholder: "Type a message...",
+        replyButton: "Reply as AI",
+        manualButton: "Manual"
+      },
+      pipeline: {
+        leadsLabel: "leads",
+        moreLabel: "more"
+      },
+      orders: {
+        labels: {
+          id: "#",
+          client: "Client",
+          description: "Description",
+          value: "Value",
+          status: "Status",
+          date: "Date"
+        },
+        kpiLabels: [
+          { label: "Orders today", value: 7 },
+          { label: "In preparation", value: 12 },
+          { label: "Pending delivery", value: 5 },
+          { label: "Completed", value: 84 },
+        ]
+      },
+      catalog: {
+        searchPlaceholder: "Search service...",
+        addServiceButton: "Add service",
+        toggleAILabel: "Toggle AI",
+        instructionsTitle: "AI instructions",
+        instructionsText: "When the customer mentions urgency, always offer the full package. If they ask about price, give a range and offer a 10-minute call to personalize."
+      },
+      conversationPlaceholder: "Select a conversation to see details.",
+      replyPlaceholder: "Type a message...",
+      aiActive: "AI active",
+      newVisitor: "New visitor",
+      stageLabel: "Stage",
+      scoreLabel: "AI Score",
+      chatStatus: "Chatting",
+      scorePlaceholder: "—",
+    }
   },
 
   // -------------------------------------------------------------------------------------
@@ -685,6 +872,7 @@ export const landingContent = {
   // -------------------------------------------------------------------------------------
   es: {
     nav: { architecture: "Arquitectura", pricing: "Precios" },
+    operation: {title: "Tu operación completa, visible en tiempo real"},
     hero: {
       eyebrow: "Asistente de Ventas IA",
       h1: "Deja de perseguir leads. Agenda reuniones calificadas 24/7.",
@@ -702,9 +890,9 @@ export const landingContent = {
     },
     provenResults: {
       header: {
-        badge: "Widget Chat IA",
-        title: "Califica Leads Automáticamente y Cierra Más Ventas",
-        subtitle: "El IA analiza cada lead en tiempo real, hace las preguntas correctas y lo asigna automáticamente al estado adecuado de tu CRM.",
+        badge: "LIVE DEMO — CLIENTE REAL",
+        title: "Mira Autonoma trabajando en producción",
+        subtitle: "Este es el sitio real de Victor Mane Tattoo Studio. El AI califica leads, agenda consultas y actualiza el CRM — sin intervención humana",
         cta: "Agendar Demo Gratis"
       },
       calificacionAutomatica: {
@@ -712,8 +900,8 @@ export const landingContent = {
         subtitle: "El sistema filtra y cualifica leads en tiempo real sin intervención humana.",
         badge: "Eficiencia 24/7",
         footer: {
-            badge: "Calificación en menos de 5 segundos",
-            text: "Tu equipo se enfoca solo en leads de alta prioridad"
+          badge: "Calificación en menos de 5 segundos",
+          text: "Tu equipo se enfoca solo en leads de alta prioridad"
         },
         flow: {
           newLead: {
@@ -751,9 +939,18 @@ export const landingContent = {
             features: ["Preguntas de calificación personalizadas", "Análisis de respuestas en tiempo real", "Detección de intención de compra"]
           },
           {
-            title: "Asignación automática al CRM",
+            /* title: "Asignación automática al CRM",
             desc: "Basado en las respuestas, el IA asigna el lead al estado correcto de tu CRM y notifica a tu equipo",
-            features: ["Calificación objetiva en segundos", "Integración directa con tu CRM", "Notificaciones prioritarias para leads calientes"]
+            features: ["Calificación objetiva en segundos", "Integración directa con tu CRM", "Notificaciones prioritarias para leads calientes"] */
+            title: "Asignación automática en CRM / Pipeline de ventas",
+            desc: "Según reglas de negocio (scoring, tags y geografía) el lead se asigna automáticamente a una etapa del Pipeline de ventas y a un owner. Si está habilitada la integración API, se envía un webhook al CRM del cliente; si no, queda en el CRM nativo con el estado correcto.",
+            features: [
+              "Objetivo scoring configurable en admin (scoreRules)",
+              "Webhook POST /integrations/crm/lead con payload estándar",
+              "Fallback: si webhook falla 3 veces → marcar integration_error",
+              "Timeline: Auto-assigned to [Stage] by ruleset [name]"
+            ]
+
           }
         ],
         badge: "Todo el proceso toma menos de 2 minutos",
@@ -808,37 +1005,49 @@ export const landingContent = {
       subtitle: "Para que funcione sin fricción.",
       cards: [
         // --- TARJETA NUEVA AGREGADA (Versión en Español) ---
-        { 
-          title: "Sitios de Alto Rendimiento (Next.js)", 
-          desc: "Infraestructura para Landing Pages ultra-rápida, segura y optimizada para conversión, diseñada para eliminar el rebote y maximizar alcance orgánico.", 
+        {
+          title: "Sitios de Alto Rendimiento (Next.js)",
+          desc: "Infraestructura para Landing Pages ultra-rápida, segura y optimizada para conversión, diseñada para eliminar el rebote y maximizar alcance orgánico.",
           features: [
-            "SEO Nativo y Core Web Vitals: A diferencia de WordPress o Wix, nuestra arquitectura Next.js ofrece tiempos de carga sub-segundo y puntuaciones Lighthouse perfectas para un ranking superior en Google.", 
-            "Seguridad A Prueba de Balas: El despliegue Serverless elimina vulnerabilidades de base de datos y el bloat de plugins legacy, asegurando 99.9% de uptime incluso bajo picos de tráfico pesado.", 
+            "SEO Nativo y Core Web Vitals: A diferencia de WordPress o Wix, nuestra arquitectura Next.js ofrece tiempos de carga sub-segundo y puntuaciones Lighthouse perfectas para un ranking superior en Google.",
+            "Seguridad A Prueba de Balas: El despliegue Serverless elimina vulnerabilidades de base de datos y el bloat de plugins legacy, asegurando 99.9% de uptime incluso bajo picos de tráfico pesado.",
             "UX Premium con Framer Motion: Animaciones fluidas nivel Apple que guían la atención del usuario y construyen autoridad de marca instantánea que los constructores no-code no pueden replicar."
-          ] 
+          ]
         },
         // ---------------------------------------------------
-        { 
-          title: "Asistente de Ventas (EN/ES)", 
-          desc: "Asistente de Ventas con guión de calificación y objeciones.", 
-          features: ["Guión de calificación incluido", "Manejo de objeciones", "Bilingüe (EN/ES)"] 
+        {
+          title: "Asistente de Ventas (EN/ES)",
+          desc: "Asistente de Ventas con guión de calificación y objeciones.",
+          features: ["Guión de calificación incluido", "Manejo de objeciones", "Bilingüe (EN/ES)"]
         },
-        { 
-          title: "Base de Conocimiento", 
-          desc: "Base de conocimiento con tus documentos (precios/FAQs/servicios).", 
-          features: ["Entrenado con tus Precios", "Entrenado con tus FAQs", "Entrenado con tus Servicios"] 
+        {
+          title: "Base de Conocimiento",
+          desc: "Base de conocimiento con tus documentos (precios/FAQs/servicios).",
+          features: ["Entrenado con tus Precios", "Entrenado con tus FAQs", "Entrenado con tus Servicios"]
         },
-        { 
-          title: "Automatizaciones & Mini-CRM", 
-          desc: "Integración con calendario + CRM (HubSpot / GHL / Salesforce). Nota: Si no usas CRM, se entrega un “mini-CRM” en Budibase/Twenty listo para operar.", 
-          features: ["HubSpot / GHL / Salesforce", "Budibase/Twenty Mini-CRM", "Integración de Calendario", "Integración de Email"] 
+        {
+          title: "Automatizaciones & Mini-CRM",
+          desc: "Integración con calendario + CRM (HubSpot / GHL / Salesforce). Nota: Si no usas CRM, se entrega un “mini-CRM” en Budibase/Twenty listo para operar.",
+          features: ["HubSpot / GHL / Salesforce", "Budibase/Twenty Mini-CRM", "Integración de Calendario", "Integración de Email"]
         },
-        { 
-          title: "Automatizaciones & Alertas", 
-          desc: "Automatizaciones (n8n) para emails, pipeline y tareas. Alertas a tu equipo (Alternativa a Slack).", 
-          features: ["Automatizaciones n8n", "Alertas a Equipo (Slack alt.)", "Notificación Instantánea"] 
+        {
+          title: "Automatizaciones & Alertas",
+          desc: "Automatizaciones (n8n) para emails, pipeline y tareas. Alertas a tu equipo (Alternativa a Slack).",
+          features: ["Automatizaciones n8n", "Alertas a Equipo (Slack alt.)", "Notificación Instantánea"]
         }
-      ]
+      ],
+      crmCard: {
+        badge: "Sincronización Total",
+        title: "CRM · Sales Pipeline",
+        description: "Gestión de leads, firma y flujo de ventas integrados. Integra tu CRM o usa el nuestro.",
+        features: [
+          { bold: "CRM", text: "Registro de leads, historial de conversaciones, notas y tags." },
+          /* { bold: "Sign-up CRM", text: "Proceso de registro y firma ligado al CRM para automatizar altas y contratos." }, */
+          { bold: "Sales Pipeline", text: "Pipeline de ventas visual (etapas personalizables): Nuevo → Contactado → Demo → Propuesta → Cierre." },
+          { bold: "Integración", text: "Soporta integración vía API con CRMs externos (según plan del cliente) o usar nuestro CRM & Pipeline de ventas nativo." }
+        ],
+        button: "Usar CRM interno"
+      }
     },
     tech: {
       title: "Potenciado por",
@@ -868,7 +1077,7 @@ export const landingContent = {
         { title: "Captura", desc: "El prospecto inicia chat desde tu web o landing." },
         { title: "Califica", desc: "Autonoma hace 5–8 preguntas clave (tu checklist: presupuesto, urgencia, ubicación, tipo de servicio)." },
         { title: "Agenda", desc: "Si califica, agenda en tu calendario y envía confirmación." },
-        { title: "Sincroniza", desc: "Crea/actualiza el contacto y el negocio en tu CRM con data estructurada." },
+        { title: "Sincroniza", desc: "Crea y actualiza el contacto y deal en tu CRM / Pipeline de ventas con datos estructurados. Si está habilitada la integración API, sincroniza con tu CRM externo; si no, queda en el CRM nativo." },
         { title: "Alerta", desc: "Te llega un mensaje con: nombre, motivo, score, enlace a calendario y CRM." }
       ]
     },
@@ -1098,49 +1307,49 @@ export const landingContent = {
       // Texto del botón SLA traducido
       slaLinkText: "Ver más detalles del SLA...",
       categories: [
-        { 
-          title: "Infraestructura Landing Page", 
-          total: "$179", 
+        {
+          title: "Infraestructura Landing Page",
+          total: "$179",
           items: [
-            { name: "Hosting Serverless", price: "$99/mes", description: "Ancho de banda ilimitado, 200+ ubicaciones edge, 99.99% uptime" }, 
+            { name: "Hosting Serverless", price: "$99/mes", description: "Ancho de banda ilimitado, 200+ ubicaciones edge, 99.99% uptime" },
             { name: "Gestión de Dominio y DNS", price: "$30/mes", description: "Certificados SSL, configuración CDN" }
             // Performance Monitoring ELIMINADO
-          ] 
+          ]
         },
-        { 
-          title: "Asistente de Ventas IA", 
-          total: "$349", 
+        {
+          title: "Asistente de Ventas IA",
+          total: "$349",
           items: [
-            { 
-              name: "API OpenAI (GPT-4.1 Nano) o Google (Gemini 2.5 Flash-Lite)", 
-              price: "$199/mes", 
-              description: "Hasta 10k Interacciones/Solicitudes por mes. Nota: Una interacción es el ciclo completo de 'pregunta y respuesta' (Prompt + Respuesta)." 
-            }, 
-            { name: "Base de Datos Vectorial (RAG + Embeddings)", price: "$95/mes", description: "50k vectores" }, 
+            {
+              name: "API OpenAI (GPT-4.1 Nano) o Google (Gemini 2.5 Flash-Lite)",
+              price: "$199/mes",
+              description: "Hasta 10k Interacciones/Solicitudes por mes. Nota: Una interacción es el ciclo completo de 'pregunta y respuesta' (Prompt + Respuesta)."
+            },
+            { name: "Base de Datos Vectorial (RAG + Embeddings)", price: "$95/mes", description: "50k vectores" },
             { name: "Hosting Widget Chatbot", price: "$55/mes", description: "Canales Pusher, 1000k mensajes/mes" }
-          ] 
+          ]
         },
-        { 
-          title: "Automatización de Flujos", 
-          total: "$169", 
+        {
+          title: "Automatización de Flujos",
+          total: "$169",
           items: [
-            { name: "Hosting Cloud (n8n)", price: "$89/mes", description: "5k ejecuciones de flujo/mes" }, 
-            { name: "Mantenimiento API CRM", price: "$50/mes", description: "Sincronización HubSpot/Salesforce/GoHighLevel. Ten en cuenta que el acceso a la API para la integración del CRM puede incurrir en costos adicionales. Estas tarifas son determinadas por tu proveedor de servicios actual y a menudo dependen de tu plan de suscripción específico. Recomendamos verificar con ellos si el acceso a la API está incluido o si se requiere una actualización antes de proceder con la integración." }, 
+            { name: "Hosting Cloud (n8n)", price: "$89/mes", description: "5k ejecuciones de flujo/mes" },
+            { name: "Mantenimiento API CRM", price: "$50/mes", description: "Sincronización HubSpot/Salesforce/GoHighLevel. Ten en cuenta que el acceso a la API para la integración del CRM puede incurrir en costos adicionales. Estas tarifas son determinadas por tu proveedor de servicios actual y a menudo dependen de tu plan de suscripción específico. Recomendamos verificar con ellos si el acceso a la API está incluido o si se requiere una actualización antes de proceder con la integración." },
             { name: "Automatización de Email", price: "$30/mes", description: "3k emails/mes, DKIM/SPF/DMARC" }
-          ] 
+          ]
         },
-        { 
-          title: "Soporte y Actualizaciones", 
-          total: "Incluido", 
+        {
+          title: "Soporte y Actualizaciones",
+          total: "Incluido",
           items: [
-            { 
-              name: "Soporte Técnico Prioritario", 
-              price: "Incluido", 
+            {
+              name: "Soporte Técnico Prioritario",
+              price: "Incluido",
               description: "Tiempos de respuesta garantizados según prioridad.",
               hasSLA: true // Esto activa el botón
-            }, 
+            },
             { name: "Actualizaciones y Reentrenamiento IA", price: "Incluido", description: "1 actualización/mes (RAG/Embedding) Máx 50 Páginas (Base de Conocimiento)" }
-          ] 
+          ]
         }
       ],
       // Datos de la tabla SLA (Traducidos)
@@ -1349,17 +1558,191 @@ export const landingContent = {
         visitor: { label: "Visita Web", sublabel: "Prospecto llega" },
         ai: { label: "Asistente IA", sublabel: "Califica + Agenda" },
         workflow: { label: "Workflow IA", sublabel: "n8n activado" },
-        crm: { label: "CRM + Email", sublabel: "Sincronización total" },
+        crm: { label: "CRM / Sales Pipeline", sublabel: "ACTIVO" },
         alert: { label: "Alerta Dueño", sublabel: "¡Reunión agendada!" }
+      },
+      popover: {
+        title: "Sales Pipeline",
+        leadsActive: "Leads activos",
+        inNegotiation: "En negociación",
+        wonThisMonth: "Ganados este mes",
+        lastActivity: "Última actividad",
+        lastActivityTime: "hace 3 min",
+        openCRM: "Abrir CRM →"
       },
       cards: {
         meeting: "Reunión Jue 2pm ✓",
         payload: "→ Payload enviado en 0.3s",
+        lead: "✓ Lead registrado en CRM / Sales Pipeline — Etapa: Demo — Score: 87",
         synced: "✓ Sincronizado a HubSpot + Email enviado",
-        alertMsg: "'Reunión agendada: John - Jue 2pm'",
-        lead: "✓ Lead registrado en CRM / Sales Pipeline — Etapa: Demo — Score: 87"
+        alertMsg: "'Reunión agendada: John - Jue 2pm'"
+      },
+      metadata: {
+        user: "John from Acme Corp"
       },
       active: "ACTIVO"
     },
+    liveDemo: {
+      productionLabel: "PRODUCCIÓN — victormanetattoo.com",
+      realClientNote: "Cliente real · Sistema activo · No es una demo fabricada",
+      panelTitle: "CRM / Sales Pipeline",
+      panelBadge: "EN VIVO",
+      leadCard: {
+        newVisitor: "Nuevo visitante",
+        source: "victormanetattoo.com · Chat widget",
+        stageLabel: "Etapa",
+        scoreLabel: "Score IA",
+        chatStatus: "En chat",
+        scorePlaceholder: "—",
+      },
+      capturedData: "Datos capturados:",
+      waitingResponses: "Esperando respuestas...",
+      conversationTitle: "Conversación",
+      cta: {
+        start: "Ver demo en tiempo real",
+        running: "AI calificando lead...",
+        completed: "Lead convertido · Consulta agendada",
+        retry: "Ver de nuevo"
+      },
+      footerStats: [
+        { value: "< 10 min", label: "Setup del AI sobre tu sitio" },
+        { value: "100%", label: "Entrenado con servicios reales de Victor" },
+        { value: "24/7", label: "Calificando mientras duermes" },
+      ],
+      chatSteps: [
+        { id: 1, type: "bot", message: "¡Hey! Soy el asistente IA de Mane. ¿Estás pensando en tu primer tatuaje o agregar a tu colección?", delay: 0 },
+        { id: 2, type: "user", message: "Primer tatuaje. Quiero un retrato de mi perro.", delay: 1800 },
+        { id: 3, type: "bot", message: "¡Genial! El realismo en retratos es la especialidad de Victor. ¿Qué tamaño estás pensando y tienes una foto de tu perro?", delay: 3200 },
+        { id: 4, type: "user", message: "Tal vez tamaño antebrazo. Sí, tengo fotos.", delay: 5000 },
+        { id: 5, type: "bot", message: "Perfecto. Los retratos de antebrazo suelen costar $400–$650 según el detalle. Victor tiene disponibilidad la próxima semana. ¿Quieres que reserve una consulta gratuita de 30 min?", delay: 6800 },
+        { id: 6, type: "user", message: "Sí, el jueves está bien.", delay: 8400 },
+        { id: 7, type: "bot", message: "¡Listo! ✓ Consulta agendada para el jueves. Recibirás una confirmación + brief de diseño para completar. Victor revisará tu foto antes de la sesión.", delay: 9800, isBooking: true },
+      ],
+      crmStates: [
+        {
+          triggerAtStep: 1,
+          stage: "Nuevo Lead",
+          stageColor: "#3B82F6",
+          score: 0,
+          scoreLabel: "Calificando...",
+          scoreColor: "#A1A1AA",
+          status: "En chat",
+          statusColor: "#F59E0B",
+          actions: [],
+        },
+        {
+          triggerAtStep: 2,
+          stage: "Nuevo Lead",
+          stageColor: "#3B82F6",
+          score: 42,
+          scoreLabel: "En construcción...",
+          scoreColor: "#F59E0B",
+          status: "Comprometido",
+          statusColor: "#3B82F6",
+          actions: ["Servicio: Realismo de retrato"],
+        },
+        {
+          triggerAtStep: 4,
+          stage: "Interesado",
+          stageColor: "#F59E0B",
+          score: 71,
+          scoreLabel: "Alta intención",
+          scoreColor: "#F59E0B",
+          status: "Calificado",
+          statusColor: "#00D084",
+          actions: ["Servicio: Realismo de retrato", "Tamaño: Antebrazo", "Tiene foto de referencia ✓"],
+        },
+        {
+          triggerAtStep: 6,
+          stage: "Reserva",
+          stageColor: "#8B5CF6",
+          score: 94,
+          scoreLabel: "Lead caliente",
+          scoreColor: "#00D084",
+          status: "Reservando",
+          statusColor: "#8B5CF6",
+          actions: ["Servicio: Realismo de retrato", "Tamaño: Antebrazo", "Tiene foto de referencia ✓", "Presupuesto: $400–$650 ✓"],
+        },
+        {
+          triggerAtStep: 7,
+          stage: "Ganado ✓",
+          stageColor: "#00D084",
+          score: 98,
+          scoreLabel: "Convertido",
+          scoreColor: "#00D084",
+          status: "Agendado",
+          statusColor: "#00D084",
+          actions: ["Servicio: Realismo de retrato", "Tamaño: Antebrazo", "Tiene foto de referencia ✓", "Presupuesto: $400–$650 ✓", "Consulta del jueves agendada"],
+        },
+      ],
+    },
+    dashboardPreview: {
+      tabs: [
+        { id: "resumen", label: "Resumen" },
+        { id: "bandeja", label: "Bandeja" },
+        { id: "pipeline", label: "Pipeline" },
+        { id: "pedidos", label: "Pedidos" },
+        { id: "perdidos", label: "Perdidos" },
+        { id: "catalogo", label: "Catálogo" },
+      ],
+      kpis: {
+        leadsToday: "Leads hoy",
+        inPipeline: "En pipeline",
+        closeRate: "Tasa de cierre",
+        monthlyRevenue: "Ingresos del mes",
+        goalLabel: "meta",
+        improvedOverYesterday: "+3 vs ayer",
+      },
+      topDeals: {
+        title: "Top deals activos"
+      },
+      lostReasonsTitle: "Razones de pérdida",
+      insightsTitle: "AI Insights",
+      lostDealsTitle: "Últimos deals perdidos",
+      lostDeals: {
+        reactivateButton: "Reactivar"
+      },
+      tasks: {
+        title: "Acciones pendientes del AI",
+        placeholder: "Escribe un mensaje...",
+        replyButton: "Responder como AI",
+        manualButton: "Manual"
+      },
+      pipeline: {
+        leadsLabel: "leads",
+        moreLabel: "más"
+      },
+      orders: {
+        labels: {
+          id: "#",
+          client: "Cliente",
+          description: "Descripción",
+          value: "Valor",
+          status: "Estado",
+          date: "Fecha"
+        },
+        kpiLabels: [
+          { label: "Pedidos hoy", value: 7 },
+          { label: "En preparación", value: 12 },
+          { label: "Pendiente entrega", value: 5 },
+          { label: "Completados", value: 84 },
+        ]
+      },
+      catalog: {
+        searchPlaceholder: "Buscar servicio...",
+        addServiceButton: "Agregar servicio",
+        toggleAILabel: "Toggle AI",
+        instructionsTitle: "Instrucciones al AI",
+        instructionsText: "Cuando el cliente mencione urgencia, ofrece siempre el paquete completo. Si pregunta por precio, da el rango y ofrece una llamada de 10 minutos para personalizar."
+      },
+      conversationPlaceholder: "Selecciona una conversación para ver el detalle.",
+      replyPlaceholder: "Escribe un mensaje...",
+      aiActive: "AI activo",
+      newVisitor: "Nuevo visitante",
+      stageLabel: "Etapa",
+      scoreLabel: "Score AI",
+      chatStatus: "Chatting",
+      scorePlaceholder: "—",
+    }
   },
 }

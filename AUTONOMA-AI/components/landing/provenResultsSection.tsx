@@ -171,7 +171,7 @@ export function ProvenResultsSection({ onOpenForm }: CTASectionProps) {
                       color="orange" 
                       title={t.calificacionAutomatica.flow.results.noCalifica.title} 
                       subtitle={t.calificacionAutomatica.flow.results.noCalifica.subtitle}
-                      extra={
+                      /* extra={
                         <div className="mt-2 space-y-1">
                           <p className="text-xs text-[#A1A1AA]">Si no califica: marcar como Spam o enviar a nurturing.</p>
                           <Button size="sm" variant="outline" className="border-[#27272A] text-[#A1A1AA] hover:text-[#FAFAFA] text-xs w-full">
@@ -179,7 +179,7 @@ export function ProvenResultsSection({ onOpenForm }: CTASectionProps) {
                           </Button>
                           <p className="text-xs text-[#00D084] font-medium">Sign-up → Registrar lead en CRM & Pipeline de ventas</p>
                         </div>
-                      }
+                      } */
                     />
                     <ResultCard icon={XCircle} color="red" title={t.calificacionAutomatica.flow.results.spam.title} subtitle={t.calificacionAutomatica.flow.results.spam.subtitle} />
                   </div>

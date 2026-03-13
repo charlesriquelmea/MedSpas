@@ -56,7 +56,7 @@ export function ArchitectureSection() {
             delay={0.2}
           />
 
-          {/* Card 3: CRM · Sign-up CRM · Sales Pipeline (CAMBIO 2) */}
+          {/* Card 3: CRM · Sign-up CRM · Sales Pipeline */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -73,22 +73,17 @@ export function ArchitectureSection() {
               </div>
               {/* Badge */}
               <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-cyan-400 font-medium mb-4">
-                Full Sync
+                {t.crmCard.badge}
               </div>
               {/* Title */}
-              <h3 className="text-2xl font-semibold mb-3 text-white">CRM · Sign-up CRM · Sales Pipeline</h3>
+              <h3 className="text-2xl font-semibold mb-3 text-white">{t.crmCard.title}</h3>
               {/* Description */}
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Gestión de leads, firma y flujo de ventas integrados. Integra tu CRM o usa el nuestro.
+                {t.crmCard.description}
               </p>
               {/* Features */}
               <ul className="space-y-2 mt-4 mb-6">
-                {[
-                  { bold: "CRM", text: "Registro de leads, historial de conversaciones, notas y tags." },
-                  { bold: "Sign-up CRM", text: "Proceso de registro y firma ligado al CRM para automatizar altas y contratos." },
-                  { bold: "Sales Pipeline", text: "Pipeline de ventas visual (etapas personalizables): Nuevo → Contactado → Demo → Propuesta → Cierre." },
-                  { bold: "Integración", text: "Soporta integración vía API con CRMs externos (según plan del cliente) o usar nuestro CRM & Pipeline de ventas nativo." },
-                ].map((item, idx) => (
+                {t.crmCard.features.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
                     <span className="text-cyan-400 mt-0.5">✓</span>
                     <span><strong className="text-white">{item.bold}:</strong> {item.text}</span>
@@ -97,7 +92,7 @@ export function ArchitectureSection() {
               </ul>
               {/* Conditional CTA button — allowsExternalCRM = false by default */}
               <Button variant="outline" size="sm" className="border-[#27272A] text-[#A1A1AA] hover:text-[#FAFAFA] text-xs">
-                Usar CRM interno
+                {t.crmCard.button}
               </Button>
             </div>
           </motion.div>

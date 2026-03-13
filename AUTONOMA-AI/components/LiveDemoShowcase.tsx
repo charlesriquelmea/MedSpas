@@ -4,121 +4,28 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Monitor, MessageSquare, Zap, CheckCircle2, ArrowRight, Calendar, User, Star } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-
-const CHAT_STEPS = [
-  {
-    id: 1,
-    type: "bot",
-    message: "Hey! I'm Mane's AI assistant. Are you thinking about your first tattoo or adding to your collection?",
-    delay: 0,
-  },
-  {
-    id: 2,
-    type: "user",
-    message: "First tattoo. I want a portrait of my dog.",
-    delay: 1800,
-  },
-  {
-    id: 3,
-    type: "bot",
-    message: "Love that! Portrait realism is Victor's specialty. What size are you thinking — and do you have a photo of your dog?",
-    delay: 3200,
-  },
-  {
-    id: 4,
-    type: "user",
-    message: "Maybe forearm size. Yes I have photos.",
-    delay: 5000,
-  },
-  {
-    id: 5,
-    type: "bot",
-    message: "Perfect. Forearm portraits typically run $400–$650 depending on detail. Victor has availability next week. Want me to book a free 30-min consultation?",
-    delay: 6800,
-  },
-  {
-    id: 6,
-    type: "user",
-    message: "Yes, Thursday works!",
-    delay: 8400,
-  },
-  {
-    id: 7,
-    type: "bot",
-    message: "Done! ✓ Consultation booked for Thursday. You'll receive a confirmation + design brief to fill out. Victor will review your photo before the session.",
-    delay: 9800,
-    isBooking: true,
-  },
-]
-
-const CRM_STATES = [
-  {
-    triggerAtStep: 1,
-    stage: "New Lead",
-    stageColor: "#3B82F6",
-    score: 0,
-    scoreLabel: "Qualifying...",
-    scoreColor: "#A1A1AA",
-    status: "Chatting",
-    statusColor: "#F59E0B",
-    actions: [] as string[],
-  },
-  {
-    triggerAtStep: 2,
-    stage: "New Lead",
-    stageColor: "#3B82F6",
-    score: 42,
-    scoreLabel: "Building...",
-    scoreColor: "#F59E0B",
-    status: "Engaged",
-    statusColor: "#3B82F6",
-    actions: ["Service: Portrait Realism"],
-  },
-  {
-    triggerAtStep: 4,
-    stage: "Interested",
-    stageColor: "#F59E0B",
-    score: 71,
-    scoreLabel: "High intent",
-    scoreColor: "#F59E0B",
-    status: "Qualified",
-    statusColor: "#00D084",
-    actions: ["Service: Portrait Realism", "Size: Forearm", "Has reference photo ✓"],
-  },
-  {
-    triggerAtStep: 6,
-    stage: "Booking",
-    stageColor: "#8B5CF6",
-    score: 94,
-    scoreLabel: "Hot lead",
-    scoreColor: "#00D084",
-    status: "Booking",
-    statusColor: "#8B5CF6",
-    actions: ["Service: Portrait Realism", "Size: Forearm", "Has reference photo ✓", "Budget: $400–$650 ✓"],
-  },
-  {
-    triggerAtStep: 7,
-    stage: "Won ✓",
-    stageColor: "#00D084",
-    score: 98,
-    scoreLabel: "Converted",
-    scoreColor: "#00D084",
-    status: "Booked",
-    statusColor: "#00D084",
-    actions: ["Service: Portrait Realism", "Size: Forearm", "Has reference photo ✓", "Budget: $400–$650 ✓", "Thursday consultation booked"],
-  },
-]
+import { useLanguage } from "@/components/language-provider"
+import { landingContent } from "@/data/landing-content"
 
 export function LiveDemoShowcase() {
+  const { language } = useLanguage()
+  const t = landingContent[language].liveDemo
+
   const [visibleMessages, setVisibleMessages] = useState<number[]>([])
   const [isTyping, setIsTyping] = useState(false)
-  const [currentCrmState, setCurrentCrmState] = useState(CRM_STATES[0])
+  const [currentCrmState, setCurrentCrmState] = useState(t.crmStates[0])
   const [isRunning, setIsRunning] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
 
+  const footerStats = [
+    { icon: Calendar },
+    { icon: Star },
+    { icon: Zap },
+  ]
+
   const startDemo = () => {
     setVisibleMessages([])
-    setCurrentCrmState(CRM_STATES[0])
+    setCurrentCrmState(t.crmStates[0])
     setIsComplete(false)
     setIsRunning(true)
   }
@@ -127,8 +34,10 @@ export function LiveDemoShowcase() {
     if (!isRunning) return
 
     const timeouts: NodeJS.Timeout[] = []
+    const chatSteps = t.chatSteps
+    const crmStates = t.crmStates
 
-    CHAT_STEPS.forEach((step, index) => {
+    chatSteps.forEach((step, index) => {
       if (step.type === "bot" && index > 0) {
         timeouts.push(setTimeout(() => setIsTyping(true), step.delay - 600))
       }
@@ -138,10 +47,10 @@ export function LiveDemoShowcase() {
           setIsTyping(false)
           setVisibleMessages((prev) => [...prev, step.id])
 
-          const crmState = CRM_STATES.find((s) => s.triggerAtStep === step.id)
+          const crmState = crmStates.find((s) => s.triggerAtStep === step.id)
           if (crmState) setCurrentCrmState(crmState)
 
-          if (index === CHAT_STEPS.length - 1) {
+          if (index === chatSteps.length - 1) {
             setIsComplete(true)
             setIsRunning(false)
           }
@@ -150,7 +59,7 @@ export function LiveDemoShowcase() {
     })
 
     return () => timeouts.forEach(clearTimeout)
-  }, [isRunning])
+  }, [isRunning, t])
 
   return (
     <div className="w-full max-w-6xl mx-auto my-12">
@@ -158,9 +67,9 @@ export function LiveDemoShowcase() {
       <div className="flex items-center gap-3 mb-6">
         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D084]/10 border border-[#00D084]/20">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
-          <span className="text-xs font-medium text-[#00D084]">PRODUCTION — victormanetattoo.com</span>
+          <span className="text-xs font-medium text-[#00D084]">{t.productionLabel}</span>
         </div>
-        <span className="text-xs text-[#A1A1AA]">Cliente real · Sistema activo · No es una demo fabricada</span>
+        <span className="text-xs text-[#A1A1AA]">{t.realClientNote}</span>
       </div>
 
       {/* Contenedor principal 2 zonas */}
@@ -212,9 +121,9 @@ export function LiveDemoShowcase() {
           <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1E] border-b border-[#27272A]">
             <div className="flex items-center gap-2">
               <MessageSquare className="w-4 h-4 text-[#00D084]" />
-              <span className="text-sm font-medium text-[#FAFAFA]">CRM / Sales Pipeline</span>
+              <span className="text-sm font-medium text-[#FAFAFA]">{t.panelTitle}</span>
             </div>
-            <Badge className="bg-[#00D084]/10 text-[#00D084] border border-[#00D084]/20 text-xs">LIVE</Badge>
+            <Badge className="bg-[#00D084]/10 text-[#00D084] border border-[#00D084]/20 text-xs">{t.panelBadge}</Badge>
           </div>
 
           {/* Lead card */}
@@ -224,15 +133,15 @@ export function LiveDemoShowcase() {
                 <User className="w-4 h-4 text-[#3B82F6]" />
               </div>
               <div>
-                <p className="text-sm font-medium text-[#FAFAFA]">Nuevo visitante</p>
-                <p className="text-xs text-[#A1A1AA]">victormanetattoo.com · Chat widget</p>
+                <p className="text-sm font-medium text-[#FAFAFA]">{t.leadCard.newVisitor}</p>
+                <p className="text-xs text-[#A1A1AA]">{t.leadCard.source}</p>
               </div>
             </div>
 
             {/* Stage + Score */}
             <div className="grid grid-cols-2 gap-2 mb-3">
               <div className="bg-[#0A0A0B] rounded-lg p-2.5 border border-[#27272A]">
-                <p className="text-xs text-[#A1A1AA] mb-1">Etapa</p>
+                <p className="text-xs text-[#A1A1AA] mb-1">{t.leadCard.stageLabel}</p>
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={currentCrmState.stage}
@@ -247,7 +156,7 @@ export function LiveDemoShowcase() {
                 </AnimatePresence>
               </div>
               <div className="bg-[#0A0A0B] rounded-lg p-2.5 border border-[#27272A]">
-                <p className="text-xs text-[#A1A1AA] mb-1">Score AI</p>
+                <p className="text-xs text-[#A1A1AA] mb-1">{t.leadCard.scoreLabel}</p>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentCrmState.score}
@@ -279,7 +188,7 @@ export function LiveDemoShowcase() {
 
             {/* Captured data tags */}
             <div className="flex flex-col gap-1.5">
-              <p className="text-xs text-[#A1A1AA] font-medium">Datos capturados:</p>
+              <p className="text-xs text-[#A1A1AA] font-medium">{t.capturedData}</p>
               <AnimatePresence>
                 {currentCrmState.actions.map((action, i) => (
                   <motion.div
@@ -295,18 +204,18 @@ export function LiveDemoShowcase() {
                 ))}
               </AnimatePresence>
               {currentCrmState.actions.length === 0 && (
-                <p className="text-xs text-[#A1A1AA] italic">Esperando respuestas...</p>
+                <p className="text-xs text-[#A1A1AA] italic">{t.waitingResponses}</p>
               )}
             </div>
           </div>
 
           {/* Chat preview */}
           <div className="flex-1 p-4 flex flex-col gap-2 overflow-hidden" style={{ maxHeight: "220px" }}>
-            <p className="text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-1">Conversación</p>
+            <p className="text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-1">{t.conversationTitle}</p>
             <div className="flex flex-col gap-2 overflow-y-auto">
               <AnimatePresence>
                 {visibleMessages.slice(-4).map((id) => {
-                  const step = CHAT_STEPS.find((s) => s.id === id)
+                  const step = t.chatSteps.find((s) => s.id === id)
                   if (!step) return null
                   return (
                     <motion.div
@@ -351,56 +260,55 @@ export function LiveDemoShowcase() {
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="p-4 border-t border-[#27272A]">
+          {/* CTA Watch demo*/}
+          {/* <div className="p-4 border-t border-[#27272A]">
             {!isRunning && !isComplete && (
               <button
                 onClick={startDemo}
                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#00D084] hover:bg-[#00D084]/90 text-black font-medium text-sm transition-colors"
               >
                 <Zap className="w-4 h-4" />
-                Ver demo en tiempo real
+                {t.cta.start}
               </button>
             )}
             {isRunning && (
               <div className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#111113] border border-[#27272A] text-[#A1A1AA] text-sm">
                 <span className="w-2 h-2 rounded-full bg-[#00D084] animate-pulse" />
-                AI calificando lead...
+                {t.cta.running}
               </div>
             )}
             {isComplete && (
               <div className="flex flex-col gap-2">
                 <div className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#00D084]/10 border border-[#00D084]/30 text-[#00D084] text-sm font-medium">
                   <CheckCircle2 className="w-4 h-4" />
-                  Lead convertido · Consulta agendada
+                  {t.cta.completed}
                 </div>
                 <button
                   onClick={startDemo}
                   className="w-full text-xs text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors py-1"
                 >
-                  Ver de nuevo
+                  {t.cta.retry}
                 </button>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Footer stats */}
       <div className="grid grid-cols-3 gap-4 mt-6">
-        {[
-          { icon: Calendar, value: "< 10 min", label: "Setup del AI sobre tu sitio" },
-          { icon: Star, value: "100%", label: "Trained on Victor's real services" },
-          { icon: Zap, value: "24/7", label: "Calificando mientras duermes" },
-        ].map(({ icon: Icon, value, label }) => (
-          <div key={label} className="flex items-center gap-3 p-3 rounded-xl bg-[#111113] border border-[#27272A]">
-            <Icon className="w-4 h-4 text-[#00D084] flex-shrink-0" />
-            <div>
-              <p className="text-sm font-semibold text-[#FAFAFA]">{value}</p>
-              <p className="text-xs text-[#A1A1AA]">{label}</p>
+        {footerStats.map(({ icon: Icon }, i) => {
+          const stat = t.footerStats[i]
+          return (
+            <div key={stat.label} className="flex items-center gap-3 p-3 rounded-xl bg-[#111113] border border-[#27272A]">
+              <Icon className="w-4 h-4 text-[#00D084] flex-shrink-0" />
+              <div>
+                <p className="text-sm font-semibold text-[#FAFAFA]">{stat.value}</p>
+                <p className="text-xs text-[#A1A1AA]">{stat.label}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

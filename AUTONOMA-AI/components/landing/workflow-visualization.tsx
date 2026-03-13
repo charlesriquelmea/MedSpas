@@ -149,27 +149,27 @@ export function WorkflowVisualization() {
           <Popover>
             <PopoverTrigger asChild aria-label="crm-pipeline-button">
               <div className="cursor-pointer">
-                <WorkflowNode icon={LayoutDashboard} label="CRM / Sales Pipeline" sublabel="ACTIVE" color="green" delay={1.1} />
+                <WorkflowNode icon={LayoutDashboard} label={t.nodes.crm.label} sublabel={t.nodes.crm.sublabel} color="green" delay={1.1} />
               </div>
             </PopoverTrigger>
             <PopoverContent className="w-64 bg-[#111113] border border-[#27272A] text-[#FAFAFA] p-4" side="right">
-              <p className="text-xs font-medium text-[#A1A1AA] mb-3 uppercase tracking-wide">Sales Pipeline</p>
+              <p className="text-xs font-medium text-[#A1A1AA] mb-3 uppercase tracking-wide">{t.popover.title}</p>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-[#A1A1AA]">Leads activos</span>
+                  <span className="text-[#A1A1AA]">{t.popover.leadsActive}</span>
                   <span className="font-medium">12</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#A1A1AA]">En negociación</span>
+                  <span className="text-[#A1A1AA]">{t.popover.inNegotiation}</span>
                   <span className="font-medium">5</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#A1A1AA]">Ganados este mes</span>
+                  <span className="text-[#A1A1AA]">{t.popover.wonThisMonth}</span>
                   <span className="font-medium text-[#00D084]">18</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#A1A1AA]">Última actividad</span>
-                  <span className="text-[#A1A1AA] text-xs">hace 3 min</span>
+                  <span className="text-[#A1A1AA]">{t.popover.lastActivity}</span>
+                  <span className="text-[#A1A1AA] text-xs">{t.popover.lastActivityTime}</span>
                 </div>
               </div>
               <Button
@@ -179,7 +179,7 @@ export function WorkflowVisualization() {
                   document.getElementById("crm-pipeline")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Abrir CRM &rarr;
+                {t.popover.openCRM}
               </Button>
             </PopoverContent>
           </Popover>
@@ -192,7 +192,7 @@ export function WorkflowVisualization() {
           transition={{ delay: 2, duration: 0.5 }}
           className="absolute top-[220px] right-[40px] backdrop-blur-md bg-white/5 border border-cyan-500/30 rounded-lg px-3 py-2 text-xs"
         >
-          <p className="text-cyan-400 font-mono">John from Acme Corp</p>
+          <p className="text-cyan-400 font-mono">{t.metadata.user}</p>
           <p className="text-green-400 font-bold">{t.cards.meeting}</p>
         </motion.div>
 

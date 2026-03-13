@@ -15,6 +15,8 @@ import {
   Plus,
   RotateCcw,
 } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
+import { landingContent } from "@/data/landing-content"
 
 const MOCK_DATA = {
   kpis: {
@@ -119,13 +121,13 @@ const MOCK_DATA = {
   ],
 }
 
-const TABS = [
-  { id: "resumen", label: "Resumen", icon: LayoutDashboard },
-  { id: "bandeja", label: "Bandeja", icon: MessageSquare },
-  { id: "pipeline", label: "Pipeline", icon: Zap },
-  { id: "pedidos", label: "Pedidos", icon: ShoppingBag },
-  { id: "perdidos", label: "Perdidos", icon: TrendingDown },
-  { id: "catalogo", label: "Catálogo", icon: Package },
+const TAB_ICONS = [
+  { id: "resumen", icon: LayoutDashboard },
+  { id: "bandeja", icon: MessageSquare },
+  { id: "pipeline", icon: Zap },
+  { id: "pedidos", icon: ShoppingBag },
+  { id: "perdidos", icon: TrendingDown },
+  { id: "catalogo", icon: Package },
 ]
 
 const estadoBadge: Record<string, string> = {
@@ -140,6 +142,8 @@ const estadoBadge: Record<string, string> = {
 // ─── Tab content components ────────────────────────────────────────────────
 
 function TabResumen() {
+  const { language } = useLanguage()
+  const t = landingContent[language].dashboardPreview
   const d = MOCK_DATA
   const progressPct = Math.round((d.kpis.ingresos / d.kpis.meta) * 100)
   const sparkBars = [30, 45, 35, 60, 50, 70, 80]
@@ -149,17 +153,17 @@ function TabResumen() {
       {/* KPI grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-[#1A1A1E] rounded-xl p-4 border border-[#27272A]">
-          <p className="text-xs text-[#A1A1AA] mb-1">Leads hoy</p>
+          <p className="text-xs text-[#A1A1AA] mb-1">{t.kpis.leadsToday}</p>
           <p className="text-2xl font-bold text-[#FAFAFA]">{d.kpis.leadsHoy}</p>
-          <span className="text-xs text-[#00D084]">+3 vs ayer</span>
+          <span className="text-xs text-[#00D084]">{t.kpis.improvedOverYesterday}</span>
         </div>
         <div className="bg-[#1A1A1E] rounded-xl p-4 border border-[#27272A]">
-          <p className="text-xs text-[#A1A1AA] mb-1">En pipeline</p>
+          <p className="text-xs text-[#A1A1AA] mb-1">{t.kpis.inPipeline}</p>
           <p className="text-2xl font-bold text-[#FAFAFA]">{d.kpis.pipeline}</p>
-          <span className="text-xs text-[#A1A1AA]">${d.kpis.pipelineValue.toLocaleString()} en deals</span>
+          <span className="text-xs text-[#A1A1AA]">${d.kpis.pipelineValue.toLocaleString()} {t.kpis.inDeals}</span>
         </div>
         <div className="bg-[#1A1A1E] rounded-xl p-4 border border-[#27272A]">
-          <p className="text-xs text-[#A1A1AA] mb-1">Tasa de cierre</p>
+          <p className="text-xs text-[#A1A1AA] mb-1">{t.kpis.closeRate}</p>
           <p className="text-2xl font-bold text-[#FAFAFA]">{d.kpis.tasaCierre}%</p>
           <div className="flex gap-0.5 items-end mt-1 h-4">
             {sparkBars.map((h, i) => (
@@ -168,19 +172,19 @@ function TabResumen() {
           </div>
         </div>
         <div className="bg-[#1A1A1E] rounded-xl p-4 border border-[#27272A]">
-          <p className="text-xs text-[#A1A1AA] mb-1">Ingresos del mes</p>
+          <p className="text-xs text-[#A1A1AA] mb-1">{t.kpis.monthlyRevenue}</p>
           <p className="text-2xl font-bold text-[#FAFAFA]">${d.kpis.ingresos.toLocaleString()}</p>
           <div className="w-full bg-[#27272A] rounded-full h-1.5 mt-2">
             <div className="h-full bg-[#00D084] rounded-full" style={{ width: `${progressPct}%` }} />
           </div>
-          <p className="text-[10px] text-[#A1A1AA] mt-1">meta ${d.kpis.meta.toLocaleString()}</p>
+          <p className="text-[10px] text-[#A1A1AA] mt-1">{t.kpis.goalLabel} ${d.kpis.meta.toLocaleString()}</p>
         </div>
       </div>
 
       {/* Top deals */}
       <div className="bg-[#1A1A1E] rounded-xl border border-[#27272A] overflow-hidden">
         <div className="px-4 py-3 border-b border-[#27272A]">
-          <p className="text-sm font-semibold text-[#FAFAFA]">Top deals activos</p>
+          <p className="text-sm font-semibold text-[#FAFAFA]">{t.topDeals.title}</p>
         </div>
         <table className="w-full text-sm">
           <thead>
@@ -208,7 +212,7 @@ function TabResumen() {
 
       {/* Pending tasks */}
       <div className="bg-[#1A1A1E] rounded-xl border border-[#27272A] p-4">
-        <p className="text-sm font-semibold text-[#FAFAFA] mb-3">Acciones pendientes del AI</p>
+        <p className="text-sm font-semibold text-[#FAFAFA] mb-3">{t.tasks.title}</p>
         <div className="space-y-2">
           {d.tasks.map((task, i) => (
             <div key={i} className="flex items-start gap-2 text-sm text-[#A1A1AA]">
@@ -223,6 +227,8 @@ function TabResumen() {
 }
 
 function TabBandeja() {
+  const { language } = useLanguage()
+  const t = landingContent[language].dashboardPreview
   const convs = MOCK_DATA.conversations
   const [active, setActive] = useState(0)
 
@@ -257,7 +263,7 @@ function TabBandeja() {
         <div className="flex items-center gap-2 px-4 py-3 border-b border-[#27272A]">
           <p className="text-sm font-semibold text-[#FAFAFA]">{convs[active].name}</p>
           <span className="text-xs px-2 py-0.5 rounded-full bg-[#00D084]/10 text-[#00D084] border border-[#00D084]/20">{convs[active].canal}</span>
-          <span className="text-xs px-2 py-0.5 rounded-full bg-[#00D084]/10 text-[#00D084] border border-[#00D084]/20">AI activo</span>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-[#00D084]/10 text-[#00D084] border border-[#00D084]/20">{t.aiActive}</span>
         </div>
         <div className="flex-1 p-4 space-y-3 overflow-y-auto">
           {active === 0 ? (
@@ -277,14 +283,14 @@ function TabBandeja() {
             </>
           ) : (
             <div className="flex items-center justify-center h-full">
-              <p className="text-xs text-[#A1A1AA] italic">Selecciona una conversación para ver el detalle.</p>
+              <p className="text-xs text-[#A1A1AA] italic">{t.conversationPlaceholder}</p>
             </div>
           )}
         </div>
         <div className="p-3 border-t border-[#27272A] flex gap-2">
-          <div className="flex-1 bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-xs text-[#A1A1AA] cursor-not-allowed">Escribe un mensaje...</div>
-          <button className="px-3 py-2 rounded-lg bg-[#00D084]/10 border border-[#00D084]/20 text-[#00D084] text-xs font-medium">Responder como AI</button>
-          <button className="px-3 py-2 rounded-lg bg-white/5 border border-[#27272A] text-[#A1A1AA] text-xs">Manual</button>
+          <div className="flex-1 bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-xs text-[#A1A1AA] cursor-not-allowed">{t.tasks.placeholder}</div>
+          <button className="px-3 py-2 rounded-lg bg-[#00D084]/10 border border-[#00D084]/20 text-[#00D084] text-xs font-medium">{t.tasks.replyButton}</button>
+          <button className="px-3 py-2 rounded-lg bg-white/5 border border-[#27272A] text-[#A1A1AA] text-xs">{t.tasks.manualButton}</button>
         </div>
       </div>
     </div>
@@ -301,7 +307,7 @@ function TabPipeline() {
           <div className="px-3 py-2.5 border-b-2 border-[#27272A]" style={{ borderTopColor: col.borderColor, borderTopWidth: 2 }}>
             <p className="text-xs font-semibold text-[#FAFAFA]">{col.col}</p>
             <div className="flex items-center justify-between mt-0.5">
-              <span className="text-[10px] text-[#A1A1AA]">{col.count} leads</span>
+              <span className="text-[10px] text-[#A1A1AA]">{col.count} {t.pipeline.leadsLabel}</span>
               <span className="text-[10px] font-medium text-[#00D084]">{col.value}</span>
             </div>
           </div>
@@ -317,7 +323,7 @@ function TabPipeline() {
               </div>
             ))}
             {col.count > col.cards.length && (
-              <p className="text-[10px] text-[#A1A1AA] text-center py-1">+ {col.count - col.cards.length} más</p>
+              <p className="text-[10px] text-[#A1A1AA] text-center py-1">+ {col.count - col.cards.length} {t.pipeline.moreLabel}</p>
             )}
           </div>
         </div>
@@ -327,21 +333,18 @@ function TabPipeline() {
 }
 
 function TabPedidos() {
+  const { language } = useLanguage()
+  const t = landingContent[language].dashboardPreview
   const orders = MOCK_DATA.orders
 
   return (
     <div className="space-y-4">
       {/* KPIs */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        {[
-          { label: "Pedidos hoy", val: 7 },
-          { label: "En preparación", val: 12 },
-          { label: "Pendiente entrega", val: 5 },
-          { label: "Completados", val: 84 },
-        ].map((kpi, i) => (
+        {t.orders.kpiLabels.map((kpi, i) => (
           <div key={i} className="bg-[#1A1A1E] rounded-xl p-4 border border-[#27272A]">
             <p className="text-xs text-[#A1A1AA] mb-1">{kpi.label}</p>
-            <p className="text-2xl font-bold text-[#FAFAFA]">{kpi.val}</p>
+            <p className="text-2xl font-bold text-[#FAFAFA]">{kpi.value}</p>
           </div>
         ))}
       </div>
@@ -351,12 +354,12 @@ function TabPedidos() {
         <table className="w-full text-sm">
           <thead>
             <tr className="text-xs text-[#A1A1AA] border-b border-[#27272A]">
-              <th className="text-left px-4 py-2 font-normal">#</th>
-              <th className="text-left px-4 py-2 font-normal">Cliente</th>
-              <th className="text-left px-4 py-2 font-normal hidden md:table-cell">Descripción</th>
-              <th className="text-left px-4 py-2 font-normal">Valor</th>
-              <th className="text-left px-4 py-2 font-normal">Estado</th>
-              <th className="text-left px-4 py-2 font-normal hidden md:table-cell">Fecha</th>
+              <th className="text-left px-4 py-2 font-normal">{t.orders.labels.id}</th>
+              <th className="text-left px-4 py-2 font-normal">{t.orders.labels.client}</th>
+              <th className="text-left px-4 py-2 font-normal hidden md:table-cell">{t.orders.labels.description}</th>
+              <th className="text-left px-4 py-2 font-normal">{t.orders.labels.value}</th>
+              <th className="text-left px-4 py-2 font-normal">{t.orders.labels.status}</th>
+              <th className="text-left px-4 py-2 font-normal hidden md:table-cell">{t.orders.labels.date}</th>
             </tr>
           </thead>
           <tbody>
@@ -380,6 +383,8 @@ function TabPedidos() {
 }
 
 function TabPerdidos() {
+  const { language } = useLanguage()
+  const t = landingContent[language].dashboardPreview
   const reasons = MOCK_DATA.lostReasons
   const insights = MOCK_DATA.aiInsights
   const lost = MOCK_DATA.lostDeals
@@ -390,7 +395,7 @@ function TabPerdidos() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Reasons bars */}
         <div className="bg-[#1A1A1E] rounded-xl border border-[#27272A] p-4">
-          <p className="text-sm font-semibold text-[#FAFAFA] mb-4">Razones de pérdida</p>
+          <p className="text-sm font-semibold text-[#FAFAFA] mb-4">{t.lostReasonsTitle}</p>
           <div className="space-y-3">
             {reasons.map((r, i) => (
               <div key={i}>
@@ -408,7 +413,7 @@ function TabPerdidos() {
 
         {/* AI Insights */}
         <div className="bg-[#1A1A1E] rounded-xl border border-[#27272A] p-4">
-          <p className="text-sm font-semibold text-[#FAFAFA] mb-4">AI Insights</p>
+          <p className="text-sm font-semibold text-[#FAFAFA] mb-4">{t.insightsTitle}</p>
           <div className="space-y-3">
             {insights.map((insight, i) => (
               <div key={i} className="p-3 rounded-lg bg-[#F59E0B]/5 border border-[#F59E0B]/30">
@@ -425,7 +430,7 @@ function TabPerdidos() {
       {/* Lost deals table */}
       <div className="bg-[#1A1A1E] rounded-xl border border-[#27272A] overflow-hidden">
         <div className="px-4 py-3 border-b border-[#27272A]">
-          <p className="text-sm font-semibold text-[#FAFAFA]">Últimos deals perdidos</p>
+          <p className="text-sm font-semibold text-[#FAFAFA]">{t.lostDealsTitle}</p>
         </div>
         <table className="w-full text-sm">
           <thead>
@@ -446,7 +451,7 @@ function TabPerdidos() {
                 <td className="px-4 py-2.5 text-xs text-[#A1A1AA] hidden md:table-cell">{d.fecha}</td>
                 <td className="px-4 py-2.5">
                   <button className="text-xs px-2 py-1 rounded-md bg-[#00D084]/10 border border-[#00D084]/20 text-[#00D084] hover:bg-[#00D084]/20 transition-colors">
-                    Reactivar
+                    {t.lostDeals.reactivateButton}
                   </button>
                 </td>
               </tr>
@@ -467,11 +472,11 @@ function TabCatalogo() {
       <div className="flex gap-3">
         <div className="flex-1 flex items-center gap-2 bg-[#1A1A1E] border border-[#27272A] rounded-lg px-3 py-2">
           <Search className="w-4 h-4 text-[#A1A1AA]" />
-          <span className="text-xs text-[#A1A1AA]">Buscar servicio...</span>
+          <span className="text-xs text-[#A1A1AA]">{t.catalog.searchPlaceholder}</span>
         </div>
         <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00D084] text-black text-xs font-semibold hover:bg-[#00D084]/90 transition-colors">
           <Plus className="w-3.5 h-3.5" />
-          Agregar servicio
+          {t.catalog.addServiceButton}
         </button>
       </div>
 
@@ -490,7 +495,7 @@ function TabCatalogo() {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-[10px] text-[#A1A1AA]">Toggle AI</span>
+              <span className="text-[10px] text-[#A1A1AA]">{t.catalog.toggleAILabel}</span>
               <span className={`text-xs px-2 py-0.5 rounded-full ${s.estado === "Activo" ? estadoBadge.green : "bg-white/10 text-[#A1A1AA] border border-white/10"}`}>
                 {s.estado}
               </span>
@@ -501,22 +506,25 @@ function TabCatalogo() {
 
       {/* AI instructions */}
       <div className="bg-[#1A1A1E] rounded-xl border border-[#27272A] p-4">
-        <p className="text-sm font-semibold text-[#FAFAFA] mb-3">Instrucciones al AI</p>
+        <p className="text-sm font-semibold text-[#FAFAFA] mb-3">{t.catalog.instructionsTitle}</p>
         <textarea
           readOnly
           className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg p-3 text-xs text-[#A1A1AA] resize-none focus:outline-none"
           rows={3}
-          defaultValue="Cuando el cliente mencione urgencia, ofrece siempre el paquete completo. Si pregunta por precio, da el rango y ofrece una llamada de 10 minutos para personalizar."
+          defaultValue={t.catalog.instructionsText}
         />
       </div>
     </div>
   )
 }
 
+
 // ─── Main component ────────────────────────────────────────────────────────
 
 export function DashboardPreviewSection() {
   const [activeTab, setActiveTab] = useState("resumen")
+  const { language } = useLanguage()
+  const t = landingContent[language].workflowVisual
 
   const tabContent: Record<string, React.ReactNode> = {
     resumen: <TabResumen />,
@@ -540,7 +548,7 @@ export function DashboardPreviewSection() {
           className="flex items-center gap-2 mb-4"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
-          <span className="text-xs font-medium text-[#00D084] uppercase tracking-widest">Panel de Control</span>
+          <span className="text-xs font-medium text-[#00D084] uppercase tracking-widest">{t.panelTitle}</span>
         </motion.div>
 
         <motion.h2
@@ -550,7 +558,7 @@ export function DashboardPreviewSection() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="text-3xl md:text-4xl font-bold text-[#FAFAFA] mb-3 text-balance"
         >
-          Tu operación completa, visible en tiempo real
+          {}{/* TODO: audio  7 */}
         </motion.h2>
 
         <motion.p
@@ -560,7 +568,7 @@ export function DashboardPreviewSection() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="text-[#A1A1AA] text-lg mb-10 max-w-2xl"
         >
-          Desde el primer mensaje hasta el pedido entregado — todo en un solo lugar.
+          {t.headerDescription}
         </motion.p>
 
         {/* Tab container */}
@@ -573,20 +581,21 @@ export function DashboardPreviewSection() {
         >
           {/* Tab bar */}
           <div className="flex overflow-x-auto border-b border-[#27272A] bg-[#111113]">
-            {TABS.map((tab) => {
+            {TAB_ICONS.map((tab) => {
               const isActive = activeTab === tab.id
+              /* const translatedTab = t.tabs.find((tt) => tt.id === tab.id) */
+              /* const label = translatedTab?.label ?? tab.id */
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-5 py-3.5 text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 border-b-2 ${
-                    isActive
+                  className={`flex items-center gap-2 px-5 py-3.5 text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 border-b-2 ${isActive
                       ? "bg-[#1A1A1E] text-[#FAFAFA] border-[#00D084]"
                       : "text-[#A1A1AA] border-transparent hover:text-[#FAFAFA]"
-                  }`}
+                    }`}
                 >
                   <tab.icon className="w-4 h-4" />
-                  {tab.label}
+                  {/* {label} */}
                 </button>
               )
             })}
