@@ -49,7 +49,8 @@ export function PricingSection({ onOpenForm }: PricingSectionProps) {
         </div>
 
         {/* Pricing Cards */}
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full place-items-center">
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2
+          lg:grid-cols-4 w-full place-items-center">
             {/* {t.tiers.map((tier: any, index: number) => { */}
             {[...t.tiers]
               .sort((a: any, b: any) => {

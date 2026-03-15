@@ -419,7 +419,7 @@ export const landingContent = {
       tiers: [
         {
           name: "Foundation",
-          tag: "LEVEL 1",
+          tag: "TIER 1",
           price: "$697",
           dolar: "",
           period: "/month",
@@ -471,8 +471,8 @@ export const landingContent = {
         },
         {
           name: "Performance",
-          tag: "MOST POPULAR",
-          tagSub: "LEVEL 2",
+          tag: "TIER 2",
+          tagSub: "MOST POPULAR",
           price: "$797",
           dolar: "",
           period: "/month",
@@ -517,7 +517,7 @@ export const landingContent = {
           highlight: false,
           footerNote: "Ideal for: MedSpa chains or franchises ($100K+ monthly)"
         },
-        {
+/*         {
           name: "Scale Formula",
           tag: "COMING SOON",
           price: "",
@@ -532,7 +532,7 @@ export const landingContent = {
           cta: "Join the Waitlist →",
           highlight: false,
           comingSoon: true
-        }
+        } */
       ],
       comparison: {
         title: "How Autonoma AI compares with other options",
@@ -1485,7 +1485,7 @@ export const landingContent = {
         },
         {
           name: "Pilot Gratuito",
-          tag: "INICIA PILOT GRATIS",
+          tag: "INICIA PILOTo GRATIS",
           tagSub: "Solo en Marzo",
           price: "$0",
           dolar: "",
@@ -1510,8 +1510,8 @@ export const landingContent = {
         },
         {
           name: "Performance",
-          tag: "MOST POPULAR",
-          tagSub: "NIVEL 2",
+          tag: "NIVEL 2",
+          tagSub: "MOST POPULAR",
           price: "$797",
           dolar: "",
           period: "/mes",
@@ -1536,7 +1536,7 @@ export const landingContent = {
         },
         {
           name: "Enterprise",
-          tag: "TIER 3",
+          tag: "NIVEL 3",
           price: "Precio Personalizado",
           dolar: "",
           period: "",
@@ -1556,7 +1556,9 @@ export const landingContent = {
           highlight: false,
           footerNote: "Ideal para: Cadenas o franquicias de MedSpa ($100K+ mensual)"
         },
-        {
+
+        /* Proximamente
+         {
           name: "Scale Formula",
           tag: "PRÓXIMAMENTE",
           price: "",
@@ -1571,7 +1573,7 @@ export const landingContent = {
           cta: "Unirme a la Lista de Espera →",
           highlight: false,
           comingSoon: true
-        }
+        } */
       ],
       comparison: {
         title: "Cómo Autonoma AI se compara con otras opciones",
@@ -2027,9 +2029,9 @@ export const landingContent = {
         reactivateButton: "Reactivar"
       },
       tasks: {
-        title: "Acciones pendientes del AI",
+        title: "Acciones pendientes de IA",
         placeholder: "Escribe un mensaje...",
-        replyButton: "Responder como AI",
+        replyButton: "Responder como IA",
         manualButton: "Manual"
       },
       pipeline: {
