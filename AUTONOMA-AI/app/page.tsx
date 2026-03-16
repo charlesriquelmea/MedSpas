@@ -19,6 +19,7 @@ import { TrustSection } from "@/components/landing/trust-section"
 import { FaqSection } from "@/components/landing/faq-section"
 import { ProvenResultsSection } from '@/components/landing/provenResultsSection';
 import { DashboardPreviewSection } from '@/components/DashboardPreviewSection';
+import { ValueStackSection } from "@/components/landing/value-stack-section";
 
 // ✅ IMPORTANTE: Esta función tiene 'export default', que es lo que Next.js necesita
 export default function HomePage() {
@@ -42,6 +43,9 @@ export default function HomePage() {
         <DashboardPreviewSection />
         <WhatYouGetSection />
         <SocialProofSection />
+        
+        {/* Value Stack Section - Premium Conversion Focus */}
+        <ValueStackSection onOpenForm={openForm} />
         
         {/* Botón de Precios */}
         <PricingSection onOpenForm={openForm} />
