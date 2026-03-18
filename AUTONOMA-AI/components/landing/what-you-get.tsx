@@ -26,7 +26,7 @@ const productVisuals = [
   },
 ]
 
-export function WhatYouGetSection() {
+/* export function WhatYouGetSection() {
   // 2. Obtenemos idioma y textos
   const { language } = useLanguage()
   const t = landingContent[language].whatYouGet
@@ -81,4 +81,4 @@ export function WhatYouGetSection() {
       </div>
     </section>
   )
-}
+} */

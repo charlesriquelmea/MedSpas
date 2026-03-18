@@ -64,12 +64,25 @@ export function LiveDemoShowcase() {
   return (
     <div className="w-full max-w-6xl mx-auto my-12">
       {/* Label superior */}
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D084]/10 border border-[#00D084]/20">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
-          <span className="text-xs font-medium text-[#00D084]">{t.productionLabel}</span>
+      <div className="flex flex-col gap-3 mb-6">
+        {/* Bloque superior con los spans */}
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D084]/10 border border-[#00D084]/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
+            <span className="text-xs font-medium text-[#00D084]">{t.productionLabel}</span>
+          </div>
+          <span className="text-xs text-[#A1A1AA]">{t.realClientNote}</span>
         </div>
-        <span className="text-xs text-[#A1A1AA]">{t.realClientNote}</span>
+        <div className="">
+          {/* Botón debajo */}
+          <Button
+            size="lg"
+            className="bg-[#00D084] hover:bg-[#00D084]/90 w-fit cursor-pointer text-black font-semibold px-8"
+            onClick={() => window.open("https://victormanetattoo.protolylat.com", "_blank")}
+          >
+            {t.demo.title} <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
       </div>
 
       {/* Contenedor principal 2 zonas */}
@@ -225,13 +238,12 @@ export function LiveDemoShowcase() {
                       className={`flex ${step.type === "user" ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`max-w-[85%] rounded-lg px-2.5 py-1.5 text-xs leading-relaxed ${
-                          step.type === "user"
-                            ? "bg-[#27272A] text-[#FAFAFA]"
-                            : (step as any).isBooking
-                              ? "bg-[#00D084]/15 border border-[#00D084]/30 text-[#FAFAFA]"
-                              : "bg-[#1A1A1E] border border-[#27272A] text-[#FAFAFA]"
-                        }`}
+                        className={`max-w-[85%] rounded-lg px-2.5 py-1.5 text-xs leading-relaxed ${step.type === "user"
+                          ? "bg-[#27272A] text-[#FAFAFA]"
+                          : (step as any).isBooking
+                            ? "bg-[#00D084]/15 border border-[#00D084]/30 text-[#FAFAFA]"
+                            : "bg-[#1A1A1E] border border-[#27272A] text-[#FAFAFA]"
+                          }`}
                       >
                         {step.type === "bot" && (
                           <span className="text-[#00D084] font-medium mr-1 text-[10px]">AI</span>

@@ -94,25 +94,25 @@ export function MonthlyRetainer({ onOpenForm }: MonthlyRetainerProps) {
                       <Check className="w-4 h-4 text-cyan-500/50 mt-1 shrink-0" />
                       <div className="w-full">
                         <span className="text-foreground/90 font-medium block">
-                            {item.name}
+                          {item.name}
                         </span>
-                        
+
                         <p className={`text-muted-foreground leading-relaxed ${item.description.length > 60 ? 'text-xs mt-1' : 'text-xs'}`}>
                           {item.description}
                         </p>
 
                         {/* --- BOTÓN SLA (Se muestra SOLO si item.hasSLA es true en landing-content) --- */}
                         {item.hasSLA && (
-                            <motion.button 
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                onClick={() => setIsSlaOpen(true)}
-                                className="mt-4 flex items-center gap-2 text-xs font-bold text-white bg-gradient-to-r from-cyan-600/20 to-cyan-900/20 border border-cyan-500/40 px-4 py-2 rounded-lg hover:border-cyan-400 hover:bg-cyan-500/30 transition-all shadow-[0_0_15px_-5px_rgba(6,182,212,0.1)] hover:shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)] group w-fit"
-                            >
-                                <Shield className="w-3.5 h-3.5 text-cyan-400 group-hover:text-cyan-200 transition-colors" />
-                                <span className="tracking-wide">See more SLA support...</span>
-                                <ChevronRight className="w-3.5 h-3.5 text-cyan-500 group-hover:translate-x-0.5 transition-transform" />
-                            </motion.button>
+                          <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => setIsSlaOpen(true)}
+                            className="mt-4 flex items-center gap-2 text-xs font-bold text-white bg-gradient-to-r from-cyan-600/20 to-cyan-900/20 border border-cyan-500/40 px-4 py-2 rounded-lg hover:border-cyan-400 hover:bg-cyan-500/30 transition-all shadow-[0_0_15px_-5px_rgba(6,182,212,0.1)] hover:shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)] group w-fit"
+                          >
+                            <Shield className="w-3.5 h-3.5 text-cyan-400 group-hover:text-cyan-200 transition-colors" />
+                            <span className="tracking-wide">See more SLA support...</span>
+                            <ChevronRight className="w-3.5 h-3.5 text-cyan-500 group-hover:translate-x-0.5 transition-transform" />
+                          </motion.button>
                         )}
                       </div>
                     </div>
@@ -130,42 +130,43 @@ export function MonthlyRetainer({ onOpenForm }: MonthlyRetainerProps) {
           viewport={{ once: true }}
           className="p-8 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 mb-12"
         >
-           <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
-             <div className="w-full md:w-1/2 space-y-3 text-left">
-                 <h3 className="text-lg font-medium text-muted-foreground mb-4 border-b border-white/10 pb-2">
-                   {t.summary.label}
-                 </h3>
-                 {categories.map((cat: any, idx: number) => (
-                   <div key={idx} className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full bg-${cat.color}-400 shrink-0`} />
-                      <span className="text-lg font-medium text-foreground/90">{cat.title}</span>
-                   </div>
-                 ))}
-             </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
+            <div className="w-full md:w-1/2 space-y-3 text-left">
+              <h3 className="text-lg font-medium text-muted-foreground mb-4 border-b border-white/10 pb-2">
+                {t.summary.label}
+              </h3>
+              {categories.map((cat: any, idx: number) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full bg-${cat.color}-400 shrink-0`} />
+                  <span className="text-lg font-medium text-foreground/90">{cat.title}</span>
+                </div>
+              ))}
+            </div>
 
-             <div className="w-full md:w-1/2 text-center md:text-right">
-                 <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                   {t.summary.price}<span className="text-2xl">{t.perMonthLong}</span>
-                 </div>
-                 
-                 <p className="text-sm text-green-400 bg-green-900/20 py-1 px-4 rounded-full inline-block mb-6">
-                     {t.summary.note}
-                 </p>
+            <div className="w-full md:w-1/2 text-center md:text-right">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                {t.summary.priceLine1}<span className="text-2xl">{t.perMonthLong}</span> <br />
+                <span className="text-2xl">{t.summary.priceLine2}</span>
+              </div>
 
-                 <div className="flex justify-center md:justify-end">
-                     <Button 
-                         size="lg" 
-                         className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold px-12 py-6 text-lg"
-                         onClick={onOpenForm}
-                     >
-                         {t.cta}
-                         <ChevronRight className="w-5 h-5 ml-2" />
-                     </Button>
-                 </div>
-             </div>
-           </div>
+              {/* <p className="text-sm text-green-400 bg-green-900/20 py-1 px-4 rounded-full inline-block mb-6">
+                {t.summary.note}
+              </p> */}
+
+              <div className="flex justify-center md:justify-end">
+                <Button
+                  size="lg"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-black font-bold px-12 py-6 text-lg"
+                  onClick={onOpenForm}
+                >
+                  {t.cta}
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
         </motion.div>
-{/* 
+        {/* 
         Policy Section
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -224,77 +225,76 @@ export function MonthlyRetainer({ onOpenForm }: MonthlyRetainerProps) {
 
         {/* SLA MODAL */}
         <AnimatePresence>
-            {isSlaOpen && t.sla && (
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                    onClick={() => setIsSlaOpen(false)}
-                >
-                    <motion.div 
-                        initial={{ scale: 0.95, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.95, opacity: 0 }}
-                        onClick={(e) => e.stopPropagation()}
-                        className="bg-zinc-900 border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-auto shadow-2xl relative"
+          {isSlaOpen && t.sla && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+              onClick={() => setIsSlaOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-zinc-900 border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-auto shadow-2xl relative"
+              >
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-2xl font-bold text-white flex items-center gap-2">
+                      <Shield className="w-6 h-6 text-green-400" />
+                      {t.sla.title}
+                    </h3>
+                    <button
+                      onClick={() => setIsSlaOpen(false)}
+                      className="p-2 hover:bg-white/10 rounded-full transition-colors"
                     >
-                        <div className="p-6">
-                            <div className="flex items-center justify-between mb-6">
-                                <h3 className="text-2xl font-bold text-white flex items-center gap-2">
-                                    <Shield className="w-6 h-6 text-green-400" />
-                                    {t.sla.title}
-                                </h3>
-                                <button 
-                                    onClick={() => setIsSlaOpen(false)}
-                                    className="p-2 hover:bg-white/10 rounded-full transition-colors"
-                                >
-                                    <X className="w-5 h-5" />
-                                </button>
-                            </div>
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
 
-                            <div className="overflow-x-auto">
-                                <table className="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr className="border-b border-white/10">
-                                            {t.sla.headers.map((header: string, idx: number) => (
-                                                <th key={idx} className="p-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground bg-white/5 first:rounded-tl-lg last:rounded-tr-lg">
-                                                    {header}
-                                                </th>
-                                            ))}
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-white/5">
-                                        {t.sla.rows.map((row: any, idx: number) => (
-                                            <tr key={idx} className="hover:bg-white/5 transition-colors">
-                                                <td className="p-4 font-bold text-white whitespace-nowrap">
-                                                    <span className={`inline-block px-2 py-1 rounded text-xs ${
-                                                        idx === 0 ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
-                                                        idx === 1 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' :
-                                                        idx === 2 ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
-                                                        'bg-green-500/20 text-green-400 border border-green-500/30'
-                                                    }`}>
-                                                        {row.priority}
-                                                    </span>
-                                                </td>
-                                                <td className="p-4 text-sm text-gray-300">{row.impact}</td>
-                                                <td className="p-4 text-sm font-mono text-cyan-300">{row.response}</td>
-                                                <td className="p-4 text-sm font-mono text-purple-300">{row.resolution}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-white/10">
+                          {t.sla.headers.map((header: string, idx: number) => (
+                            <th key={idx} className="p-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground bg-white/5 first:rounded-tl-lg last:rounded-tr-lg">
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5">
+                        {t.sla.rows.map((row: any, idx: number) => (
+                          <tr key={idx} className="hover:bg-white/5 transition-colors">
+                            <td className="p-4 font-bold text-white whitespace-nowrap">
+                              <span className={`inline-block px-2 py-1 rounded text-xs ${idx === 0 ? 'bg-red-500/20 text-red-400 border border-red-500/30' :
+                                  idx === 1 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' :
+                                    idx === 2 ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
+                                      'bg-green-500/20 text-green-400 border border-green-500/30'
+                                }`}>
+                                {row.priority}
+                              </span>
+                            </td>
+                            <td className="p-4 text-sm text-gray-300">{row.impact}</td>
+                            <td className="p-4 text-sm font-mono text-cyan-300">{row.response}</td>
+                            <td className="p-4 text-sm font-mono text-purple-300">{row.resolution}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
 
-                            <div className="mt-6 flex justify-end">
-                                <Button onClick={() => setIsSlaOpen(false)} variant="outline">
-                                    {t.sla.close}
-                                </Button>
-                            </div>
-                        </div>
-                    </motion.div>
-                </motion.div>
-            )}
+                  <div className="mt-6 flex justify-end">
+                    <Button onClick={() => setIsSlaOpen(false)} variant="outline">
+                      {t.sla.close}
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
 
       </div>

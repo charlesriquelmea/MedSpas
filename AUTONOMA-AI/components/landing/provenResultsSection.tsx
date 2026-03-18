@@ -211,9 +211,9 @@ export function ProvenResultsSection({ onOpenForm }: CTASectionProps) {
                     <h4 className="text-xl font-bold text-foreground mb-3">{step.title}</h4>
                     <p className="text-muted-foreground mb-6 text-sm leading-relaxed">{step.desc}</p>
                     <ul className="space-y-3">
-                      {step.features.map((feature: string, i: number) => (
+                      {/* {step.features.map((feature: string, i: number) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground/80"><Check className="h-4 w-4 text-teal-500 flex-shrink-0 mt-0.5" />{feature}</li>
-                      ))}
+                      ))} */}
                     </ul>
                   </motion.div>
                 )
