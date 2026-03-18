@@ -92,7 +92,7 @@ export function ProvenResultsSection({ onOpenForm }: CTASectionProps) {
         </div> */}
 
         {/* LIVE DEMO SHOWCASE (Cambio 4b) */}
-        <div className="mb-24" id="live-demo">
+        {/* <div className="mb-24" id="live-demo">
           <LiveDemoShowcase />
           <div className="flex justify-center mt-10">
             <Button
@@ -103,7 +103,7 @@ export function ProvenResultsSection({ onOpenForm }: CTASectionProps) {
               Schedule Free Demo <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
-        </div>
+        </div> */}
 
         {/* 2. FLOW DIAGRAM (Igual que antes) */}
         <div className="mb-32">

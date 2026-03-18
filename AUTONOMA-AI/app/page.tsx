@@ -47,10 +47,10 @@ export default function HomePage() {
         {/* <DashboardPreviewSection /> */}
         
         {/* New B2B Spanish Sections */}
-        {/* <CRMSection />
-        <AgentTiersSection />
-        <SchedulerSection />
-        <InboxSection /> */}
+        <CRMSection />
+        {/* <AgentTiersSection /> */}
+        {/* <SchedulerSection /> */}
+        <InboxSection />
         
         {/* <WhatYouGetSection /> */}
         {/* <SocialProofSection /> */}
@@ -61,6 +61,8 @@ export default function HomePage() {
         
         {/* Botón de Precios */}
         <PricingSection onOpenForm={openForm} />
+
+        <AgentTiersSection />
 
         <TrustSection />
         
