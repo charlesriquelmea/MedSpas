@@ -1,3 +1,5 @@
+import { BarChart3, Bell, CalendarCheck, FileDown, LayoutDashboard, MessageSquare, ShieldCheck, UserCheck, Users } from "lucide-react";
+
 export const landingContent = {
   // -------------------------------------------------------------------------------------
   // VERSIÓN EN INGLÉS
@@ -18,6 +20,59 @@ export const landingContent = {
         "Implementation in 10 business days",
         "Safe fallback: routes to team if in doubt"
       ]
+    },
+    crmSection: {
+      features: [
+        {
+          icon: LayoutDashboard,
+          label: "Pipeline Visual",
+          description: "Move leads between stages with drag & drop. No spreadsheets, no chaos."
+        },
+        {
+          icon: MessageSquare,
+          label: "Full History",
+          description: "Every message your agent had with each prospect, in chronological order."
+        },
+        {
+          icon: BarChart3,
+          label: "Real-Time Metrics",
+          description: "Captured leads, active conversions, and close speed at a glance."
+        },
+        {
+          icon: UserCheck,
+          label: "Lead Score",
+          description: "Every contact arrives qualified with company, job title, and priority level."
+        },
+        {
+          icon: Bell,
+          label: "Qualified Lead Alerts",
+          description: "Receive an email the moment a prospect enters, ready to close."
+        },
+        {
+          icon: FileDown,
+          label: "Exportable Reports",
+          description: "Download the complete monthly performance report in one click. Without depending on anyone.",
+        },
+        {
+          icon: Users,
+          label: "User Roles",
+          description: "Admin, salesperson, viewer. Each person only accesses what corresponds to them.",
+        },
+        {
+          icon: ShieldCheck,
+          label: "Isolated Instances",
+          description: "Each client's data is stored separately. Total security by architecture.",
+        },
+        {
+          icon: CalendarCheck,
+          label: "Synchronized Calendar",
+          description: "Appointments scheduled by the agent appear in your calendar immediately.",
+        }
+      ],
+      demo: "View CRM demo",
+      eyebrow: "CRM included in every plan",
+      title: "Your sales team, finally organized",
+      subtitle: "Each agent comes with a dedicated CRM so you never lose a qualified lead."
     },
     provenResults: {
       header: {
@@ -1107,6 +1162,59 @@ export const landingContent = {
         "Fallback seguro: deriva al equipo si duda"
       ],
     },
+    crmSection: {
+      features: [
+        {
+          icon: LayoutDashboard,
+          label: "Pipeline Visual",
+          description: "Mueve leads entre etapas con drag & drop. Sin hojas de cálculo, sin caos.",
+        },
+        {
+          icon: MessageSquare,
+          label: "Historial Completo",
+          description: "Cada mensaje que tu agente tuvo con cada prospecto, en orden cronológico.",
+        },
+        {
+          icon: BarChart3,
+          label: "Métricas en Tiempo Real",
+          description: "Leads capturados, conversiones activas y velocidad de cierre en un solo vistazo.",
+        },
+        {
+          icon: UserCheck,
+          label: "Score de Leads",
+          description: "Cada contacto llega calificado con empresa, cargo y nivel de prioridad.",
+        },
+        {
+          icon: Bell,
+          label: "Alertas de Leads Calificados",
+          description: "Recibe un email en el momento en que entra un prospecto listo para cerrar.",
+        },
+        {
+          icon: FileDown,
+          label: "Reportes Exportables",
+          description: "Descarga el rendimiento mensual completo en un clic. Sin depender de nadie.",
+        },
+        {
+          icon: Users,
+          label: "Roles por Usuario",
+          description: "Admin, vendedor, viewer. Cada quien accede solo a lo que le corresponde.",
+        },
+        {
+          icon: ShieldCheck,
+          label: "Instancias Aisladas",
+          description: "Los datos de cada cliente viven separados. Seguridad total por arquitectura.",
+        },
+        {
+          icon: CalendarCheck,
+          label: "Agenda Sincronizada",
+          description: "Las citas agendadas por el agente aparecen en tu calendario de inmediato.",
+        }
+      ],
+      demo: "Ver demo del CRM",
+      eyebrow: "CRM incluido en cada plan",
+      title: "Tu equipo de ventas, finalmente organizado",
+      subtitle: "Cada agente viene con un CRM dedicado para que nunca pierdas un lead calificado.",
+    },
     provenResults: {
       header: {
         badge: "LIVE DEMO — CLIENTE REAL",
@@ -2006,7 +2114,7 @@ export const landingContent = {
         { id: 6, type: "user", message: "Sí, el jueves está bien.", delay: 8400 },
         { id: 7, type: "bot", message: "¡Listo! ✓ Consulta agendada para el jueves. Recibirás una confirmación + brief de diseño para completar. Victor revisará tu foto antes de la sesión.", delay: 9800, isBooking: true },
       ],
-      demo: { title: "Visitar pagina web"},
+      demo: { title: "Visitar pagina web" },
       crmStates: [
         {
           triggerAtStep: 1,
