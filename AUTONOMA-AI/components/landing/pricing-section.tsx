@@ -22,6 +22,7 @@ interface PricingSectionProps {
 export function PricingSection({ onOpenForm }: PricingSectionProps) {
   const { language } = useLanguage()
   const t = landingContent[language].pricing
+  const agentSection = landingContent[language].agentTiersSection
 
   return (
     <section id="pricing" className="py-24 px-6 relative bg-black/40">
@@ -197,7 +198,7 @@ export function PricingSection({ onOpenForm }: PricingSectionProps) {
                               }`}
                           />
 
-                          <span>{feature}</span>
+                          <span>{feature} </span> {/* Aqui */}
                         </li>
                       ))}
 

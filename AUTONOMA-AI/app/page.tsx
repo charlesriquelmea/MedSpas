@@ -62,7 +62,7 @@ export default function HomePage() {
         {/* Botón de Precios */}
         <PricingSection onOpenForm={openForm} />
 
-        <AgentTiersSection />
+        {/* <AgentTiersSection /> */}
 
         <TrustSection />
         

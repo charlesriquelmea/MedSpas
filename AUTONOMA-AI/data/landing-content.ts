@@ -654,7 +654,14 @@ export const landingContent = {
             "Basic nurturing: Confirmation email",
             "Basic monitoring + 1 monthly adjustment of prompts/flows",
             "Support SLA: 12–8 hrs",
-            "LLM: OpenAI or Gemini"
+            "LLM: OpenAI or Gemini",
+
+            "Smart lead qualification by profile",
+            "Fully automated email follow-up",
+            "Schedules meetings in real time from chat",
+            "CRM with active pipeline included in the plan",
+            "Broad and customizable knowledge base",
+            "Adapts tone and responses according to the prospect",
           ],
           cta: "Start →",
           highlight: false
@@ -678,7 +685,13 @@ export const landingContent = {
             "Knowledge base — up to 2 services",
             "50 conversations",
             "Basic nurturing",
-            "Appointment scheduling via email"
+            "Appointment scheduling via email",
+
+            "Automatically answers frequently asked questions",
+            "Captures prospect's name, email, and phone",
+            "1 active channel: webchat",
+            "Knowledge base of up to 30 questions",
+            "Team notification for each new lead",
           ],
           cta: "Start Free Pilot →",
           highlight: true,
@@ -704,7 +717,13 @@ export const landingContent = {
             "Priority support (SLA 8–4 hrs)",
             "Advanced nurturing with CRM / Sales Pipeline Dashboard",
             "No-show reduction (automatic reminders)",
-            "Package upselling (AI identifies high-value patients)"
+            "Package upselling (AI identifies high-value patients)",
+
+            "WhatsApp + Webchat + Instagram + Discord simultaneously",
+            "Unified context across all channels",
+            "Lead can switch channels without losing the thread",
+            "Multi-channel CRM consolidated in a single view",
+            "Performance reports by channel",
           ],
           cta: "Scale Now →",
           highlight: false,
@@ -726,7 +745,14 @@ export const landingContent = {
             "White-label branding",
             "Custom API integrations",
             "Dedicated success manager",
-            "Quarterly business reviews"
+            "Quarterly business reviews",
+
+            "Integration with your existing ERP or CRM",
+            "Catalogs of 500+ products with smart search",
+            "Multi-language: Spanish, English, and Portuguese",
+            "Tailor-made conversation flows",
+            "Custom reports and dashboards",
+            "Dedicated support with service level agreement",
           ],
           cta: "Contact Sales →",
           highlight: false,
