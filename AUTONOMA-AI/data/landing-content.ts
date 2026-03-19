@@ -1,3 +1,6 @@
+import { BarChart3, Bell, CalendarCheck, Download, FileDown, Filter, Layers, LayoutDashboard, MessageSquare, ScrollText, Search, ShieldCheck, UserCheck, UserPlus, Users } from "lucide-react";
+import { features } from "process";
+
 export const landingContent = {
   // -------------------------------------------------------------------------------------
   // VERSIÓN EN INGLÉS
@@ -19,6 +22,218 @@ export const landingContent = {
         "Safe fallback: routes to team if in doubt"
       ]
     },
+    agentTiersSection: {
+      eyebrow: "Choose your level of automation",
+      title: "The right agent for every stage of your business",
+      subtitle: "From your first automation to high-volume enterprise operations.",
+      popu: "Most Popular",
+      plan: "Plan",
+      tiers: [
+        {
+          index: 1,
+          name: "FAQ Assistant",
+          tagline: "Capture leads 24/7 without human intervention",
+          badge: "Ideal for landing pages",
+          features: [
+            "Automatically answers frequently asked questions",
+            "Captures prospect's name, email, and phone",
+            "1 active channel: webchat",
+            "Knowledge base of up to 30 questions",
+            "Team notification for each new lead",
+          ],
+          cta: "Start here",
+          highlight: false,
+        },
+        {
+          index: 2,
+          name: "Sales Agent + CRM",
+          tagline: "Qualify, negotiate, and schedule without an SDR",
+          badge: "For active sales teams",
+          features: [
+            "Smart lead qualification by profile",
+            "Fully automated email follow-up",
+            "Schedules meetings in real time from chat",
+            "CRM with active pipeline included in the plan",
+            "Broad and customizable knowledge base",
+            "Adapts tone and responses according to the prospect",
+          ],
+          cta: "See demo",
+          highlight: true,
+        },
+        {
+          index: 3,
+          name: "Multi-channel AI Executive",
+          tagline: "An agent that remembers everything, no matter the channel",
+          badge: "For businesses with high demand",
+          features: [
+            "WhatsApp + Webchat + Instagram + Discord simultaneously",
+            "Unified context across all channels",
+            "Lead can switch channels without losing the thread",
+            "Multi-channel CRM consolidated in a single view",
+            "Performance reports by channel",
+          ],
+          cta: "Get a quote",
+          highlight: false,
+        },
+        {
+          index: 4,
+          name: "Custom Enterprise",
+          tagline: "Integrated into your operation from day one",
+          badge: "For complex operations",
+          features: [
+            "Integration with your existing ERP or CRM",
+            "Catalogs of 500+ products with smart search",
+            "Multi-language: Spanish, English, and Portuguese",
+            "Tailor-made conversation flows",
+            "Custom reports and dashboards",
+            "Dedicated support with service level agreement",
+          ],
+          cta: "Talk to sales",
+          highlight: false,
+        },
+      ]
+    },
+    inboxSection: {
+      conversations: [
+        {
+          name: "Carlos Mendoza",
+          channel: "WhatsApp",
+          status: "Qualified",
+          statusColor: "bg-green-500",
+          message: "Yes, I'm interested in the Pro plan. When can we talk?",
+          time: "2 min ago",
+          avatar: "CM",
+        },
+        {
+          name: "Ana Torres",
+          channel: "Webchat",
+          status: "In progress",
+          statusColor: "bg-yellow-500",
+          message: "Does the agent work with my online store?",
+          time: "15 min ago",
+          avatar: "AT",
+        },
+        {
+          name: "Roberto Silva",
+          channel: "Instagram",
+          status: "New",
+          statusColor: "bg-blue-500",
+          message: "Hi, I saw your post and wanted more info",
+          time: "1h ago",
+          avatar: "RS",
+        },
+        {
+          name: "Daniela Reyes",
+          channel: "WhatsApp",
+          status: "Follow-up",
+          statusColor: "bg-orange-500",
+          message: "Sorry, I forgot to reply...",
+          time: "3h ago",
+          avatar: "DR",
+        },
+        {
+          name: "Miguel Vargas",
+          channel: "Webchat",
+          status: "Closed",
+          statusColor: "bg-gray-500",
+          message: "Perfect, we'll leave it like that then.",
+          time: "yesterday",
+          avatar: "MV",
+        },
+      ],
+      features: [
+        {
+          icon: Layers,
+          label: "Unified View",
+          description: "All channels in a single inbox. No switching apps.",
+        },
+        {
+          icon: Filter,
+          label: "Status Filters",
+          description: "New, in progress, qualified, closed. Focus where it matters.",
+        },
+        {
+          icon: UserPlus,
+          label: "Lead Assignment",
+          description: "Distribute prospects among your team in seconds from the same view.",
+        },
+        {
+          icon: ScrollText,
+          label: "Complete History",
+          description: "Every message, every reply, in chronological and immutable order.",
+        },
+        {
+          icon: Search,
+          label: "Powerful Search",
+          description: "Find any lead by name, company, or conversation text.",
+        },
+        {
+          icon: Download,
+          label: "Direct Export",
+          description: "Download full conversations for auditing or agent training.",
+        },
+      ],
+      eyebrow: "Smart Inbox",
+      title: "All conversations. One single place.",
+      subtitle: "No open tabs, no leads lost in WhatsApp. Your team focused on closing.",
+      inbox: "Inbox",
+      conver: "5 active conversations",
+    },
+
+    crmSection: {
+      features: [
+        {
+          icon: LayoutDashboard,
+          label: "Pipeline Visual",
+          description: "Move leads between stages with drag & drop. No spreadsheets, no chaos."
+        },
+        {
+          icon: MessageSquare,
+          label: "Full History",
+          description: "Every message your agent had with each prospect, in chronological order."
+        },
+        {
+          icon: BarChart3,
+          label: "Real-Time Metrics",
+          description: "Captured leads, active conversions, and close speed at a glance."
+        },
+        {
+          icon: UserCheck,
+          label: "Lead Score",
+          description: "Every contact arrives qualified with company, job title, and priority level."
+        },
+        {
+          icon: Bell,
+          label: "Qualified Lead Alerts",
+          description: "Receive an email the moment a prospect enters, ready to close."
+        },
+        {
+          icon: FileDown,
+          label: "Exportable Reports",
+          description: "Download the complete monthly performance report in one click. Without depending on anyone.",
+        },
+        {
+          icon: Users,
+          label: "User Roles",
+          description: "Admin, salesperson, viewer. Each person only accesses what corresponds to them.",
+        },
+        {
+          icon: ShieldCheck,
+          label: "Isolated Instances",
+          description: "Each client's data is stored separately. Total security by architecture.",
+        },
+        {
+          icon: CalendarCheck,
+          label: "Synchronized Calendar",
+          description: "Appointments scheduled by the agent appear in your calendar immediately.",
+        }
+      ],
+      demo: "View CRM demo",
+      eyebrow: "CRM included in every plan",
+      title: "Your sales team, finally organized",
+      subtitle: "Each agent comes with a dedicated CRM so you never lose a qualified lead."
+    },
+
     provenResults: {
       header: {
         badge: "LIVE DEMO — REAL CLIENT",
@@ -1107,6 +1322,216 @@ export const landingContent = {
         "Fallback seguro: deriva al equipo si duda"
       ],
     },
+    agentTiersSection: {
+      eyebrow: "Elige tu nivel de automatización",
+      title: "El agente correcto para cada etapa de tu negocio",
+      subtitle: "Desde tu primera automatización hasta operaciones enterprise de alto volumen.",
+      popu: "Más Popular",
+      plan: "Plan",
+      tiers: [
+        {
+          index: 1,
+          name: "Asistente FAQ",
+          tagline: "Captura leads 24/7 sin intervención humana",
+          badge: "Ideal para landing pages",
+          features: [
+            "Responde preguntas frecuentes automáticamente",
+            "Captura nombre, email y teléfono del prospecto",
+            "1 canal activo: webchat",
+            "Base de conocimiento de hasta 30 preguntas",
+            "Notificación al equipo por cada lead nuevo",
+          ],
+          cta: "Empezar aquí",
+          highlight: false,
+        },
+        {
+          index: 2,
+          name: "Agente de Ventas + CRM",
+          tagline: "Califica, negocia y agenda sin un SDR",
+          badge: "Para equipos de ventas activos",
+          features: [
+            "Calificación inteligente de leads por perfil",
+            "Seguimiento por email completamente automatizado",
+            "Agenda reuniones en tiempo real desde el chat",
+            "CRM con pipeline activo incluido en el plan",
+            "Base de conocimiento amplia y personalizable",
+            "Adapta el tono y las respuestas según el prospecto",
+          ],
+          cta: "Ver demo",
+          highlight: true,
+        },
+        {
+          index: 3,
+          name: "Ejecutivo IA Multi-canal",
+          tagline: "Un agente que recuerda todo, sin importar el canal",
+          badge: "Para negocios con alta demanda",
+          features: [
+            "WhatsApp + Webchat + Instagram + Discord simultáneos",
+            "Contexto unificado entre todos los canales",
+            "El lead puede cambiar de canal sin perder el hilo",
+            "CRM multi-canal consolidado en una sola vista",
+            "Reportes de rendimiento por canal",
+          ],
+          cta: "Cotizar",
+          highlight: false,
+        },
+        {
+          index: 4,
+          name: "Enterprise Personalizado",
+          tagline: "Integrado a tu operación desde el día uno",
+          badge: "Para operaciones complejas",
+          features: [
+            "Integración con tu ERP o CRM existente",
+            "Catálogos de 500+ productos con búsqueda inteligente",
+            "Multi-idioma: español, inglés y portugués",
+            "Flujos de conversación diseñados a medida",
+            "Reportes y dashboards personalizados",
+            "Soporte dedicado con acuerdo de nivel de servicio",
+          ],
+          cta: "Hablar con ventas",
+          highlight: false,
+        },
+      ]
+    },
+    inboxSection: {
+      conversations: [
+        {
+          name: "Carlos Mendoza",
+          channel: "WhatsApp",
+          status: "Calificado",
+          statusColor: "bg-green-500",
+          message: "Sí, me interesa el plan Pro. ¿Cuándo podemos hablar?",
+          time: "hace 2 min",
+          avatar: "CM",
+        },
+        {
+          name: "Ana Torres",
+          channel: "Webchat",
+          status: "En progreso",
+          statusColor: "bg-yellow-500",
+          message: "¿El agente funciona con mi tienda en línea?",
+          time: "hace 15 min",
+          avatar: "AT",
+        },
+        {
+          name: "Roberto Silva",
+          channel: "Instagram",
+          status: "Nuevo",
+          statusColor: "bg-blue-500",
+          message: "Hola, vi su publicación y quería más info",
+          time: "hace 1h",
+          avatar: "RS",
+        },
+        {
+          name: "Daniela Reyes",
+          channel: "WhatsApp",
+          status: "Seguimiento",
+          statusColor: "bg-orange-500",
+          message: "Perdona, se me pasó responder...",
+          time: "hace 3h",
+          avatar: "DR",
+        },
+        {
+          name: "Miguel Vargas",
+          channel: "Webchat",
+          status: "Cerrado",
+          statusColor: "bg-gray-500",
+          message: "Perfecto, quedamos así entonces.",
+          time: "ayer",
+          avatar: "MV",
+        },
+      ],
+      features: [
+        {
+          icon: Layers,
+          label: "Vista Unificada",
+          description: "Todos los canales en una sola bandeja. Sin cambiar de app.",
+        },
+        {
+          icon: Filter,
+          label: "Filtros por Estado",
+          description: "Nuevo, en progreso, calificado, cerrado. Enfócate donde importa.",
+        },
+        {
+          icon: UserPlus,
+          label: "Asignación de Leads",
+          description: "Distribuye prospectos entre tu equipo en segundos desde la misma vista.",
+        },
+        {
+          icon: ScrollText,
+          label: "Historial Completo",
+          description: "Cada mensaje, cada respuesta, en orden cronológico e inmutable.",
+        },
+        {
+          icon: Search,
+          label: "Búsqueda Potente",
+          description: "Encuentra cualquier lead por nombre, empresa o texto de conversación.",
+        },
+        {
+          icon: Download,
+          label: "Exportación Directa",
+          description: "Descarga conversaciones completas para auditoría o entrenamiento del agente.",
+        },
+      ],
+      eyebrow: "Bandeja de entrada inteligente",
+      title: "Todas las conversaciones. Un solo lugar.",
+      subtitle: "Sin pestañas abiertas, sin leads perdidos en WhatsApp. Tu equipo enfocado en cerrar.",
+      inbox: "Inbox",
+      conver: "5 active conversations",
+    },
+    crmSection: {
+      features: [
+        {
+          icon: LayoutDashboard,
+          label: "Pipeline Visual",
+          description: "Mueve leads entre etapas con drag & drop. Sin hojas de cálculo, sin caos.",
+        },
+        {
+          icon: MessageSquare,
+          label: "Historial Completo",
+          description: "Cada mensaje que tu agente tuvo con cada prospecto, en orden cronológico.",
+        },
+        {
+          icon: BarChart3,
+          label: "Métricas en Tiempo Real",
+          description: "Leads capturados, conversiones activas y velocidad de cierre en un solo vistazo.",
+        },
+        {
+          icon: UserCheck,
+          label: "Score de Leads",
+          description: "Cada contacto llega calificado con empresa, cargo y nivel de prioridad.",
+        },
+        {
+          icon: Bell,
+          label: "Alertas de Leads Calificados",
+          description: "Recibe un email en el momento en que entra un prospecto listo para cerrar.",
+        },
+        {
+          icon: FileDown,
+          label: "Reportes Exportables",
+          description: "Descarga el rendimiento mensual completo en un clic. Sin depender de nadie.",
+        },
+        {
+          icon: Users,
+          label: "Roles por Usuario",
+          description: "Admin, vendedor, viewer. Cada quien accede solo a lo que le corresponde.",
+        },
+        {
+          icon: ShieldCheck,
+          label: "Instancias Aisladas",
+          description: "Los datos de cada cliente viven separados. Seguridad total por arquitectura.",
+        },
+        {
+          icon: CalendarCheck,
+          label: "Agenda Sincronizada",
+          description: "Las citas agendadas por el agente aparecen en tu calendario de inmediato.",
+        }
+      ],
+      demo: "Ver demo del CRM",
+      eyebrow: "CRM incluido en cada plan",
+      title: "Tu equipo de ventas, finalmente organizado",
+      subtitle: "Cada agente viene con un CRM dedicado para que nunca pierdas un lead calificado.",
+    },
     provenResults: {
       header: {
         badge: "LIVE DEMO — CLIENTE REAL",
@@ -2006,7 +2431,7 @@ export const landingContent = {
         { id: 6, type: "user", message: "Sí, el jueves está bien.", delay: 8400 },
         { id: 7, type: "bot", message: "¡Listo! ✓ Consulta agendada para el jueves. Recibirás una confirmación + brief de diseño para completar. Victor revisará tu foto antes de la sesión.", delay: 9800, isBooking: true },
       ],
-      demo: { title: "Visitar pagina web"},
+      demo: { title: "Visitar pagina web" },
       crmStates: [
         {
           triggerAtStep: 1,

@@ -15,9 +15,14 @@ import {
   CalendarCheck,
   ArrowRight,
 } from "lucide-react"
+import { useLanguage } from "../language-provider"
+import { landingContent } from "@/data/landing-content"
 
 export function CRMSection() {
-  const features = [
+  const { language } = useLanguage()
+    const crmSection = landingContent[language].crmSection
+    const features = crmSection.features
+/*   const features = [
     {
       icon: LayoutDashboard,
       label: "Pipeline Visual",
@@ -63,7 +68,7 @@ export function CRMSection() {
       label: "Agenda Sincronizada",
       description: "Las citas agendadas por el agente aparecen en tu calendario de inmediato.",
     },
-  ]
+  ] */
 
   const containerVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -100,9 +105,9 @@ export function CRMSection() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <SectionHeading
-            eyebrow="CRM incluido en cada plan"
-            title="Tu equipo de ventas, finalmente organizado"
-            subtitle="Cada agente viene con un CRM dedicado para que nunca pierdas un lead calificado."
+            eyebrow={crmSection.eyebrow}
+            title={crmSection.title}
+            subtitle={crmSection.subtitle}
           />
         </motion.div>
 
@@ -119,7 +124,7 @@ export function CRMSection() {
             size="lg"
             className="border-cyan-400/50 hover:border-cyan-400 hover:bg-cyan-400/10 text-cyan-300 group"
           >
-            Ver demo del CRM
+            {crmSection.demo}
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>
