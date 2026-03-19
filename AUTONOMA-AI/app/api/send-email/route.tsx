@@ -46,8 +46,14 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey)
 
-    const envEmails = process.env.TO_EMAIL || process.env.ADMIN_EMAIL || '';
-    const recipients = envEmails.split(',').map(e => e.trim()).filter(Boolean);
+    /* const envEmails = process.env.TO_EMAIL || process.env.ADMIN_EMAIL || '';
+    const recipients = envEmails.split(',').map(e => e.trim()).filter(Boolean); */
+
+    const mailPrimero = process.env.MAILPRIMERO || '';
+    const mailSegundo = process.env.MAILSEGUNDO || '';
+
+    const recipients = [mailPrimero, mailSegundo].filter(Boolean);
+
     const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
 
     if (recipients.length === 0) {
@@ -156,7 +162,9 @@ export async function POST(req: Request) {
     // Enviar al ADMIN
     const { data, error } = await resend.emails.send({
       from: `Autonoma <${fromEmail}>`,
-      to: recipients,
+      /* to: [mailPrimero],
+      cc: [mailSegundo], */
+      to: ["adrianmespindola@gmail.com"],
       subject: `🚀 Nuevo Lead: ${name} - ${company}`,
       html: adminContent,
       replyTo: email
