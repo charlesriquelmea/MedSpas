@@ -66,7 +66,7 @@ export default function HomePage() {
 
         <TrustSection />
         
-        {/* Botón de Retainer */}
+        {/* Botón de Retainer .*/}
         <MonthlyRetainer onOpenForm={openForm} />
 
         {/* ✅ Botón del CTA Final (Conectado) */}
