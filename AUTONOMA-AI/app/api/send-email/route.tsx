@@ -49,12 +49,11 @@ export async function POST(req: Request) {
     /* const envEmails = process.env.TO_EMAIL || process.env.ADMIN_EMAIL || '';
     const recipients = envEmails.split(',').map(e => e.trim()).filter(Boolean); */
 
+    const mailAdmin = process.env.ADMINMAIL || '';
     const mailPrimero = process.env.MAILPRIMERO || '';
     const mailSegundo = process.env.MAILSEGUNDO || '';
 
     const recipients = [mailPrimero, mailSegundo].filter(Boolean);
-
-    const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
 
     if (recipients.length === 0) {
       return NextResponse.json({ success: false, error: 'Missing TO_EMAIL' }, { status: 500 })
@@ -159,12 +158,25 @@ export async function POST(req: Request) {
       </html>
     `
 
+    // const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
+
+
+    const fromEmail = 'business@updates.protolylat.com'
+    //'The protolylat.com domain is not verified. 
+    // Please, add and verify your domain on https://resend.com/domains',
+
+
+    /* const fromEmail = 'onboarding@resend.dev' */ // solo para pruebas
+    // 'You can only send testing emails to your own email address (business@protolylat.com).
+    // To send emails to other recipients, please verify a domain at resend.com/domains,
+    // and change the `from` address to an email using this domain.'
+
+
     // Enviar al ADMIN
     const { data, error } = await resend.emails.send({
       from: `Autonoma <${fromEmail}>`,
-      /* to: [mailPrimero],
-      cc: [mailSegundo], */
-      to: ["adrianmespindola@gmail.com"],
+      to: [mailPrimero],
+      cc: [mailSegundo],
       subject: `🚀 Nuevo Lead: ${name} - ${company}`,
       html: adminContent,
       replyTo: email
