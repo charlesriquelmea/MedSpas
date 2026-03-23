@@ -12,7 +12,7 @@ export const landingContent = {
             cta: "Reservar cupo →",
         },
         hero: {
-            badge: "Ahora disponible en NY & NJ · HIPAA-Compliant · Quedan 2 cupos",
+            badge: "Ahora disponible en NY & NJ · HIPAA-Compliant · Quedan 5 cupos",
             line1: "Mientras tu recepcionista duerme,",
             line2: "tu MedSpa sigue",
             phrases: [
@@ -79,10 +79,19 @@ export const landingContent = {
                 "Configuración de canales activos",
                 "Personalización del agente: tono, idioma, nombre y personalidad",
                 "Testing end-to-end antes del go-live",
-                "Go-live asistido por nuestro equipo", 
-                /* TODO agregar a En */
-                "Resumen: 1 agente principal con múltiples capacidades (tools). El agente tiene un solo cerebro (LLM) que decide qué herramienta usar según el contexto:- Tool de conversación/atención (chat omnicanal) - Tool de RAG: inccrustacion de datos (consulta de protocolos/servicios) - Tool de booking (agendamiento o Appointment Setter) - Tool de CRM (registro/actualización) - Tool de cobro (Stripe)",
+                "Go-live asistido por nuestro equipo",
             ],
+            /* TODO agregar a En */
+            resumenSetUp: {
+                title: "1 agente principal con múltiples capacidades (tools). El agente tiene un solo cerebro (LLM) que decide qué herramienta usar según el contexto:",
+                items: [
+                    "- Tool de conversación/atención (chat omnicanal)",
+                    "- Tool de RAG: inccrustacion de datos (consulta de protocolos/servicios)",
+                    "- Tool de booking (agendamiento o Appointment Setter)",
+                    "- Tool de CRM (registro/actualización)",
+                    "- Tool de cobro (Stripe)"
+                ]
+            },
             includesTitle: "Qué incluye el plan",
             includesItems: [
                 "Agente omnicanal — Web Chat + WhatsApp + Instagram DM",
@@ -95,8 +104,17 @@ export const landingContent = {
                 "Updates y mejoras continuas sin costo adicional",
                 "Deploy, monitoring y operación 24/7",
                 /* TODO agregar a En */
-                "Seguimiento para prevenir no-shows Incluir. El flujo sería:- Recordatorio 24h antes (WhatsApp/SMS)- Recordatorio 2h antes- Si no confirma → el agente llama o escala a humano- Si cancela → ofrece reagendar automáticamente"
+
             ],
+            resumenPlan: {
+                title: "Seguimiento para prevenir no-shows. El flujo sería:",
+                items: [
+                    "- Recordatorio 24h antes(WhatsApp / SMS)",
+                    "- Recordatorio 2h antes",
+                    "- Si no confirma → el agente llama o escala a humano",
+                    "- Si cancela → ofrece reagendar automáticamente",
+                ]
+            }
         },
         voiceAddon: {
             eyebrow: "Add-on opcional",
@@ -144,7 +162,7 @@ export const landingContent = {
                 "Proceso de incorporación gestionado por usted en 4 a 5 días",
             ],
             scarcityTitle: "⚡ Cupos técnicos este mes",
-            scarcityTaken: "4 de 6 tomados",
+            scarcityTaken: "1 de 6 tomados",
             guarantee: "Garantía de 60 días: Si no efectivizamos 15 citas, devolvemos hasta el 50% del set up $1,690.",
             cta: "Reservar mi cupo de onboarding →",
             ctaSub: "Sin suscripción. Sin riesgo. Activo en 72 horas.",
@@ -405,7 +423,7 @@ export const landingContent = {
             cta: "Book a slot →",
         },
         hero: {
-            badge: "Now available in NY & NJ · HIPAA-Compliant · 2 spots left",
+            badge: "Now available in NY & NJ · HIPAA-Compliant · 5 spots left",
             line1: "While your receptionist sleeps,",
             line2: "your MedSpa keeps",
             phrases: [
@@ -474,6 +492,16 @@ export const landingContent = {
                 "End-to-end testing before go-live",
                 "Assisted go-live by our team",
             ],
+            resumenSetUp: {
+                title: "1 main agent with multiple capabilities (tools). The agent has a single brain (LLM) that decides which tool to use based on the context:",
+                items: [
+                    "- Conversation/Support Tool (Omnichannel Chat)",
+                    "- RAG Tool: Data Embedding (Protocol/Service Inquiry)",
+                    "- Booking Tool (Appointment Setter)",
+                    "- CRM Tool (Registration/Update)",
+                    "- Collection Tool (Stripe)"
+                ]
+            },
             includesTitle: "What's included in the plan",
             includesItems: [
                 "Omnichannel agent — Web Chat + WhatsApp + Instagram DM",
@@ -486,6 +514,15 @@ export const landingContent = {
                 "Continuous updates and improvements at no extra cost",
                 "Deploy, monitoring and 24/7 operation",
             ],
+            resumenPlan: {
+                title: "Follow-up to prevent no-shows. The flow would be:",
+                items: [
+                    "- Reminder 24 hours before (WhatsApp / SMS)",
+                    "- Reminder 2 hours before",
+                    "- If they don't confirm → the agent calls or escalates to a human",
+                    "- If they cancel → offer to automatically reschedule",
+                ]
+            }
         },
         voiceAddon: {
             eyebrow: "Optional add-on",
@@ -533,7 +570,7 @@ export const landingContent = {
                 "Onboarding done-for-you 4 to 5 days",
             ],
             scarcityTitle: "⚡ Technical slots this month",
-            scarcityTaken: "4 of 6 taken",
+            scarcityTaken: "1 of 6 taken",
             guarantee: "60-day guarantee: If we fail to make 15 appointments, we will refund up to 50% of the setup fee of $1,690.",
             cta: "Reserve my onboarding slot →",
             ctaSub: "No subscription. No risk. Live in 72 hours.",

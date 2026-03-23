@@ -220,7 +220,7 @@ export default function Page() {
           </motion.div>
           <p className="font-serif italic text-2xl text-[#EFF6FF] mt-6">{t.modal.success.title}</p>
           <p className="text-sm text-[#94A3B8] mt-2">{t.modal.success.sub}</p>
-          <div className="w-full bg-white/[0.02] border border-white/5 rounded-xl p-4 mt-6 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-left">
+          <div className="w-full bg-white/2 border border-white/5 rounded-xl p-4 mt-6 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-left">
             {Object.entries(t.modal.success.summaryLabels).map(([k, label]) => (
               answers[k] ? (
                 <div key={k} className="contents">
@@ -367,7 +367,7 @@ export default function Page() {
                   <span className="text-xs text-[#4B5563] font-mono shrink-0">
                     {`0${step + 1} / 0${TOTAL_STEPS}`}
                   </span>
-                  <div className="flex-1 h-[2px] bg-white/5 rounded-full overflow-hidden">
+                  <div className="flex-1 h-0.5 bg-white/5 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-[#00D2AA] rounded-full"
                       animate={{ width: `${((step + 1) / TOTAL_STEPS) * 100}%` }}
@@ -380,7 +380,7 @@ export default function Page() {
                 </div>
 
                 {/* Step content */}
-                <div className="min-h-[340px] px-8 py-8 flex flex-col justify-center">
+                <div className="min-h-85 px-8 py-8 flex flex-col justify-center">
                   <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
                       key={step}
@@ -444,13 +444,19 @@ export default function Page() {
             </svg>
             <span className="font-semibold text-sm text-[#EFF6FF]">AI Receptionist for Med Spas</span>
           </div>
+
           {/* Center links */}
           <div className="hidden md:flex items-center gap-7">
-            {t.nav.links.map((link) => (
-              <span key={link} className="text-sm text-[#94A3B8] hover:text-[#EFF6FF] transition-colors cursor-pointer">
-                {link}
-              </span>
-            ))}
+            {t.nav.links.map((link, i) => {
+              const ids = ["product", "how-it-works", "pricing", "hipaa"];
+              return (
+                <a key={link}
+                  href={`#${ids[i]}`}
+                  className="text-sm text-[#94A3B8] hover:text-[#EFF6FF] transition-colors cursor-pointer">
+                  {link}
+                </a>
+              );
+            })}
           </div>
 
           {/* Right */}
@@ -766,6 +772,7 @@ export default function Page() {
         </section>
 
         {/* ── HOW IT WORKS ── */}
+        <section id="product">...</section>
         <section className="py-24 px-6 bg-[#0C1018]/40">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
@@ -810,6 +817,7 @@ export default function Page() {
         </section>
 
         {/* ── CRM DEMO SECTION ── */}
+        <section id="how-it-works">...</section>
         <CRMDemoSection lang={lang} />
 
         {/* ── BENTO GRID ── */}
@@ -921,6 +929,26 @@ export default function Page() {
                       <span className="text-sm text-[#94A3B8] leading-relaxed">{item}</span>
                     </li>
                   ))}
+
+                  {/* Resume setup */}
+                  {t.bento.resumenSetUp && (
+                    <li className="flex flex-col gap-2 bg-[#0C1018] border border-white/10 rounded-lg p-4">
+                      <span className="text-sm font-semibold text-[#00D2AA]">
+                        {t.bento.resumenSetUp.title}
+                      </span>
+                      <div className="flex flex-col gap-1 mt-2">
+                        {t.bento.resumenSetUp.items.map((line, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-2 text-sm text-[#94A3B8] leading-relaxed"
+                          >
+                            <ArrowRight size={14} className="text-[#00D2AA] shrink-0 mt-0.5" />
+                            <span>{line.replace(/^-/, "").trim()}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </motion.div>
 
@@ -944,12 +972,33 @@ export default function Page() {
                       <span className="text-sm text-[#94A3B8] leading-relaxed">{item}</span>
                     </li>
                   ))}
+
+                  {t.bento.resumenPlan && (
+                    <li className="flex flex-col gap-2 bg-[#0C1018] border border-white/10 rounded-lg p-4">
+                      <span className="text-sm font-semibold text-[#00D2AA]">
+                        {t.bento.resumenPlan.title}
+                      </span>
+                      <div className="flex flex-col gap-1 mt-2">
+                        {t.bento.resumenPlan.items.map((line, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-2 text-sm text-[#94A3B8] leading-relaxed"
+                          >
+                            <ArrowRight size={14} className="text-[#00D2AA] shrink-0 mt-0.5" />
+                            <span>{line.replace(/^-/, "").trim()}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </li>
+                  )}
+
                 </ul>
               </motion.div>
             </div>
           </div>
         </section>
 
+        <section id="pricing">...</section>
         {/* ── PRICING ── */}
         <section className="py-24 px-6 bg-[#0C1018]/40">
           <div className="max-w-6xl mx-auto">
@@ -1040,7 +1089,7 @@ export default function Page() {
                   </div>
 
                   {/* Guarantee */}
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4 mt-4 flex gap-3">
+                  <div className="bg-white/2 border border-white/5 rounded-xl p-4 mt-4 flex gap-3">
                     <ShieldCheck size={20} className="text-[#00D2AA] shrink-0 mt-0.5" />
                     <p className="text-sm text-[#94A3B8]">{t.pricing.guarantee}</p>
                   </div>
@@ -1069,7 +1118,7 @@ export default function Page() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
-              className="relative bg-gradient-to-br from-[#0D1520] to-[#0C1018] border border-[#6366F1]/25 rounded-2xl p-8 md:p-12 overflow-hidden"
+              className="relative bg-linear-to-br from-[#0D1520] to-[#0C1018] border border-[#6366F1]/25 rounded-2xl p-8 md:p-12 overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-80 h-80 bg-[#6366F1]/6 blur-[100px] rounded-full pointer-events-none" />
 
@@ -1102,12 +1151,12 @@ export default function Page() {
 
                   <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white/[0.03] border border-white/6 rounded-xl p-5">
+                      <div className="bg-white/3 border border-white/6 rounded-xl p-5">
                         <span className="text-xs text-[#4B5563] uppercase tracking-widest block mb-2">{t.voiceAddon.setupLabel}</span>
                         <span className="text-2xl font-bold text-[#EFF6FF]">{t.voiceAddon.setupPrice}</span>
                         <span className="text-xs text-[#4B5563] block mt-1">{t.voiceAddon.setupSub}</span>
                       </div>
-                      <div className="bg-white/[0.03] border border-white/6 rounded-xl p-5">
+                      <div className="bg-white/3 border border-white/6 rounded-xl p-5">
                         <span className="text-xs text-[#4B5563] uppercase tracking-widest block mb-2">{t.voiceAddon.retainerLabel}</span>
                         <span className="text-2xl font-bold text-[#818CF8]">{t.voiceAddon.retainerPrice}</span>
                         <span className="text-xs text-[#4B5563] block mt-1">{t.voiceAddon.retainerSub}</span>
@@ -1169,7 +1218,7 @@ export default function Page() {
         {/* ── FINAL CTA ── */}
         <section className="relative bg-[#0C1018] border-t border-white/5 py-24 px-6 overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[600px] h-[400px] bg-[#00D2AA]/7 blur-[140px] rounded-full opacity-[0.07]" />
+            <div className="w-150 h-100 bg-[#00D2AA]/7 blur-[140px] rounded-full opacity-[0.07]" />
           </div>
           <div className="max-w-2xl mx-auto text-center relative z-10">
             <motion.div variants={fadeUpStagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
