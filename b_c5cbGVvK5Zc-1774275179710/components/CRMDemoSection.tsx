@@ -9,6 +9,8 @@ import {
   MoreHorizontal, Send, Paperclip, Smile,
   Instagram, Facebook, Globe, Mic, CreditCard,
   Database, GitMerge, Hash,
+  MessageCircle,
+  CheckCircle,
 } from "lucide-react"
 import { landingContent, type Language } from "@/data/landing-content"
 
@@ -63,49 +65,58 @@ const AVATAR_COLORS: Record<string, string> = {
 // ─── ACTIVITY ICON MAP ────────────────────────────────────────────────────────
 // Maps activity event `type` → Lucide icon + color
 const ACTIVITY_ICON_MAP: Record<string, { icon: React.ElementType; color: string }> = {
-  lead:     { icon: Bot,          color: "#00D2AA" },
-  ai:       { icon: MessageSquare,color: "#00D2AA" },
-  rag:      { icon: Database,     color: "#8B5CF6" },
-  calendar: { icon: Calendar,     color: "#00D2AA" },
-  payment:  { icon: CreditCard,   color: "#8B5CF6" },
-  success:  { icon: CheckCircle2, color: "#00D2AA" },
-  crm:      { icon: GitMerge,     color: "#00D2AA" },
-  reminder: { icon: Bell,         color: "#F59E0B" },
-  alert:    { icon: Phone,        color: "#EF4444" },
-  voice:    { icon: Mic,          color: "#F59E0B" },
-  revenue:  { icon: DollarSign,   color: "#00D2AA" },
+  lead: { icon: Bot, color: "#00D2AA" },
+  ai: { icon: MessageSquare, color: "#00D2AA" },
+  rag: { icon: Database, color: "#8B5CF6" },
+  calendar: { icon: Calendar, color: "#00D2AA" },
+  payment: { icon: CreditCard, color: "#8B5CF6" },
+  success: { icon: CheckCircle2, color: "#00D2AA" },
+  crm: { icon: GitMerge, color: "#00D2AA" },
+  reminder: { icon: Bell, color: "#F59E0B" },
+  alert: { icon: Phone, color: "#EF4444" },
+  voice: { icon: Mic, color: "#F59E0B" },
+  revenue: { icon: DollarSign, color: "#00D2AA" },
 }
 
 // ─── TAB ICON MAP ─────────────────────────────────────────────────────────────
 const TAB_ICONS: Record<string, React.ElementType> = {
   pipeline: Kanban,
-  inbox:    Inbox,
+  inbox: Inbox,
   activity: Activity,
 }
 
 // ─── FLOW NODE ICON MAP ───────────────────────────────────────────────────────
 // Ordered icons matching flowNodes array positions
-const FLOW_NODE_ICONS = [Instagram, Bot, CheckCircle2, Calendar, GitMerge]
+/* const FLOW_NODE_ICONS = [Instagram, Bot, CheckCircle2, Calendar, GitMerge] */
+const FLOW_NODE_ICONS: Record<string, any> = {
+  "Web Chat": Globe,
+  "WhatsApp Business": MessageCircle,
+  "Instagram Ad": Instagram,
+  "AI Responde": Bot,
+  "Lead Calificado": CheckCircle,
+  "Cita + Depósito": CreditCard,
+  "CRM Sync ✓": Database,
+}
 
 // ─── HELPER: SOURCE ICON ──────────────────────────────────────────────────────
 function SourceIcon({ source }: { source: string }) {
   if (source === "Instagram" || source === "instagram") return <Instagram size={10} className="text-[#4B5563]" />
-  if (source === "Facebook"  || source === "facebook")  return <Facebook  size={10} className="text-[#4B5563]" />
-  if (source === "WhatsApp"  || source === "whatsapp")  return <Hash      size={10} className="text-[#4B5563]" />
+  if (source === "Facebook" || source === "facebook") return <Facebook size={10} className="text-[#4B5563]" />
+  if (source === "WhatsApp" || source === "whatsapp") return <Hash size={10} className="text-[#4B5563]" />
   return <Globe size={10} className="text-[#4B5563]" />
 }
 
 function SourceBadgeIcon({ source }: { source: string }) {
   if (source === "instagram") return <Instagram size={8} className="text-pink-400" />
-  if (source === "facebook")  return <Facebook  size={8} className="text-blue-400" />
+  if (source === "facebook") return <Facebook size={8} className="text-blue-400" />
   return <Hash size={8} className="text-green-400" />
 }
 
 function stageBadgeColor(stage: Stage) {
   switch (stage) {
-    case "nuevo":      return "bg-[#4B5563]/20 text-[#9CA3AF]"
+    case "nuevo": return "bg-[#4B5563]/20 text-[#9CA3AF]"
     case "calificado": return "bg-[#F59E0B]/10 text-[#F59E0B]"
-    case "agendado":   return "bg-[#00D2AA]/10 text-[#00D2AA]"
+    case "agendado": return "bg-[#00D2AA]/10 text-[#00D2AA]"
     case "depositado": return "bg-[#8B5CF6]/10 text-[#8B5CF6]"
   }
 }
@@ -143,9 +154,9 @@ function PipelineView({
         <div className="grid grid-cols-4 gap-3 min-w-215">
           {c.pipeline.stages.map((stage) => {
             const STAGE_COLORS: Record<string, { color: string; dot: string }> = {
-              nuevo:      { color: "#4B5563", dot: "#6B7280" },
+              nuevo: { color: "#4B5563", dot: "#6B7280" },
               calificado: { color: "#F59E0B", dot: "#F59E0B" },
-              agendado:   { color: "#00D2AA", dot: "#00D2AA" },
+              agendado: { color: "#00D2AA", dot: "#00D2AA" },
               depositado: { color: "#8B5CF6", dot: "#8B5CF6" },
             }
             const stageColors = STAGE_COLORS[stage.id] ?? { color: "#4B5563", dot: "#6B7280" }
@@ -537,8 +548,8 @@ function ActivityView({ c }: { c: typeof landingContent["es"]["crmDemo"] }) {
           const isLast = i === c.activity.events.length - 1
           const rowClass =
             event.type === "success" ? "border-l border-l-[#00D2AA]/30 bg-[#00D2AA]/3" :
-            event.type === "alert"   ? "border-l border-l-[#EF4444]/30 bg-[#EF4444]/3" :
-            event.type === "revenue" ? "border-l border-l-[#F59E0B]/30 bg-[#F59E0B]/3" : ""
+              event.type === "alert" ? "border-l border-l-[#EF4444]/30 bg-[#EF4444]/3" :
+                event.type === "revenue" ? "border-l border-l-[#F59E0B]/30 bg-[#F59E0B]/3" : ""
 
           return (
             <motion.div
@@ -606,7 +617,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
     setDemoMode(false)
     setHighlightedId(null)
     setTypingId(null)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang])
 
   // Auto-dismiss toast
@@ -674,7 +685,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
         variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} transition={{ delay: 0.3 }}
         className="mt-10"
       >
-        <div className="flex items-center justify-center gap-0 overflow-x-auto pb-2">
+        {/* <div className="flex items-center justify-center gap-0 overflow-x-auto pb-2">
           {c.flowNodes.map((node, i) => {
             const Icon = FLOW_NODE_ICONS[i] ?? Bot
             return (
@@ -706,7 +717,108 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
               </div>
             )
           })}
+        </div> */}
+        <div className="flex items-center justify-center gap-0 overflow-x-auto pb-2">
+          {c.flowNodes.map((node, i) => {
+            // Caso especial: múltiples labels (Web Chat, WhatsApp, Instagram)
+            if (node.labels) {
+              return (
+                <div key={i} className="flex items-center shrink-0">
+                  {/* Bloque vertical */}
+                  <div className="flex flex-col items-stretch gap-2">
+                    {node.labels.map((lbl: string, j: number) => {
+                      const Icon = FLOW_NODE_ICONS[lbl] ?? Bot
+                      return (
+                        <div
+                          key={j}
+                          className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 w-32"
+                        >
+                          <Icon size={14} className="text-[#00D2AA]" />
+                          <span className="text-[10px] text-[#94A3B8] uppercase tracking-wide whitespace-nowrap">
+                            {lbl}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  {/* Flecha hacia el siguiente nodo */}
+                  {i < c.flowNodes.length - 1 && (
+                    <div className="flex items-center px-1">
+                      <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+                        <motion.path
+                          d="M0 8 L26 8"
+                          stroke="#00D2AA"
+                          strokeWidth="1.5"
+                          strokeDasharray="4 3"
+                          opacity="0.5"
+                          initial={{ pathLength: 0 }}
+                          whileInView={{ pathLength: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.6, delay: i * 0.15 + 0.4, ease: EASE }}
+                        />
+                        <motion.path
+                          d="M22 4 L28 8 L22 12"
+                          stroke="#00D2AA"
+                          strokeWidth="1.5"
+                          opacity="0.5"
+                          fill="none"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 0.5 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: i * 0.15 + 0.9 }}
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              )
+            }
+
+            // Caso normal: un solo label
+            const Icon = FLOW_NODE_ICONS[node.label] ?? Bot
+            return (
+              <div key={i} className="flex items-center shrink-0">
+                <div className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 w-32">
+                  <Icon size={14} className="text-[#00D2AA]" />
+                  <span className="text-[10px] text-[#94A3B8] uppercase tracking-wide whitespace-nowrap">
+                    {node.label}
+                  </span>
+                </div>
+                {i < c.flowNodes.length - 1 && (
+                  <div className="flex items-center px-1">
+                    <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+                      <motion.path
+                        d="M0 8 L26 8"
+                        stroke="#00D2AA"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 3"
+                        opacity="0.5"
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: i * 0.15 + 0.4, ease: EASE }}
+                      />
+                      <motion.path
+                        d="M22 4 L28 8 L22 12"
+                        stroke="#00D2AA"
+                        strokeWidth="1.5"
+                        opacity="0.5"
+                        fill="none"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.5 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: i * 0.15 + 0.9 }}
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
+
+
         <p className="text-[10px] text-[#4B5563] text-center mt-3">{c.flowCaption}</p>
       </motion.div>
 
@@ -770,7 +882,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
               {activeTab === "pipeline" && (
                 <PipelineView leads={leads} highlightedId={highlightedId} typingId={typingId} c={c} />
               )}
-              {activeTab === "inbox"    && <InboxView    c={c} />}
+              {activeTab === "inbox" && <InboxView c={c} />}
               {activeTab === "activity" && <ActivityView c={c} />}
             </motion.div>
           </AnimatePresence>

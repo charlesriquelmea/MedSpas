@@ -1031,7 +1031,8 @@ export default function Page() {
 
                   <span className="bg-[#00D2AA]/10 text-[#00D2AA] rounded-full px-3 py-1 text-xs uppercase tracking-widest">{t.pricing.badge}</span>
 
-                  <div className="mt-6 mb-2">
+                  <div className="mt-6 flex flex-col mb-2">
+                    <span>{t.pricing.limit}</span>
                     <span className="text-[#4B5563] text-sm">{t.pricing.setupLabel}</span>
                     <div className="flex items-baseline gap-2 mt-1">
                       <span className="font-serif italic text-6xl text-[#EFF6FF]">{t.pricing.setupPrice}</span>
@@ -1080,7 +1081,7 @@ export default function Page() {
                     <div className="h-1.5 bg-white/5 rounded-full overflow-hidden mt-2">
                       <motion.div
                         initial={{ width: "0%" }}
-                        whileInView={{ width: "66%" }}
+                        whileInView={{ width: "20%" }}
                         transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
                         viewport={{ once: true }}
                         className="h-full bg-[#F59E0B] rounded-full"

@@ -31,7 +31,7 @@ export const landingContent = {
                 "BAA Firmado",
                 "<800ms Latencia",
             ],
-            chatHeader: "receptor.ai · WhatsApp Business",
+            chatHeader: "AI Receptionist for Med Spas *Chat Web o WhatsApp Business / Instagram DM",
             online: "En línea",
             msgs: [
                 { side: "user", text: "Precio de relleno de labios? 💉", time: "11:47 PM" },
@@ -144,6 +144,7 @@ export const landingContent = {
             totalLabel: "Costo de no actuar:",
             totalValue: "$7,000–11,000/mes",
             badge: "Precio de Lanzamiento",
+            limit: "Precio de Lanzamiento hasta el 23 de Mayo 2026",
             setupLabel: "Setup único:",
             setupPrice: "$1,690",
             setupSub: "usd · pago único · hasta en 2 cuotas (50% al comenzar, 50% al entregar)",
@@ -165,7 +166,7 @@ export const landingContent = {
             scarcityTaken: "1 de 6 tomados",
             guarantee: "Garantía de 60 días: Si no efectivizamos 15 citas, devolvemos hasta el 50% del set up $1,690.",
             cta: "Reservar mi cupo de onboarding →",
-            ctaSub: "Sin suscripción. Sin riesgo. Activo en 72 horas.",
+            ctaSub: "Sin suscripción. Sin riesgo. Activo entre 4 a 5 dias hábiles.",
         },
         social: {
             title: "Lo que dicen los MedSpas que ya lo usan",
@@ -255,14 +256,17 @@ export const landingContent = {
             title: "Ve exactamente lo que hace el agente",
             subtitle: "Desde el primer DM hasta el depósito cobrado — todo visible, todo automático, todo en tu CRM.",
             flowCaption: "Todo esto ocurre en menos de 10 minutos · Sin intervención humana",
-            crmLabel: "receptor.ai CRM",
+            crmLabel: "AI Receptionist for Med Spas",
             tabs: [
                 { id: "pipeline", label: "Pipeline" },
                 { id: "inbox", label: "Bandeja de IA" },
                 { id: "activity", label: "Actividad" },
             ],
             flowNodes: [
-                { label: "Instagram Ad" },
+                //TODO: tienen que ir las 3 ui en la misma card - Agregar al ingles
+                {
+                    labels: ["Web Chat", "WhatsApp Business", "Instagram Ad"]
+                },
                 { label: "AI Responde" },
                 { label: "Lead Calificado" },
                 { label: "Cita + Depósito" },
@@ -442,7 +446,7 @@ export const landingContent = {
                 "BAA Signed",
                 "<800ms Latency",
             ],
-            chatHeader: "receptor.ai · WhatsApp Business",
+            chatHeader: "AI Receptionist for Med Spas *Chat Web o WhatsApp Business / Instagram DM",
             online: "Online",
             msgs: [
                 { side: "user", text: "Price for lip filler? 💉", time: "11:47 PM" },
@@ -552,6 +556,7 @@ export const landingContent = {
             totalLabel: "Cost of inaction:",
             totalValue: "$7,000–11,000/mo",
             badge: "Launch Price",
+            limit: "Launch Price until May 23, 2026",
             setupLabel: "One-time setup:",
             setupPrice: "$1,690",
             setupSub: "usd · one-time · up to 2 installments (50% to start, 50% on delivery)",
@@ -573,7 +578,7 @@ export const landingContent = {
             scarcityTaken: "1 of 6 taken",
             guarantee: "60-day guarantee: If we fail to make 15 appointments, we will refund up to 50% of the setup fee of $1,690.",
             cta: "Reserve my onboarding slot →",
-            ctaSub: "No subscription. No risk. Live in 72 hours.",
+            ctaSub: "No subscription. No risk. Active between 4 to 5 business days.",
         },
         social: {
             title: "What MedSpas already using it say",
@@ -663,7 +668,7 @@ export const landingContent = {
             title: "See exactly what the agent does",
             subtitle: "From the first DM to the collected deposit — everything visible, everything automatic, everything in your CRM.",
             flowCaption: "All this happens in less than 10 minutes · No human intervention",
-            crmLabel: "receptor.ai CRM",
+            crmLabel: "AI Receptionist for Med Spas",
             tabs: [
                 { id: "pipeline", label: "Pipeline" },
                 { id: "inbox", label: "AI Inbox" },
