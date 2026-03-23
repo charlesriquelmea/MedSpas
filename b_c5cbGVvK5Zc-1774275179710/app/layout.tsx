@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'AI Receptionist 2.0: responde en 5 segundos, habla español o inglés, cobra depósitos vía Stripe y sincroniza con GoHighLevel. HIPAA-Compliant.',
   generator: 'v0.app', 
   icons: {
-    icon: [
+    /* icon: [
       {
         url: '/icon-light-32x32.png',
         media: '(prefers-color-scheme: light)',
@@ -24,8 +24,9 @@ export const metadata: Metadata = {
         url: '/icon.svg',
         type: 'image/svg+xml',
       },
-    ],
-    apple: '/apple-icon.png',
+    ], */
+    icon: 'favicon.png',
+    apple: 'favicon.png',
   },
 }
 

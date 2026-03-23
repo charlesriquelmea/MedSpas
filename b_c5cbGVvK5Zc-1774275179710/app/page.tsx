@@ -738,11 +738,10 @@ export default function Page() {
                     setAnswers((a) => ({ ...a, [stepData.key!]: opt }))
                     setTimeout(goNext, 300)
                   }}
-                  className={`w-full text-left border rounded-xl px-5 py-3.5 text-sm text-[#EFF6FF] transition-all flex items-center justify-between cursor-pointer ${
-                    selected
-                      ? "border-[#00D2AA]/40 bg-[#00D2AA]/8"
-                      : "border-white/8 hover:bg-[#00D2AA]/5"
-                  }`}
+                  className={`w-full text-left border rounded-xl px-5 py-3.5 text-sm text-[#EFF6FF] transition-all flex items-center justify-between cursor-pointer ${selected
+                    ? "border-[#00D2AA]/40 bg-[#00D2AA]/8"
+                    : "border-white/8 hover:bg-[#00D2AA]/5"
+                    }`}
                 >
                   <span>{opt}</span>
                   <AnimatePresence>
@@ -872,9 +871,8 @@ export default function Page() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: EASE }}
-          className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-300 ${
-            scrolled ? "bg-[#06080B]/85 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
-          }`}
+          className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-300 ${scrolled ? "bg-[#06080B]/85 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
+            }`}
         >
           {/* Logo */}
           <div className="flex items-center gap-2.5">
@@ -902,9 +900,8 @@ export default function Page() {
                   key={l}
                   onClick={() => setLang(l)}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
-                    lang === l ? "text-[#06080B]" : "text-[#4B5563] hover:text-[#94A3B8]"
-                  }`}
+                  className={`relative px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${lang === l ? "text-[#06080B]" : "text-[#4B5563] hover:text-[#94A3B8]"
+                    }`}
                 >
                   {lang === l && (
                     <motion.span
@@ -938,9 +935,8 @@ export default function Page() {
                   key={l}
                   onClick={() => setLang(l)}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-2.5 py-1 text-[11px] font-semibold rounded-md transition-colors cursor-pointer ${
-                    lang === l ? "text-[#06080B]" : "text-[#4B5563]"
-                  }`}
+                  className={`relative px-2.5 py-1 text-[11px] font-semibold rounded-md transition-colors cursor-pointer ${lang === l ? "text-[#06080B]" : "text-[#4B5563]"
+                    }`}
                 >
                   {lang === l && (
                     <motion.span
@@ -1211,6 +1207,7 @@ export default function Page() {
         </section>
 
         {/* ── SOCIAL PROOF ── */}
+        {/*
         <section className="py-24 px-6">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
@@ -1246,6 +1243,8 @@ export default function Page() {
             </motion.div>
           </div>
         </section>
+        */}
+
 
         {/* ── HOW IT WORKS ── */}
         <section className="py-24 px-6 bg-[#0C1018]/40">
@@ -1362,8 +1361,8 @@ export default function Page() {
               {/* Bonus cards */}
               {[
                 { ...t.bento.bonus1, icon: Star },
-                { ...t.bento.bonus2, icon: PhoneCall },
-                { ...t.bento.bonus3, icon: BarChart2 },
+                /* { ...t.bento.bonus2, icon: PhoneCall },
+                { ...t.bento.bonus3, icon: BarChart2 }, */
               ].map((bonus, i) => {
                 const Icon = bonus.icon
                 return (
@@ -1475,7 +1474,7 @@ export default function Page() {
                   </div>
 
                   <div className="relative h-px bg-white/5 my-6">
-                    <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-[#4B5563] bg-[#0C1018] px-3">{t.pricing.divider}</span>
+                    <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-[#4B5563] bg-[#0C1018] px-3"></span>
                   </div>
 
                   <div className="mb-6">
@@ -1716,34 +1715,34 @@ export default function Page() {
               </div>
 
               {/* Product */}
-              <div>
+              {/* <div>
                 <p className="text-sm font-semibold text-[#EFF6FF] mb-4">{t.footer.col2.title}</p>
                 <div className="flex flex-col gap-3">
                   {t.footer.col2.links.map((l) => (
                     <span key={l} className="text-sm text-[#4B5563] hover:text-[#94A3B8] transition-colors cursor-pointer">{l}</span>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Company */}
-              <div>
+              {/* <div>
                 <p className="text-sm font-semibold text-[#EFF6FF] mb-4">{t.footer.col3.title}</p>
                 <div className="flex flex-col gap-3">
                   {t.footer.col3.links.map((l) => (
                     <span key={l} className="text-sm text-[#4B5563] hover:text-[#94A3B8] transition-colors cursor-pointer">{l}</span>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Legal */}
-              <div>
+              {/* <div>
                 <p className="text-sm font-semibold text-[#EFF6FF] mb-4">{t.footer.col4.title}</p>
                 <div className="flex flex-col gap-3">
                   {t.footer.col4.links.map((l) => (
                     <span key={l} className="text-sm text-[#4B5563] hover:text-[#94A3B8] transition-colors cursor-pointer">{l}</span>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row justify-between gap-4">
