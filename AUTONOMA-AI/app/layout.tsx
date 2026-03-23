@@ -67,8 +67,8 @@ export const metadata: Metadata = {
 
   // 5. Iconos del navegador (Favicon)
   icons: {
-    icon: '/logo-whatsapp.png',
-    apple: '/logo-whatsapp.png',
+    icon: 'images/favicon.png',
+    apple: 'images/favicon.png',
   },
 }
 
