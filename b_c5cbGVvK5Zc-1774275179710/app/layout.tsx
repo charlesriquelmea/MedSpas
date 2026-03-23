@@ -25,8 +25,8 @@ export const metadata: Metadata = {
         type: 'image/svg+xml',
       },
     ], */
-    icon: 'public/images/favicon.png',
-    apple: 'public/images/favicon.png',
+    icon: 'favicon.png',
+    apple: 'favicon.png',
   },
 }
 
