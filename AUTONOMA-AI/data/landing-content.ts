@@ -1286,7 +1286,7 @@ export const landingContent = {
       combinedValueAmount: "$4,800/month",
       combinedValueDescription: "in premium features and services",
       /* offerLabel: "TODAY'S OFFER", */
-      offerLabel: "OFFER ONLY FOR HISPANIC CHAMBER OF COMMERCE OS NEW JERSEY",
+      offerLabel: "OFFER ONLY FOR HISPANIC CHAMBER OF COMMERCE OF NEW JERSEY",
       setupFeeLabel: "Setup Fee",
       setupFeeAmount: "$1,497",
       monthlyLabel: "Monthly",
