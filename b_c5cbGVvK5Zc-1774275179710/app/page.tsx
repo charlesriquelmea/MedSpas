@@ -810,7 +810,7 @@ export default function Page() {
         </section>
 
         {/* ── CRM DEMO SECTION ── */}
-        <CRMDemoSection />
+        <CRMDemoSection lang={lang} />
 
         {/* ── BENTO GRID ── */}
         <section className="py-24 px-6">
