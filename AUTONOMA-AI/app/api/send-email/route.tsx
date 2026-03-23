@@ -49,7 +49,6 @@ export async function POST(req: Request) {
     /* const envEmails = process.env.TO_EMAIL || process.env.ADMIN_EMAIL || '';
     const recipients = envEmails.split(',').map(e => e.trim()).filter(Boolean); */
 
-    const mailAdmin = process.env.ADMINMAIL || '';
     const mailPrimero = process.env.MAILPRIMERO || '';
     const mailSegundo = process.env.MAILSEGUNDO || '';
 
@@ -161,7 +160,7 @@ export async function POST(req: Request) {
     // const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev'
 
 
-    const fromEmail = 'business@updates.protolylat.com'
+    const fromEmail = 'business@business.protolylat.com'
     //'The protolylat.com domain is not verified. 
     // Please, add and verify your domain on https://resend.com/domains',
 
