@@ -271,7 +271,7 @@ function PipelineView({
       </div>
 
       <div className="overflow-x-auto">
-        <div className="grid grid-cols-4 gap-3 min-w-[860px]">
+        <div className="grid grid-cols-4 gap-3 min-w-215">
           {STAGES.map((stage) => {
             const stageLeads = leads.filter((l) => l.stage === stage.id)
             return (
@@ -340,7 +340,7 @@ function LeadCard({
     >
       {/* Row 1: Avatar + Name + Source */}
       <div className="flex items-center gap-2 mb-2">
-        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${AVATAR_COLORS[lead.avatar] ?? "from-[#00D2AA]/40 to-[#065F46]/60"} flex items-center justify-center text-xs font-semibold text-[#EFF6FF] shrink-0`}>
+        <div className={`w-8 h-8 rounded-full bg-linear-to-br ${AVATAR_COLORS[lead.avatar] ?? "from-[#00D2AA]/40 to-[#065F46]/60"} flex items-center justify-center text-xs font-semibold text-[#EFF6FF] shrink-0`}>
           {lead.avatar}
         </div>
         <span className="text-sm font-semibold text-[#EFF6FF] flex-1 truncate">{lead.name}</span>
@@ -435,7 +435,7 @@ function InboxView() {
   const messages = CONVERSATIONS[activeThread] ?? CONVERSATION_0
 
   return (
-    <div className="flex h-[500px] rounded-xl overflow-hidden border border-white/5">
+    <div className="flex h-125 rounded-xl overflow-hidden border border-white/5">
       {/* Left panel */}
       <div className={`w-72 shrink-0 border-r border-white/5 flex flex-col ${showPanel ? "hidden" : "flex"} md:flex`}>
         <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between shrink-0">
@@ -466,7 +466,7 @@ function InboxView() {
             >
               <div className="flex items-start gap-2">
                 <div className="relative shrink-0">
-                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${AVATAR_COLORS[thread.avatar] ?? "from-[#00D2AA]/40 to-[#065F46]/60"} flex items-center justify-center text-xs font-semibold text-[#EFF6FF]`}>
+                  <div className={`w-9 h-9 rounded-full bg-linear-to-br ${AVATAR_COLORS[thread.avatar] ?? "from-[#00D2AA]/40 to-[#065F46]/60"} flex items-center justify-center text-xs font-semibold text-[#EFF6FF]`}>
                     {thread.avatar}
                   </div>
                   <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#0C1018] flex items-center justify-center">
@@ -503,7 +503,7 @@ function InboxView() {
             >
               ←
             </button>
-            <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${AVATAR_COLORS[THREADS[activeThread]?.avatar ?? "MG"] ?? "from-[#00D2AA]/40 to-[#065F46]/60"} flex items-center justify-center text-xs font-semibold text-[#EFF6FF]`}>
+            <div className={`w-8 h-8 rounded-full bg-linear-to-br ${AVATAR_COLORS[THREADS[activeThread]?.avatar ?? "MG"] ?? "from-[#00D2AA]/40 to-[#065F46]/60"} flex items-center justify-center text-xs font-semibold text-[#EFF6FF]`}>
               {THREADS[activeThread]?.avatar}
             </div>
             <div>
@@ -583,7 +583,7 @@ function InboxView() {
                       <div className="bg-[#0F1720] border border-white/8 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[#EFF6FF]">
                         {msg.text}
                         {msg.hasPayment && (
-                          <div className="bg-[#06080B] border border-white/10 rounded-xl p-3 mt-2 flex items-center gap-3 w-full max-w-[240px]">
+                          <div className="bg-[#06080B] border border-white/10 rounded-xl p-3 mt-2 flex items-center gap-3 w-full max-w-60">
                             <div className="w-8 h-8 rounded-lg bg-[#00D2AA]/15 flex items-center justify-center shrink-0">
                               <CreditCard size={16} className="text-[#00D2AA]" />
                             </div>
@@ -654,7 +654,7 @@ function ActivityView() {
       </div>
 
       {/* Activity list */}
-      <div className="space-y-1 max-h-[420px] overflow-y-auto pr-1">
+      <div className="space-y-1 max-h-105 overflow-y-auto pr-1">
         {ACTIVITY_EVENTS.map((event, i) => {
           const Icon = event.icon
           const isLast = i === ACTIVITY_EVENTS.length - 1
@@ -847,7 +847,7 @@ export default function CRMDemoSection() {
             const Icon = node.icon
             return (
               <div key={i} className="flex items-center shrink-0">
-                <div className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 min-w-[100px]">
+                <div className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 min-w-25">
                   <Icon size={12} className="text-[#00D2AA]" />
                   <span className="text-[10px] text-[#94A3B8] uppercase tracking-wide whitespace-nowrap">{node.label}</span>
                 </div>
@@ -940,7 +940,7 @@ export default function CRMDemoSection() {
         </div>
 
         {/* Tab content */}
-        <div className="min-h-[520px]">
+        <div className="min-h-130">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -972,7 +972,7 @@ export default function CRMDemoSection() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="fixed bottom-6 right-6 z-[300] bg-[#0C1018] border border-[#00D2AA]/25 rounded-xl px-5 py-4 max-w-[320px] shadow-2xl"
+            className="fixed bottom-6 right-6 z-300 bg-[#0C1018] border border-[#00D2AA]/25 rounded-xl px-5 py-4 max-w-[320px] shadow-2xl"
           >
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-full bg-[#00D2AA]/15 flex items-center justify-center shrink-0">
@@ -984,7 +984,7 @@ export default function CRMDemoSection() {
               </div>
             </div>
             <motion.div
-              className="h-[2px] bg-[#00D2AA] rounded-full mt-3"
+              className="h-0.5 bg-[#00D2AA] rounded-full mt-3"
               initial={{ width: "100%" }}
               animate={{ width: "0%" }}
               transition={{ duration: 3.5, ease: "linear" }}
