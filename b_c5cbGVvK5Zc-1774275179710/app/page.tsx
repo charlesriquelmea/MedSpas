@@ -233,10 +233,10 @@ export default function Page() {
             {t.modal?.success?.sub ?? "Revisaremos tu información y te contactaremos en menos de 24 h."}
           </p>
           <div className="w-full bg-white/2 border border-white/5 rounded-xl p-4 mt-6 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-left">
-            {formData.name     && <><span className="text-[#4B5563]">Nombre</span>   <span className="text-[#EFF6FF] truncate">{formData.name}</span></>}
+            {formData.name && <><span className="text-[#4B5563]">Nombre</span>   <span className="text-[#EFF6FF] truncate">{formData.name}</span></>}
             {formData.business && <><span className="text-[#4B5563]">Empresa</span>  <span className="text-[#EFF6FF] truncate">{formData.business}</span></>}
-            {formData.phone    && <><span className="text-[#4B5563]">Teléfono</span> <span className="text-[#EFF6FF] truncate">{formData.phone}</span></>}
-            {formData.email    && <><span className="text-[#4B5563]">Email</span>    <span className="text-[#EFF6FF] truncate">{formData.email}</span></>}
+            {formData.phone && <><span className="text-[#4B5563]">Teléfono</span> <span className="text-[#EFF6FF] truncate">{formData.phone}</span></>}
+            {formData.email && <><span className="text-[#4B5563]">Email</span>    <span className="text-[#EFF6FF] truncate">{formData.email}</span></>}
           </div>
           <button
             onClick={() => { setModalOpen(false); setStep(0) }}
@@ -252,29 +252,30 @@ export default function Page() {
     // Each field has a floating-label style consistent with the dark theme
     const fieldStep = s - 1 // 0-indexed: 0=name, 1=business, 2=phone, 3=email
 
-    const labels = ["Nombre", "Empresa", "Teléfono", "Email"]
-    const types  = ["text",   "text",    "tel",      "email"]
-    const keys   = ["name",   "business","phone",    "email"] as const
-    const hints  = [
-      "¿Cómo te llamas?",
-      "¿Cuál es el nombre de tu negocio?",
-      "¿Cuál es tu número de teléfono?",
-      "¿Cuál es tu correo electrónico?",
-    ]
-
-    const key = keys[fieldStep]
+    /*     const labels = ["Nombre", "Empresa", "Teléfono", "Email"]
+        const types  = ["text",   "text",    "tel",      "email"]
+        const keys   = ["name",   "business","phone",    "email"] as const
+        const hints  = [
+          "¿Cómo te llamas?",
+          "¿Cuál es el nombre de tu negocio?",
+          "¿Cuál es tu número de teléfono?",
+          "¿Cuál es tu correo electrónico?",
+        ] */
+    const fieldKeys = ["name", "business", "phone", "email"] as const
+    const key = fieldKeys[fieldStep]
+    const field = t.modal.fields[key]
 
     return (
       <div>
         <p className="text-[#4B5563] text-xs font-mono uppercase tracking-widest mb-1">
           {`0${s} →`}
         </p>
-        <p className="font-medium text-lg text-[#EFF6FF] mb-6">{hints[fieldStep]}</p>
+        <p className="font-medium text-lg text-[#EFF6FF] mb-6">{field.hint}</p>
         <div className="relative">
           <input
             key={key}
-            type={types[fieldStep]}
-            placeholder={labels[fieldStep]}
+            type={field.type}
+            placeholder={field.label}
             value={formData[key]}
             onChange={(e) => setFormData({ ...formData, [key]: e.target.value })}
             onKeyDown={(e) => { if (e.key === "Enter") goNext() }}
@@ -344,9 +345,9 @@ export default function Page() {
                       key={step}
                       custom={direction}
                       variants={{
-                        enter:  (dir: number) => ({ opacity: 0, x: dir > 0 ? 48 : -48 }),
+                        enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 48 : -48 }),
                         center: { opacity: 1, x: 0 },
-                        exit:   (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48 }),
+                        exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48 }),
                       }}
                       initial="enter"
                       animate="center"
@@ -404,7 +405,7 @@ export default function Page() {
                     >
                       {step === TOTAL_STEPS - 2
                         ? (t.modal?.submit ?? "Enviar")
-                        : (t.modal?.next   ?? "Siguiente")}
+                        : (t.modal?.next ?? "Siguiente")}
                       <ArrowRight size={14} />
                     </motion.button>
                   </div>
@@ -419,9 +420,8 @@ export default function Page() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: EASE }}
-          className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-300 ${
-            scrolled ? "bg-[#06080B]/85 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
-          }`}
+          className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-300 ${scrolled ? "bg-[#06080B]/85 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
+            }`}
         >
           {/* Logo */}
           <div className="flex items-center gap-2.5">
@@ -457,9 +457,8 @@ export default function Page() {
                   key={l}
                   onClick={() => setLang(l)}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
-                    lang === l ? "text-[#06080B]" : "text-[#4B5563] hover:text-[#94A3B8]"
-                  }`}
+                  className={`relative px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${lang === l ? "text-[#06080B]" : "text-[#4B5563] hover:text-[#94A3B8]"
+                    }`}
                 >
                   {lang === l && (
                     <motion.span
@@ -490,9 +489,8 @@ export default function Page() {
                   key={l}
                   onClick={() => setLang(l)}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-2.5 py-1 text-[11px] font-semibold rounded-md transition-colors cursor-pointer ${
-                    lang === l ? "text-[#06080B]" : "text-[#4B5563]"
-                  }`}
+                  className={`relative px-2.5 py-1 text-[11px] font-semibold rounded-md transition-colors cursor-pointer ${lang === l ? "text-[#06080B]" : "text-[#4B5563]"
+                    }`}
                 >
                   {lang === l && (
                     <motion.span
