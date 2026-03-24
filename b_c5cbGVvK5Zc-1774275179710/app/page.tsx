@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import CRMDemoSection from "@/components/CRMDemoSection"
 import { landingContent, type Language } from "@/data/landing-content"
+import HipaaSection from "@/components/HipaaSection"
 
 // ─── ANIMATION VARIANTS ─────────────────────────────────────────────────────
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -1196,6 +1197,8 @@ export default function Page() {
             </motion.div>
           </div>
         </section>
+
+        <HipaaSection  lang={lang}/>
 
         {/* ── FOOTER ── */}
         <footer className="bg-[#06080B] border-t border-white/5 pt-16 pb-10 px-6">

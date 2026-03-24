@@ -11,6 +11,30 @@ export const landingContent = {
             demo: "Ver demo",
             cta: "Reservar cupo →",
         },
+        hipaa: {
+            title: "Cumplimiento HIPAA",
+            intro:
+                "La Ley de Portabilidad y Responsabilidad de Seguros de Salud (HIPAA) establece estándares de seguridad y privacidad para proteger la información médica de los pacientes. Toda organización sanitaria que maneje datos clínicos debe cumplir con estas regulaciones.",
+            cards: [
+                {
+                    title: "Privacidad del paciente",
+                    body: "HIPAA garantiza que la información médica personal esté protegida contra accesos no autorizados. Las organizaciones deben implementar políticas claras para el manejo de datos sensibles.",
+                },
+                {
+                    title: "Seguridad de la información",
+                    body: "Se requieren medidas técnicas como encriptación AES-256, controles de acceso y monitoreo continuo para asegurar que los datos clínicos estén protegidos en tránsito y en reposo.",
+                },
+                {
+                    title: "Responsabilidad organizacional",
+                    body: "Las instituciones sanitarias deben capacitar a su personal y firmar acuerdos de confidencialidad (BAA) con proveedores tecnológicos que procesen información médica.",
+                },
+                {
+                    title: "Cumplimiento continuo",
+                    body: "HIPAA no es un requisito único, sino un proceso constante de auditoría, actualización de protocolos y mejora en la protección de datos de salud.",
+                },
+            ],
+            cta: "Más información sobre HIPAA →",
+        },
         modal: {
             fields: {
                 name: {
@@ -462,6 +486,30 @@ export const landingContent = {
             links: ["Product", "How it works", "Pricing", "HIPAA"],
             demo: "View demo",
             cta: "Book a slot →",
+        },
+        hipaa: {
+            title: "HIPAA Compliance",
+            intro:
+                "The Health Insurance Portability and Accountability Act (HIPAA) sets security and privacy standards to protect patients' medical information. Every healthcare organization handling clinical data must comply with these regulations.",
+            cards: [
+                {
+                    title: "Patient Privacy",
+                    body: "HIPAA ensures that personal medical information is protected against unauthorized access. Organizations must implement clear policies for handling sensitive data.",
+                },
+                {
+                    title: "Information Security",
+                    body: "Technical measures such as AES-256 encryption, access controls, and continuous monitoring are required to keep clinical data secure both in transit and at rest.",
+                },
+                {
+                    title: "Organizational Responsibility",
+                    body: "Healthcare institutions must train their staff and sign confidentiality agreements (BAA) with technology providers that process medical information.",
+                },
+                {
+                    title: "Continuous Compliance",
+                    body: "HIPAA is not a one-time requirement but an ongoing process of auditing, updating protocols, and improving health data protection.",
+                },
+            ],
+            cta: "Learn more about HIPAA →",
         },
         modal: {
             fields: {
