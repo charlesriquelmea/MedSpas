@@ -1000,7 +1000,10 @@ export default function Page() {
                     <span className="text-[#4B5563] text-sm">{t.pricing.opLabel}</span>
                     <div className="flex items-baseline gap-2 mt-1">
                       <span className="font-serif italic text-5xl text-[#00D2AA]">{t.pricing.opPrice}</span>
+                      <div className="flex flex-col">
                       <span className="text-[#4B5563] text-sm">{t.pricing.opSub}</span>
+                      <span className="text-[#4B5563] text-sm">{t.pricing.opSub2}</span>
+                      </div>
                     </div>
                   </div>
 
