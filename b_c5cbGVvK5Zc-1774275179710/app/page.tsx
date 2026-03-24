@@ -100,7 +100,14 @@ export default function Page() {
   const [modalOpen, setModalOpen] = useState(false)
   const [step, setStep] = useState(0)
   const [direction, setDirection] = useState(1)
-  const [answers, setAnswers] = useState<Record<string, string>>({})
+
+  // Form data for the modal
+  const [formData, setFormData] = useState({
+    name: "",
+    business: "",
+    phone: "",
+    email: "",
+  })
 
   // Typewriter
   const [phraseIndex, setPhraseIndex] = useState(0)
@@ -111,8 +118,11 @@ export default function Page() {
   // FAQ
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  // Focused fields for floating labels
-  const [focusedField, setFocusedField] = useState<string | null>(null)
+  // TOTAL_STEPS: step 0 = welcome, steps 1–4 = form fields, step 5 = success
+  const TOTAL_STEPS = 6
+
+  const isLastStep = step === TOTAL_STEPS - 1
+  const isWelcome = step === 0
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -157,11 +167,11 @@ export default function Page() {
   }, [lang])
 
   // Modal navigation
-  const TOTAL_STEPS = t.modal.steps.length + 2 // welcome + steps + success
   const goNext = useCallback(() => {
     setDirection(1)
     setStep((s) => Math.min(s + 1, TOTAL_STEPS - 1))
   }, [TOTAL_STEPS])
+
   const goPrev = useCallback(() => {
     setDirection(-1)
     setStep((s) => Math.max(s - 1, 0))
@@ -170,42 +180,40 @@ export default function Page() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!modalOpen) return
-      if (e.key === "Enter") goNext()
       if (e.key === "Escape") setModalOpen(false)
     }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
-  }, [modalOpen, step, goNext])
+  }, [modalOpen])
 
-  const slideVariants = {
-    enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 48 : -48 }),
-    center: { opacity: 1, x: 0 },
-    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48 }),
-  }
-
-  function renderModalStep(s: number) {
-    // Welcome
+  // ─── RENDER MODAL STEP ────────────────────────────────────────────────────
+  const renderModalStep = (s: number) => {
+    // step 0: Welcome screen
     if (s === 0) {
       return (
         <div className="text-center flex flex-col items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-[#00D2AA]/15 border border-[#00D2AA]/30 flex items-center justify-center mx-auto">
             <Zap size={28} className="text-[#00D2AA]" />
           </div>
-          <p className="font-serif italic text-2xl text-[#EFF6FF] leading-snug">{t.modal.welcome.title}</p>
-          <p className="text-sm text-[#94A3B8] mt-1">{t.modal.welcome.sub}</p>
+          <p className="font-serif italic text-2xl text-[#EFF6FF] leading-snug">
+            {t.modal?.welcome?.title ?? "¡Hablemos de tu negocio!"}
+          </p>
+          <p className="text-sm text-[#94A3B8] mt-1">
+            {t.modal?.welcome?.sub ?? "Solo 4 preguntas rápidas para empezar."}
+          </p>
           <motion.button
             whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(0,210,170,0.25)" }}
             whileTap={{ scale: 0.97 }}
             onClick={goNext}
             className="mt-4 w-full bg-[#00D2AA] text-[#06080B] font-semibold text-base rounded-xl py-3.5 cursor-pointer"
           >
-            {t.modal.welcome.cta}
+            {t.modal?.welcome?.cta ?? "Comenzar →"}
           </motion.button>
         </div>
       )
     }
 
-    // Success
+    // step 5: Success screen
     if (s === TOTAL_STEPS - 1) {
       return (
         <div className="flex flex-col items-center text-center gap-2">
@@ -218,118 +226,66 @@ export default function Page() {
               <Check size={32} className="text-[#00D2AA]" />
             </div>
           </motion.div>
-          <p className="font-serif italic text-2xl text-[#EFF6FF] mt-6">{t.modal.success.title}</p>
-          <p className="text-sm text-[#94A3B8] mt-2">{t.modal.success.sub}</p>
+          <p className="font-serif italic text-2xl text-[#EFF6FF] mt-6">
+            {t.modal?.success?.title ?? "¡Listo! Nos ponemos en contacto pronto."}
+          </p>
+          <p className="text-sm text-[#94A3B8] mt-2">
+            {t.modal?.success?.sub ?? "Revisaremos tu información y te contactaremos en menos de 24 h."}
+          </p>
           <div className="w-full bg-white/2 border border-white/5 rounded-xl p-4 mt-6 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-left">
-            {Object.entries(t.modal.success.summaryLabels).map(([k, label]) => (
-              answers[k] ? (
-                <div key={k} className="contents">
-                  <span className="text-[#4B5563]">{label}</span>
-                  <span className="text-[#EFF6FF] truncate">{answers[k]}</span>
-                </div>
-              ) : null
-            ))}
+            {formData.name && <><span className="text-[#4B5563]">Nombre</span>   <span className="text-[#EFF6FF] truncate">{formData.name}</span></>}
+            {formData.business && <><span className="text-[#4B5563]">Empresa</span>  <span className="text-[#EFF6FF] truncate">{formData.business}</span></>}
+            {formData.phone && <><span className="text-[#4B5563]">Teléfono</span> <span className="text-[#EFF6FF] truncate">{formData.phone}</span></>}
+            {formData.email && <><span className="text-[#4B5563]">Email</span>    <span className="text-[#EFF6FF] truncate">{formData.email}</span></>}
           </div>
           <button
             onClick={() => { setModalOpen(false); setStep(0) }}
             className="w-full mt-4 border border-white/10 text-[#94A3B8] hover:text-[#EFF6FF] rounded-xl py-3 text-sm transition-colors cursor-pointer"
           >
-            {t.modal.success.close}
+            {t.modal?.success?.close ?? "Cerrar"}
           </button>
         </div>
       )
     }
 
-    // Actual steps (s 1 to TOTAL_STEPS-2)
-    const stepData = t.modal.steps[s - 1]
+    // steps 1–4: form fields
+    // Each field has a floating-label style consistent with the dark theme
+    const fieldStep = s - 1 // 0-indexed: 0=name, 1=business, 2=phone, 3=email
 
-    if (!stepData) return null
+    /*     const labels = ["Nombre", "Empresa", "Teléfono", "Email"]
+        const types  = ["text",   "text",    "tel",      "email"]
+        const keys   = ["name",   "business","phone",    "email"] as const
+        const hints  = [
+          "¿Cómo te llamas?",
+          "¿Cuál es el nombre de tu negocio?",
+          "¿Cuál es tu número de teléfono?",
+          "¿Cuál es tu correo electrónico?",
+        ] */
+    const fieldKeys = ["name", "business", "phone", "email"] as const
+    const key = fieldKeys[fieldStep]
+    const field = t.modal.fields[key]
 
-    // Input fields step
-    if ("fields" in stepData) {
-      return (
-        <div>
-          <p className="text-[#4B5563] text-xs font-mono uppercase tracking-widest mb-1">{`${s} →`}</p>
-          <p className="font-medium text-lg text-[#EFF6FF] mb-6">{stepData.question}</p>
-          <motion.div variants={fadeUpStagger} initial="hidden" animate="show" className="flex flex-col gap-6">
-            {stepData.fields!.map((field, i) => {
-              const val = answers[field.key] || ""
-              const isFocused = focusedField === field.key
-              return (
-                <motion.div key={field.key} variants={fadeUp} className="relative">
-                  <motion.label
-                    animate={isFocused || val ? { top: "-16px", fontSize: "10px", color: "#00D2AA" } : { top: "12px", fontSize: "14px", color: "#4B5563" }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute left-0 pointer-events-none"
-                    style={{ lineHeight: 1 }}
-                  >
-                    {field.placeholder}
-                  </motion.label>
-                  <input
-                    type={field.type}
-                    value={val}
-                    onChange={(e) => setAnswers((a) => ({ ...a, [field.key]: e.target.value }))}
-                    onFocus={() => setFocusedField(field.key)}
-                    onBlur={() => setFocusedField(null)}
-                    className="w-full bg-transparent border-b border-white/10 py-3 text-[#EFF6FF] text-base focus:outline-none focus:border-[#00D2AA]/50 transition-colors"
-                    autoFocus={i === 0}
-                  />
-                </motion.div>
-              )
-            })}
-          </motion.div>
+    return (
+      <div>
+        <p className="text-[#4B5563] text-xs font-mono uppercase tracking-widest mb-1">
+          {`0${s} →`}
+        </p>
+        <p className="font-medium text-lg text-[#EFF6FF] mb-6">{field.hint}</p>
+        <div className="relative">
+          <input
+            key={key}
+            type={field.type}
+            placeholder={field.label}
+            value={formData[key]}
+            onChange={(e) => setFormData({ ...formData, [key]: e.target.value })}
+            onKeyDown={(e) => { if (e.key === "Enter") goNext() }}
+            autoFocus
+            className="w-full bg-transparent border-b border-white/10 py-3 text-[#EFF6FF] text-base focus:outline-none focus:border-[#00D2AA]/50 transition-colors placeholder:text-[#4B5563]"
+          />
         </div>
-      )
-    }
-
-    // Single choice step
-    if ("options" in stepData) {
-      return (
-        <div>
-          <p className="text-[#4B5563] text-xs font-mono uppercase tracking-widest mb-1">{`${s} →`}</p>
-          <p className="font-medium text-lg text-[#EFF6FF] mb-2">{stepData.question}</p>
-          <p className="text-xs text-[#4B5563] mb-5">{stepData.hint}</p>
-          <div className="flex flex-col gap-2">
-            {stepData.options!.map((opt) => {
-              const selected = answers[stepData.key!] === opt
-              return (
-                <motion.button
-                  key={opt}
-                  whileHover={{ x: 4 }}
-                  onClick={() => {
-                    setAnswers((a) => ({ ...a, [stepData.key!]: opt }))
-                    setTimeout(goNext, 300)
-                  }}
-                  className={`w-full text-left border rounded-xl px-5 py-3.5 text-sm text-[#EFF6FF] transition-all flex items-center justify-between cursor-pointer ${selected
-                    ? "border-[#00D2AA]/40 bg-[#00D2AA]/8"
-                    : "border-white/8 hover:bg-[#00D2AA]/5"
-                    }`}
-                >
-                  <span>{opt}</span>
-                  <AnimatePresence>
-                    {selected && (
-                      <motion.span
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        exit={{ scale: 0 }}
-                      >
-                        <Check size={16} className="text-[#00D2AA]" />
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </motion.button>
-              )
-            })}
-          </div>
-        </div>
-      )
-    }
-
-    return null
+      </div>
+    )
   }
-
-  const isLastStep = step === TOTAL_STEPS - 1
-  const isWelcome = step === 0
 
   return (
     <>
@@ -374,7 +330,10 @@ export default function Page() {
                       transition={{ duration: 0.4, ease: EASE }}
                     />
                   </div>
-                  <button onClick={() => setModalOpen(false)} className="shrink-0 cursor-pointer">
+                  <button
+                    onClick={() => setModalOpen(false)}
+                    className="shrink-0 cursor-pointer"
+                  >
                     <X size={18} className="text-[#4B5563] hover:text-[#EFF6FF] transition-colors" />
                   </button>
                 </div>
@@ -385,7 +344,11 @@ export default function Page() {
                     <motion.div
                       key={step}
                       custom={direction}
-                      variants={slideVariants}
+                      variants={{
+                        enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 48 : -48 }),
+                        center: { opacity: 1, x: 0 },
+                        exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -48 : 48 }),
+                      }}
                       initial="enter"
                       animate="center"
                       exit="exit"
@@ -396,31 +359,55 @@ export default function Page() {
                   </AnimatePresence>
                 </div>
 
-                {/* Bottom bar */}
-                {!isLastStep && (
+                {/* Bottom bar — hidden on welcome and success */}
+                {!isLastStep && !isWelcome && (
                   <div className="px-8 pb-8 flex justify-between items-center">
                     <div>
-                      {step > 0 && !isWelcome && (
+                      {step > 1 && (
                         <button
                           onClick={goPrev}
                           className="text-sm text-[#4B5563] hover:text-[#EFF6FF] transition-colors flex items-center gap-1 cursor-pointer"
                         >
                           <ChevronDown className="rotate-90" size={14} />
-                          {t.modal.back}
+                          {t.modal?.back ?? "Volver"}
                         </button>
                       )}
                     </div>
-                    {!isWelcome && (
-                      <motion.button
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        onClick={goNext}
-                        className="bg-[#00D2AA] text-[#06080B] font-semibold text-sm rounded-lg px-5 py-2.5 cursor-pointer flex items-center gap-2"
-                      >
-                        {step === TOTAL_STEPS - 2 ? t.modal.submit : t.modal.next}
-                        <ArrowRight size={14} />
-                      </motion.button>
-                    )}
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={async () => {
+                        if (step === TOTAL_STEPS - 2) {
+                          // Last form step → send email then go to success
+                          try {
+                            console.log("FormData a enviar:", formData)
+                            const res = await fetch("/api/send-email", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify(formData),
+                            })
+                            const data = await res.json()
+                            if (data.success) {
+                              goNext()
+                            } else {
+                              console.error("Error enviando email:", data.error)
+                              goNext() // still advance to success UI
+                            }
+                          } catch (err) {
+                            console.error("Error general:", err)
+                            goNext()
+                          }
+                        } else {
+                          goNext()
+                        }
+                      }}
+                      className="bg-[#00D2AA] text-[#06080B] font-semibold text-sm rounded-lg px-5 py-2.5 cursor-pointer flex items-center gap-2"
+                    >
+                      {step === TOTAL_STEPS - 2
+                        ? (t.modal?.submit ?? "Enviar")
+                        : (t.modal?.next ?? "Siguiente")}
+                      <ArrowRight size={14} />
+                    </motion.button>
                   </div>
                 )}
               </motion.div>
@@ -448,14 +435,16 @@ export default function Page() {
           {/* Center links */}
           <div className="hidden md:flex items-center gap-7">
             {t.nav.links.map((link, i) => {
-              const ids = ["product", "how-it-works", "pricing", "hipaa"];
+              const ids = ["product", "how-it-works", "pricing", "hipaa"]
               return (
-                <a key={link}
+                <a
+                  key={link}
                   href={`#${ids[i]}`}
-                  className="text-sm text-[#94A3B8] hover:text-[#EFF6FF] transition-colors cursor-pointer">
+                  className="text-sm text-[#94A3B8] hover:text-[#EFF6FF] transition-colors cursor-pointer"
+                >
                   {link}
                 </a>
-              );
+              )
             })}
           </div>
 
@@ -772,8 +761,7 @@ export default function Page() {
         </section>
 
         {/* ── HOW IT WORKS ── */}
-        <section id="product">...</section>
-        <section className="py-24 px-6 bg-[#0C1018]/40">
+        <section id="product" className="py-24 px-6 bg-[#0C1018]/40">
           <div className="max-w-6xl mx-auto">
             <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} className="text-center mb-14">
               <h2 className="font-bold text-[clamp(28px,4vw,42px)] tracking-[-0.03em] text-[#EFF6FF]">{t.how.title}</h2>
@@ -817,8 +805,9 @@ export default function Page() {
         </section>
 
         {/* ── CRM DEMO SECTION ── */}
-        <section id="how-it-works">...</section>
-        <CRMDemoSection lang={lang} />
+        <section id="how-it-works">
+          <CRMDemoSection lang={lang} />
+        </section>
 
         {/* ── BENTO GRID ── */}
         <section className="py-24 px-6">
@@ -831,12 +820,8 @@ export default function Page() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
               {/* Card A */}
               <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
+                whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 className="lg:col-span-7 bg-linear-to-br from-[#0C1018] to-[#0D1520] border border-white/5 hover:border-[#00D2AA]/20 rounded-xl p-8 transition-colors"
               >
                 <div className="flex gap-2 mb-6">
@@ -857,12 +842,8 @@ export default function Page() {
 
               {/* Card B */}
               <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
+                whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 className="lg:col-span-5 bg-[#0C1018] border border-white/5 hover:border-[#00D2AA]/20 rounded-xl p-8 transition-colors"
               >
                 <Database size={24} className="text-[#00D2AA] mb-4" />
@@ -872,12 +853,8 @@ export default function Page() {
 
               {/* Card C */}
               <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
+                whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 className="lg:col-span-5 bg-[#0C1018] border border-white/5 hover:border-[#00D2AA]/20 rounded-xl p-8 transition-colors"
               >
                 <GitMerge size={24} className="text-[#00D2AA] mb-4" />
@@ -891,12 +868,8 @@ export default function Page() {
                 return (
                   <motion.div
                     key={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-80px" }}
-                    whileHover={{ y: -4 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
+                    whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     className="lg:col-span-4 bg-[#F59E0B]/5 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 rounded-xl p-6 transition-colors"
                   >
                     <span className="bg-[#F59E0B]/15 text-[#F59E0B] text-xs px-2 py-0.5 rounded-full font-medium">{bonus.badge}</span>
@@ -908,12 +881,9 @@ export default function Page() {
                 )
               })}
 
-              {/* Setup + Includes row */}
+              {/* Setup */}
               <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
+                variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
                 className="lg:col-span-6 bg-[#0C1018] border border-white/5 hover:border-[#00D2AA]/20 rounded-xl p-8 transition-colors"
               >
                 <div className="flex items-center gap-2 mb-5">
@@ -929,19 +899,12 @@ export default function Page() {
                       <span className="text-sm text-[#94A3B8] leading-relaxed">{item}</span>
                     </li>
                   ))}
-
-                  {/* Resume setup */}
                   {t.bento.resumenSetUp && (
                     <li className="flex flex-col gap-2 bg-[#0C1018] border border-white/10 rounded-lg p-4">
-                      <span className="text-sm font-semibold text-[#00D2AA]">
-                        {t.bento.resumenSetUp.title}
-                      </span>
+                      <span className="text-sm font-semibold text-[#00D2AA]">{t.bento.resumenSetUp.title}</span>
                       <div className="flex flex-col gap-1 mt-2">
                         {t.bento.resumenSetUp.items.map((line, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-start gap-2 text-sm text-[#94A3B8] leading-relaxed"
-                          >
+                          <div key={idx} className="flex items-start gap-2 text-sm text-[#94A3B8] leading-relaxed">
                             <ArrowRight size={14} className="text-[#00D2AA] shrink-0 mt-0.5" />
                             <span>{line.replace(/^-/, "").trim()}</span>
                           </div>
@@ -952,11 +915,9 @@ export default function Page() {
                 </ul>
               </motion.div>
 
+              {/* Includes */}
               <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
+                variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
                 className="lg:col-span-6 bg-[#0C1018] border border-white/5 hover:border-[#00D2AA]/20 rounded-xl p-8 transition-colors"
               >
                 <div className="flex items-center gap-2 mb-5">
@@ -972,18 +933,12 @@ export default function Page() {
                       <span className="text-sm text-[#94A3B8] leading-relaxed">{item}</span>
                     </li>
                   ))}
-
                   {t.bento.resumenPlan && (
                     <li className="flex flex-col gap-2 bg-[#0C1018] border border-white/10 rounded-lg p-4">
-                      <span className="text-sm font-semibold text-[#00D2AA]">
-                        {t.bento.resumenPlan.title}
-                      </span>
+                      <span className="text-sm font-semibold text-[#00D2AA]">{t.bento.resumenPlan.title}</span>
                       <div className="flex flex-col gap-1 mt-2">
                         {t.bento.resumenPlan.items.map((line, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-start gap-2 text-sm text-[#94A3B8] leading-relaxed"
-                          >
+                          <div key={idx} className="flex items-start gap-2 text-sm text-[#94A3B8] leading-relaxed">
                             <ArrowRight size={14} className="text-[#00D2AA] shrink-0 mt-0.5" />
                             <span>{line.replace(/^-/, "").trim()}</span>
                           </div>
@@ -991,16 +946,14 @@ export default function Page() {
                       </div>
                     </li>
                   )}
-
                 </ul>
               </motion.div>
             </div>
           </div>
         </section>
 
-        <section id="pricing">...</section>
         {/* ── PRICING ── */}
-        <section className="py-24 px-6 bg-[#0C1018]/40">
+        <section id="pricing" className="py-24 px-6 bg-[#0C1018]/40">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
               {/* Left: anchor costs */}
@@ -1026,12 +979,12 @@ export default function Page() {
               {/* Right: offer card */}
               <motion.div variants={scaleIn} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
                 <div className="relative bg-[#0C1018] border border-white/8 rounded-2xl p-8 overflow-hidden">
-                  {/* Teal glow */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#00D2AA]/6 blur-[80px] rounded-full pointer-events-none" />
 
                   <span className="bg-[#00D2AA]/10 text-[#00D2AA] rounded-full px-3 py-1 text-xs uppercase tracking-widest">{t.pricing.badge}</span>
 
-                  <div className="mt-6 mb-2">
+                  <div className="mt-6 flex flex-col mb-2">
+                    <span>{t.pricing.limit}</span>
                     <span className="text-[#4B5563] text-sm">{t.pricing.setupLabel}</span>
                     <div className="flex items-baseline gap-2 mt-1">
                       <span className="font-serif italic text-6xl text-[#EFF6FF]">{t.pricing.setupPrice}</span>
@@ -1061,7 +1014,6 @@ export default function Page() {
                     </div>
                   </div>
 
-                  {/* Checklist */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5 mb-6">
                     {t.pricing.checklist.map((item) => (
                       <div key={item} className="flex items-start gap-2">
@@ -1080,7 +1032,7 @@ export default function Page() {
                     <div className="h-1.5 bg-white/5 rounded-full overflow-hidden mt-2">
                       <motion.div
                         initial={{ width: "0%" }}
-                        whileInView={{ width: "66%" }}
+                        whileInView={{ width: "20%" }}
                         transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
                         viewport={{ once: true }}
                         className="h-full bg-[#F59E0B] rounded-full"
@@ -1094,7 +1046,6 @@ export default function Page() {
                     <p className="text-sm text-[#94A3B8]">{t.pricing.guarantee}</p>
                   </div>
 
-                  {/* CTA */}
                   <motion.button
                     whileHover={{ scale: 1.02, boxShadow: "0 0 50px rgba(0,210,170,0.28)" }}
                     whileTap={{ scale: 0.98 }}
@@ -1114,14 +1065,10 @@ export default function Page() {
         <section className="py-20 px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}
               className="relative bg-linear-to-br from-[#0D1520] to-[#0C1018] border border-[#6366F1]/25 rounded-2xl p-8 md:p-12 overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-80 h-80 bg-[#6366F1]/6 blur-[100px] rounded-full pointer-events-none" />
-
               <div className="relative">
                 <div className="flex flex-wrap items-center gap-3 mb-6">
                   <span className="bg-[#6366F1]/15 text-[#818CF8] text-xs px-3 py-1 rounded-full uppercase tracking-widest font-medium">
@@ -1129,7 +1076,6 @@ export default function Page() {
                   </span>
                   <span className="text-xs text-[#4B5563]">{t.voiceAddon.separatePrice}</span>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                   <div>
                     <div className="flex items-center gap-3 mb-3">
@@ -1148,7 +1094,6 @@ export default function Page() {
                       ))}
                     </ul>
                   </div>
-
                   <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-white/3 border border-white/6 rounded-xl p-5">
@@ -1255,7 +1200,6 @@ export default function Page() {
         <footer className="bg-[#06080B] border-t border-white/5 pt-16 pb-10 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-              {/* Brand */}
               <div>
                 <div className="flex items-center gap-2.5 mb-3">
                   <svg width="22" height="22" viewBox="0 0 26 26" fill="none">

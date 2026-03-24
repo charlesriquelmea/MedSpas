@@ -11,6 +11,43 @@ export const landingContent = {
             demo: "Ver demo",
             cta: "Reservar cupo →",
         },
+        modal: {
+            fields: {
+                name: {
+                    label: "Nombre",
+                    type: "text",
+                    hint: "¿Cómo te llamas?",
+                },
+                business: {
+                    label: "Empresa",
+                    type: "text",
+                    hint: "¿Cuál es el nombre de tu negocio?",
+                },
+                phone: {
+                    label: "Teléfono",
+                    type: "tel",
+                    hint: "¿Cuál es tu número de teléfono?",
+                },
+                email: {
+                    label: "Email",
+                    type: "email",
+                    hint: "¿Cuál es tu correo electrónico?",
+                },
+            },
+            back: "Volver",
+            next: "Siguiente",
+            submit: "Enviar",
+            welcome: {
+                title: "¡Hablemos de tu negocio!",
+                sub: "Solo 4 preguntas rápidas para empezar.",
+                cta: "Comenzar →",
+            },
+            success: {
+                title: "¡Listo! Nos ponemos en contacto pronto.",
+                sub: "Revisaremos tu información y te contactaremos en menos de 24 h.",
+                close: "Cerrar",
+            },
+        },
         hero: {
             badge: "Ahora disponible en NY & NJ · HIPAA-Compliant · Quedan 5 cupos",
             line1: "Mientras tu recepcionista duerme,",
@@ -31,7 +68,7 @@ export const landingContent = {
                 "BAA Firmado",
                 "<800ms Latencia",
             ],
-            chatHeader: "receptor.ai · WhatsApp Business",
+            chatHeader: "AI Receptionist for Med Spas *Chat Web o WhatsApp Business / Instagram DM",
             online: "En línea",
             msgs: [
                 { side: "user", text: "Precio de relleno de labios? 💉", time: "11:47 PM" },
@@ -144,6 +181,7 @@ export const landingContent = {
             totalLabel: "Costo de no actuar:",
             totalValue: "$7,000–11,000/mes",
             badge: "Precio de Lanzamiento",
+            limit: "Precio de Lanzamiento hasta el 23 de Mayo 2026",
             setupLabel: "Setup único:",
             setupPrice: "$1,690",
             setupSub: "usd · pago único · hasta en 2 cuotas (50% al comenzar, 50% al entregar)",
@@ -165,7 +203,7 @@ export const landingContent = {
             scarcityTaken: "1 de 6 tomados",
             guarantee: "Garantía de 60 días: Si no efectivizamos 15 citas, devolvemos hasta el 50% del set up $1,690.",
             cta: "Reservar mi cupo de onboarding →",
-            ctaSub: "Sin suscripción. Sin riesgo. Activo en 72 horas.",
+            ctaSub: "Sin suscripción. Sin riesgo. Activo entre 4 a 5 dias hábiles.",
         },
         social: {
             title: "Lo que dicen los MedSpas que ya lo usan",
@@ -192,53 +230,53 @@ export const landingContent = {
             primary: "Activar mi SDR Clínico →",
             ghost: "Hablar con el equipo",
         },
-        modal: {
-            stepIndicator: (s: number, total: number) => `0${s + 1} / 0${total}`,
-            welcome: {
-                title: "¡Hola! Vamos a activar tu SDR Clínico.",
-                sub: "Toma menos de 2 minutos. Configuramos todo nosotros.",
-                cta: "Empezar →",
-            },
-            steps: [
-                {
-                    question: "¿Qué sistema usas actualmente en tu MedSpa?",
-                    hint: "Presiona Enter para continuar",
-                    options: ["GoHighLevel", "Boulevard", "Jane App", "Mindbody", "Ninguno / Otro"],
-                    key: "crm",
-                },
-                {
-                    question: "¿Cuántos leads o consultas recibes por mes?",
-                    hint: "Presiona Enter para continuar",
-                    options: ["Menos de 50", "50–150 leads", "150–500 leads", "Más de 500 leads"],
-                    key: "volume",
-                },
-                {
-                    question: "¿Cuál es tu mayor problema hoy?",
-                    hint: "Presiona Enter para continuar",
-                    options: ["Leads sin responder fuera de horario", "Alta tasa de no-shows", "Staff sobrecargado con admin", "No sé de dónde vienen mis pacientes"],
-                    key: "pain",
-                },
-                {
-                    question: "Casi listo. ¿A dónde te enviamos la propuesta?",
-                    hint: "Responde aquí...",
-                    fields: [
-                        { placeholder: "Tu nombre", type: "text", key: "name" },
-                        { placeholder: "Nombre de tu MedSpa o clínica", type: "text", key: "business" },
-                        { placeholder: "WhatsApp (+1...)", type: "tel", key: "phone" },
-                        { placeholder: "tu@email.com", type: "email", key: "email" },
+        /*         modal: {
+                    stepIndicator: (s: number, total: number) => `0${s + 1} / 0${total}`,
+                    welcome: {
+                        title: "¡Hola! Vamos a activar tu SDR Clínico.",
+                        sub: "Toma menos de 2 minutos. Configuramos todo nosotros.",
+                        cta: "Empezar →",
+                    },
+                    steps: [
+                        {
+                            question: "¿Qué sistema usas actualmente en tu MedSpa?",
+                            hint: "Presiona Enter para continuar",
+                            options: ["GoHighLevel", "Boulevard", "Jane App", "Mindbody", "Ninguno / Otro"],
+                            key: "crm",
+                        },
+                        {
+                            question: "¿Cuántos leads o consultas recibes por mes?",
+                            hint: "Presiona Enter para continuar",
+                            options: ["Menos de 50", "50–150 leads", "150–500 leads", "Más de 500 leads"],
+                            key: "volume",
+                        },
+                        {
+                            question: "¿Cuál es tu mayor problema hoy?",
+                            hint: "Presiona Enter para continuar",
+                            options: ["Leads sin responder fuera de horario", "Alta tasa de no-shows", "Staff sobrecargado con admin", "No sé de dónde vienen mis pacientes"],
+                            key: "pain",
+                        },
+                        {
+                            question: "Casi listo. ¿A dónde te enviamos la propuesta?",
+                            hint: "Responde aquí...",
+                            fields: [
+                                { placeholder: "Tu nombre", type: "text", key: "name" },
+                                { placeholder: "Nombre de tu MedSpa o clínica", type: "text", key: "business" },
+                                { placeholder: "WhatsApp (+1...)", type: "tel", key: "phone" },
+                                { placeholder: "tu@email.com", type: "email", key: "email" },
+                            ],
+                        },
                     ],
-                },
-            ],
-            success: {
-                title: "¡Solicitud recibida!",
-                sub: "Nuestro equipo se contacta en menos de 2 horas por WhatsApp.",
-                summaryLabels: { crm: "CRM:", volume: "Leads/mes:", pain: "Problema:" },
-                close: "Cerrar",
-            },
-            back: "Atrás",
-            next: "Continuar",
-            submit: "Enviar solicitud ✓",
-        },
+                    success: {
+                        title: "¡Solicitud recibida!",
+                        sub: "Nuestro equipo se contacta en menos de 2 horas por WhatsApp.",
+                        summaryLabels: { crm: "CRM:", volume: "Leads/mes:", pain: "Problema:" },
+                        close: "Cerrar",
+                    },
+                    back: "Atrás",
+                    next: "Continuar",
+                    submit: "Enviar solicitud ✓",
+                }, */
         footer: {
             tagline: "SDR Clínico Autónomo para MedSpas",
             compliance: ["HIPAA Compliant", "BAA Firmado", "SOC 2 Eligible"],
@@ -255,14 +293,17 @@ export const landingContent = {
             title: "Ve exactamente lo que hace el agente",
             subtitle: "Desde el primer DM hasta el depósito cobrado — todo visible, todo automático, todo en tu CRM.",
             flowCaption: "Todo esto ocurre en menos de 10 minutos · Sin intervención humana",
-            crmLabel: "receptor.ai CRM",
+            crmLabel: "AI Receptionist for Med Spas",
             tabs: [
                 { id: "pipeline", label: "Pipeline" },
                 { id: "inbox", label: "Bandeja de IA" },
                 { id: "activity", label: "Actividad" },
             ],
             flowNodes: [
-                { label: "Instagram Ad" },
+                //TODO: tienen que ir las 3 ui en la misma card - Agregar al ingles
+                {
+                    labels: ["Web Chat", "WhatsApp Business", "Instagram Ad"]
+                },
                 { label: "AI Responde" },
                 { label: "Lead Calificado" },
                 { label: "Cita + Depósito" },
@@ -422,6 +463,43 @@ export const landingContent = {
             demo: "View demo",
             cta: "Book a slot →",
         },
+        modal: {
+            fields: {
+                name: {
+                    label: "Name",
+                    type: "text",
+                    hint: "What's your name?",
+                },
+                business: {
+                    label: "Company",
+                    type: "text",
+                    hint: "What's your business name?",
+                },
+                phone: {
+                    label: "Phone",
+                    type: "tel",
+                    hint: "What's your phone number?",
+                },
+                email: {
+                    label: "Email",
+                    type: "email",
+                    hint: "What's your email address?",
+                },
+            },
+            back: "Back",
+            next: "Next",
+            submit: "Submit",
+            welcome: {
+                title: "Let's talk about your business!",
+                sub: "Just 4 quick questions to get started.",
+                cta: "Get started →",
+            },
+            success: {
+                title: "Done! We'll be in touch soon.",
+                sub: "We will review your information and contact you within 24 hours.",
+                close: "Close",
+            }
+        },
         hero: {
             badge: "Now available in NY & NJ · HIPAA-Compliant · 5 spots left",
             line1: "While your receptionist sleeps,",
@@ -442,7 +520,7 @@ export const landingContent = {
                 "BAA Signed",
                 "<800ms Latency",
             ],
-            chatHeader: "receptor.ai · WhatsApp Business",
+            chatHeader: "AI Receptionist for Med Spas *Chat Web o WhatsApp Business / Instagram DM",
             online: "Online",
             msgs: [
                 { side: "user", text: "Price for lip filler? 💉", time: "11:47 PM" },
@@ -552,6 +630,7 @@ export const landingContent = {
             totalLabel: "Cost of inaction:",
             totalValue: "$7,000–11,000/mo",
             badge: "Launch Price",
+            limit: "Launch Price until May 23, 2026",
             setupLabel: "One-time setup:",
             setupPrice: "$1,690",
             setupSub: "usd · one-time · up to 2 installments (50% to start, 50% on delivery)",
@@ -573,7 +652,7 @@ export const landingContent = {
             scarcityTaken: "1 of 6 taken",
             guarantee: "60-day guarantee: If we fail to make 15 appointments, we will refund up to 50% of the setup fee of $1,690.",
             cta: "Reserve my onboarding slot →",
-            ctaSub: "No subscription. No risk. Live in 72 hours.",
+            ctaSub: "No subscription. No risk. Active between 4 to 5 business days.",
         },
         social: {
             title: "What MedSpas already using it say",
@@ -600,53 +679,53 @@ export const landingContent = {
             primary: "Activate my Clinical SDR →",
             ghost: "Talk to the team",
         },
-        modal: {
-            stepIndicator: (s: number, total: number) => `0${s + 1} / 0${total}`,
-            welcome: {
-                title: "Hi! Let's activate your Clinical SDR.",
-                sub: "Takes less than 2 minutes. We configure everything.",
-                cta: "Get started →",
-            },
-            steps: [
-                {
-                    question: "What system do you currently use in your MedSpa?",
-                    hint: "Press Enter to continue",
-                    options: ["GoHighLevel", "Boulevard", "Jane App", "Mindbody", "None / Other"],
-                    key: "crm",
-                },
-                {
-                    question: "How many leads or inquiries do you receive per month?",
-                    hint: "Press Enter to continue",
-                    options: ["Less than 50", "50–150 leads", "150–500 leads", "More than 500 leads"],
-                    key: "volume",
-                },
-                {
-                    question: "What is your biggest problem today?",
-                    hint: "Press Enter to continue",
-                    options: ["Unanswered leads after hours", "High no-show rate", "Staff overwhelmed with admin", "Don't know where my patients come from"],
-                    key: "pain",
-                },
-                {
-                    question: "Almost done. Where should we send the proposal?",
-                    hint: "Type here...",
-                    fields: [
-                        { placeholder: "Your name", type: "text", key: "name" },
-                        { placeholder: "Your MedSpa or clinic name", type: "text", key: "business" },
-                        { placeholder: "WhatsApp (+1...)", type: "tel", key: "phone" },
-                        { placeholder: "you@email.com", type: "email", key: "email" },
+        /*         modal: {
+                    stepIndicator: (s: number, total: number) => `0${s + 1} / 0${total}`,
+                    welcome: {
+                        title: "Hi! Let's activate your Clinical SDR.",
+                        sub: "Takes less than 2 minutes. We configure everything.",
+                        cta: "Get started →",
+                    },
+                    steps: [
+                        {
+                            question: "What system do you currently use in your MedSpa?",
+                            hint: "Press Enter to continue",
+                            options: ["GoHighLevel", "Boulevard", "Jane App", "Mindbody", "None / Other"],
+                            key: "crm",
+                        },
+                        {
+                            question: "How many leads or inquiries do you receive per month?",
+                            hint: "Press Enter to continue",
+                            options: ["Less than 50", "50–150 leads", "150–500 leads", "More than 500 leads"],
+                            key: "volume",
+                        },
+                        {
+                            question: "What is your biggest problem today?",
+                            hint: "Press Enter to continue",
+                            options: ["Unanswered leads after hours", "High no-show rate", "Staff overwhelmed with admin", "Don't know where my patients come from"],
+                            key: "pain",
+                        },
+                        {
+                            question: "Almost done. Where should we send the proposal?",
+                            hint: "Type here...",
+                            fields: [
+                                { placeholder: "Your name", type: "text", key: "name" },
+                                { placeholder: "Your MedSpa or clinic name", type: "text", key: "business" },
+                                { placeholder: "WhatsApp (+1...)", type: "tel", key: "phone" },
+                                { placeholder: "you@email.com", type: "email", key: "email" },
+                            ],
+                        },
                     ],
-                },
-            ],
-            success: {
-                title: "Request received!",
-                sub: "Our team will contact you within 2 hours on WhatsApp.",
-                summaryLabels: { crm: "CRM:", volume: "Leads/mo:", pain: "Problem:" },
-                close: "Close",
-            },
-            back: "Back",
-            next: "Continue",
-            submit: "Submit request ✓",
-        },
+                    success: {
+                        title: "Request received!",
+                        sub: "Our team will contact you within 2 hours on WhatsApp.",
+                        summaryLabels: { crm: "CRM:", volume: "Leads/mo:", pain: "Problem:" },
+                        close: "Close",
+                    },
+                    back: "Back",
+                    next: "Continue",
+                    submit: "Submit request ✓",
+                }, */
         footer: {
             tagline: "Autonomous Clinical SDR for MedSpas",
             compliance: ["HIPAA Compliant", "BAA Signed", "SOC 2 Eligible"],
@@ -663,7 +742,7 @@ export const landingContent = {
             title: "See exactly what the agent does",
             subtitle: "From the first DM to the collected deposit — everything visible, everything automatic, everything in your CRM.",
             flowCaption: "All this happens in less than 10 minutes · No human intervention",
-            crmLabel: "receptor.ai CRM",
+            crmLabel: "AI Receptionist for Med Spas",
             tabs: [
                 { id: "pipeline", label: "Pipeline" },
                 { id: "inbox", label: "AI Inbox" },
