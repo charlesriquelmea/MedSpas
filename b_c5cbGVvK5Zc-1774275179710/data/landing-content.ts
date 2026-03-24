@@ -60,7 +60,7 @@ export const landingContent = {
                 "generando revenue.",
             ],
             sub: "AI Receptionist 2.0 responde en 5 segundos, habla español o inglés, cobra el depósito vía Stripe y sincroniza con GoHighLevel — sin que tu equipo toque nada.",
-            primaryCta: "Activar mi SDR Clínico →",
+            primaryCta: "Activar AI Receptionist for Med Spas →",
             secondaryCta: "Ver cómo funciona",
             badges: [
                 "HIPAA Compliant",
@@ -85,7 +85,7 @@ export const landingContent = {
             { number: 5, suffix: "seg", label: "Tiempo de respuesta al lead", sub: "vs. 4-8 hrs del staff", prefix: "<" },
             { number: 8, suffix: "%", label: "Tasa de no-shows", sub: "vs. 35% promedio", prefix: "<" },
             { number: 800, suffix: "ms", label: "Latencia de voz E2E", sub: "STT → LLM → TTS", prefix: "<" },
-            { number: 0, suffix: "/mes", label: "Suscripción mensual", sub: "Solo pagas por citas efectivizadas", prefix: "$" },
+            /* { number: 0, suffix: "/mes", label: "Suscripción mensual", sub: "Solo pagas por citas efectivizadas", prefix: "$" }, */
         ],
         how: {
             title: "De clic en el ad a depósito cobrado",
@@ -123,7 +123,7 @@ export const landingContent = {
                 title: "1 agente principal con múltiples capacidades (tools). El agente tiene un solo cerebro (LLM) que decide qué herramienta usar según el contexto:",
                 items: [
                     "- Tool de conversación/atención (chat omnicanal)",
-                    "- Tool de RAG: inccrustacion de datos (consulta de protocolos/servicios)",
+                    "- Tool de RAG: incrustacion de datos (consulta de protocolos/servicios)",
                     "- Tool de booking (agendamiento o Appointment Setter)",
                     "- Tool de CRM (registro/actualización)",
                     "- Tool de cobro (Stripe)"
@@ -227,7 +227,7 @@ export const landingContent = {
             eyebrow: "¿Listo para automatizar tu revenue?",
             headline: "Tu agenda no debería depender de cuándo duerme tu recepcionista.",
             sub: "Únete a los MedSpas de NY y NJ que ya tienen su SDR Clínico activo.",
-            primary: "Activar mi SDR Clínico →",
+            primary: "Activar AI Receptionist for Med Spas →",
             ghost: "Hablar con el equipo",
         },
         /*         modal: {
@@ -512,7 +512,7 @@ export const landingContent = {
                 "generating revenue.",
             ],
             sub: "AI Receptionist 2.0 responds in 5 seconds, speaks Spanish or English, collects the deposit via Stripe and syncs with GoHighLevel — without your team touching anything.",
-            primaryCta: "Activate my Clinical SDR →",
+            primaryCta: "Activate AI Receptionist for Med Spas →",
             secondaryCta: "See how it works",
             badges: [
                 "HIPAA Compliant",
@@ -537,7 +537,7 @@ export const landingContent = {
             { number: 5, suffix: "sec", label: "Lead response time", sub: "vs. 4-8 hrs from staff", prefix: "<" },
             { number: 8, suffix: "%", label: "No-show rate", sub: "vs. 35% average", prefix: "<" },
             { number: 800, suffix: "ms", label: "Voice E2E latency", sub: "STT → LLM → TTS", prefix: "<" },
-            { number: 0, suffix: "/mo", label: "Monthly subscription", sub: "Only pay per appointment", prefix: "$" },
+            /* { number: 0, suffix: "/mo", label: "Monthly subscription", sub: "Only pay per appointment", prefix: "$" }, */
         ],
         how: {
             title: "From ad click to deposit collected",
@@ -676,7 +676,7 @@ export const landingContent = {
             eyebrow: "Ready to automate your revenue?",
             headline: "Your schedule shouldn't depend on when your receptionist sleeps.",
             sub: "Join the MedSpas in NY and NJ that already have their Clinical SDR active.",
-            primary: "Activate my Clinical SDR →",
+            primary: "Activate AI Receptionist for Med Spas →",
             ghost: "Talk to the team",
         },
         /*         modal: {

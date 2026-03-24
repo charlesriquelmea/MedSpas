@@ -741,7 +741,8 @@ export default function Page() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+              /* className="grid grid-cols-2 lg:grid-cols-4 gap-6" */ //for 4 cards (stats in langind content)
+              className="grid grid-col-2 lg:grid-cols-3 gap-6"
             >
               {t.stats.map((stat, i) => (
                 <motion.div

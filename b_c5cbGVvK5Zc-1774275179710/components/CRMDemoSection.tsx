@@ -150,8 +150,8 @@ function PipelineView({
         <span className="ml-auto text-[#00D2AA] font-medium shrink-0">{c.pipeline.pipelineSummary}</span>
       </div>
 
-      <div className="overflow-x-auto">
-        <div className="grid grid-cols-4 gap-3 min-w-215">
+      <div className="overflow-x-auto lg:overflow-visible">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 min-w-0">
           {c.pipeline.stages.map((stage) => {
             const STAGE_COLORS: Record<string, { color: string; dot: string }> = {
               nuevo: { color: "#4B5563", dot: "#6B7280" },
@@ -325,9 +325,9 @@ function InboxView({ c }: { c: typeof landingContent["es"]["crmDemo"] }) {
   const messages = conversations[activeThread] ?? conversations[0]
 
   return (
-    <div className="flex h-125 rounded-xl overflow-hidden border border-white/5">
+    <div className="flex flex-col md:flex-row h-auto md:h-125 rounded-xl overflow-hidden border border-white/5">
       {/* Left panel */}
-      <div className={`w-72 shrink-0 border-r border-white/5 flex flex-col ${showPanel ? "hidden" : "flex"} md:flex`}>
+      <div className={`w-full md:w-72 shrink-0 border-r border-white/5 flex flex-col ${showPanel ? "hidden" : "flex"} md:flex`}>
         <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between shrink-0">
           <span className="text-sm font-semibold text-[#EFF6FF]">{c.inbox.title}</span>
           <span className="bg-[#00D2AA]/15 text-[#00D2AA] text-xs px-2 py-0.5 rounded-full">{c.inbox.activeBadge}</span>
@@ -383,7 +383,7 @@ function InboxView({ c }: { c: typeof landingContent["es"]["crmDemo"] }) {
       </div>
 
       {/* Right panel */}
-      <div className={`flex-1 flex flex-col min-w-0 ${showPanel ? "flex" : "hidden"} md:flex`}>
+      <div className={`flex-1 flex flex-col min-w-0 w-full ${showPanel ? "flex" : "hidden"} md:flex`}>
         {/* Header */}
         <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
@@ -654,7 +654,8 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
   }, [isInView, demoMode, c])
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+    <section ref={sectionRef} 
+    className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
       {/* Section label */}
       <motion.p
         variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
@@ -718,7 +719,8 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
             )
           })}
         </div> */}
-        <div className="flex items-center justify-center gap-0 overflow-x-auto pb-2">
+        
+        <div className="flex items-center md:justify-center justify-start gap-0 overflow-x-auto pb-2 px-2">
           {c.flowNodes.map((node, i) => {
             // Caso especial: múltiples labels (Web Chat, WhatsApp, Instagram)
             if (node.labels) {
@@ -731,7 +733,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
                       return (
                         <div
                           key={j}
-                          className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 w-32"
+                          className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 w-28 sm:w-32"
                         >
                           <Icon size={14} className="text-[#00D2AA]" />
                           <span className="text-[10px] text-[#94A3B8] uppercase tracking-wide whitespace-nowrap">
@@ -779,7 +781,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
             const Icon = FLOW_NODE_ICONS[node.label] ?? Bot
             return (
               <div key={i} className="flex items-center shrink-0">
-                <div className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 w-32">
+                <div className="bg-[#0C1018] border border-white/8 rounded-xl px-4 py-3 text-center flex flex-col items-center gap-1 w-28 sm:w-32">
                   <Icon size={14} className="text-[#00D2AA]" />
                   <span className="text-[10px] text-[#94A3B8] uppercase tracking-wide whitespace-nowrap">
                     {node.label}
@@ -828,7 +830,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
         className="bg-[#0C1018] border border-white/8 rounded-2xl overflow-hidden mt-8"
       >
         {/* Top bar */}
-        <div className="bg-[#131B24] border-b border-white/5 px-4 py-3 flex items-center gap-4">
+        <div className="bg-[#131B24] border-b border-white/5 px-4 py-3 flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
           <div className="flex gap-1.5 shrink-0">
             <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444]/60" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]/60" />
@@ -836,8 +838,8 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
           </div>
 
           {/* Tab switcher */}
-          <div className="flex-1 flex justify-center">
-            <div className="bg-[#0C1018] border border-white/5 rounded-xl p-1 flex gap-1">
+          <div className="flex-1 flex md:justify-center justify-start overflow-x-auto">
+            <div className="bg-[#0C1018] border border-white/5 rounded-xl p-0.5 sm:p-1 flex gap-0.5 sm:gap-1">
               {c.tabs.map((tab) => {
                 const Icon = TAB_ICONS[tab.id] ?? Kanban
                 const isActive = activeTab === tab.id
@@ -846,7 +848,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={[
-                      "relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all rounded-lg",
+                      "relative flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 text-sm font-medium transition-all rounded-lg",
                       isActive ? "text-[#EFF6FF]" : "text-[#4B5563] hover:text-[#94A3B8]",
                     ].join(" ")}
                   >
@@ -869,7 +871,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
         </div>
 
         {/* Tab content */}
-        <div className="min-h-130">
+        <div className="min-h-125 sm:min-h-150 lg:min-h-130">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -877,7 +879,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3, ease: EASE }}
-              className="p-4 lg:p-5"
+              className="p-3 sm:p-4 lg:p-5"
             >
               {activeTab === "pipeline" && (
                 <PipelineView leads={leads} highlightedId={highlightedId} typingId={typingId} c={c} />
@@ -897,7 +899,7 @@ export default function CRMDemoSection({ lang = "es" }: { lang?: Language }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="fixed bottom-6 right-6 z-300 bg-[#0C1018] border border-[#00D2AA]/25 rounded-xl px-5 py-4 max-w-[320px] shadow-2xl"
+            className="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-6 z-300 bg-[#0C1018] border border-[#00D2AA]/25 rounded-xl px-5 py-4 max-w-[320px] shadow-2xl"
           >
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-full bg-[#00D2AA]/15 flex items-center justify-center shrink-0">
