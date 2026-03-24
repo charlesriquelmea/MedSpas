@@ -18,4 +18,3 @@ type ModalContent = {
   submit: string
   success: { title: string; sub: string; close: string }
 }
-
