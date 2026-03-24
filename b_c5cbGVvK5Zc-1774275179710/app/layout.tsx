@@ -9,7 +9,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'AI Receptionist 2.0 — SDR Clínico para MedSpas NY & NJ',
   description: 'AI Receptionist 2.0: responde en 5 segundos, habla español o inglés, cobra depósitos vía Stripe y sincroniza con GoHighLevel. HIPAA-Compliant.',
-  generator: 'v0.app', 
+  generator: 'v0.app',
   icons: {
     /* icon: [
       {
@@ -27,6 +27,12 @@ export const metadata: Metadata = {
     ], */
     icon: 'favicon.png',
     apple: 'favicon.png',
+  },
+
+  openGraph: {
+    title: "AI Receptionist 2.0 - SDR Clínico para MedSpas NY & NJ",
+    description: "AI Receptionist 2.0: responde en 5 segundos, habla español o inglés, cobra depositos vía Stripe y sincroniza con GoHighLevel. HIPAA-Compliant",
+    url: "medspas.protolylat.com",
   },
 }
 
